@@ -1,0 +1,15 @@
+app:
+    resource: "@AppBundle/Controller/DefaultController.php"
+    type:     annotation
+
+
+#PAYS
+pays:
+    type: rest
+    resource: AppBundle\Controller\PaysController
+
+
+#VILLES
+villes:
+    type: rest
+    resource: AppBundle\Controller\VillesController
