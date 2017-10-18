@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Pays
  *
  * @ORM\Table(name="pays")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PaysRepository")
+ * @UniqueEntity (fields="pays", message="Ce pays existe deja.")
  */
 class Pays
 {
@@ -27,12 +29,6 @@ class Pays
      * @ORM\Column(name="Pays", type="string", length=255, unique=true)
      */
     private $pays;
-
-    /**
-     * @ORM\Column(name="published", type="boolean")
-     */
-    private $published = true;
-
 
 
     /**
@@ -69,27 +65,4 @@ class Pays
         return $this->pays;
     }
 
-    /**
-     * Set published
-     *
-     * @param boolean $published
-     *
-     * @return Pays
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean
-     */
-    public function getPublished()
-    {
-        return $this->published;
-    }
 }

@@ -23,7 +23,8 @@ class Villes
 
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Pays", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pays", cascade={"persist"})
+     * @var Pays
      */
     private $pays;
 
@@ -103,11 +104,11 @@ class Villes
     /**
      * Set idPays
      *
-     * @param \AppBundle\Entity\Pays $idPays
+     * @param \AppBundle\Entity\Pays
      *
      * @return Villes
      */
-    public function setPays(\AppBundle\Entity\Pays $pays = null)
+    public function setPays(Pays $pays = null)
     {
         $this->pays = $pays;
 

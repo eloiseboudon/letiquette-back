@@ -1,0 +1,228 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Eloise
+ * Date: 18/10/2017
+ * Time: 15:41
+ */
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+
+
+/**
+ * Clients
+ *
+ * @ORM\Table(name="clients")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ClientsRepository")
+ */
+class Clients
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Villes", cascade={"persist"})
+     * @var Villes
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Nom", type="string", length=255)
+     */
+    private $nom;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Prenom", type="string", length=255)
+     */
+    private $prenom;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adMail", type="string", length=255)
+     */
+    private $adMail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse", type="string", length=255)
+     */
+    private $adresse;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numTel", type="string", length=255)
+     */
+    private $numTel;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Clients
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Clients
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set adMail
+     *
+     * @param string $adMail
+     *
+     * @return Clients
+     */
+    public function setAdMail($adMail)
+    {
+        $this->adMail = $adMail;
+
+        return $this;
+    }
+
+    /**
+     * Get adMail
+     *
+     * @return string
+     */
+    public function getAdMail()
+    {
+        return $this->adMail;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Clients
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set numTel
+     *
+     * @param string $numTel
+     *
+     * @return Clients
+     */
+    public function setNumTel($numTel)
+    {
+        $this->numTel = $numTel;
+
+        return $this;
+    }
+
+    /**
+     * Get numTel
+     *
+     * @return string
+     */
+    public function getNumTel()
+    {
+        return $this->numTel;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param \AppBundle\Entity\Villes $ville
+     *
+     * @return Clients
+     */
+    public function setVille(\AppBundle\Entity\Villes $ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return \AppBundle\Entity\Villes
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+}
