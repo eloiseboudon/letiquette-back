@@ -28,4 +28,20 @@ class ProduitsRepository extends EntityRepository
 
     }
 
+
+    public function findProduitByFamille($famille){
+
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->innerJoin('p.famille','fam')
+            ->addSelect('fam')
+            ->where($queryBuilder->expr()->eq('fam.sexe',':famille'))
+            ->setParameters(array('famille' => $famille));
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+
+    }
+
+
 }
