@@ -78,4 +78,182 @@ class Fournisseurs
     private $logo;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomMarque
+     *
+     * @param string $nomMarque
+     *
+     * @return Fournisseurs
+     */
+    public function setNomMarque($nomMarque)
+    {
+        $this->nomMarque = $nomMarque;
+
+        return $this;
+    }
+
+    /**
+     * Get nomMarque
+     *
+     * @return string
+     */
+    public function getNomMarque()
+    {
+        return $this->nomMarque;
+    }
+
+    /**
+     * Set nomResponsable
+     *
+     * @param string $nomResponsable
+     *
+     * @return Fournisseurs
+     */
+    public function setNomResponsable($nomResponsable)
+    {
+        $this->nomResponsable = $nomResponsable;
+
+        return $this;
+    }
+
+    /**
+     * Get nomResponsable
+     *
+     * @return string
+     */
+    public function getNomResponsable()
+    {
+        return $this->nomResponsable;
+    }
+
+    /**
+     * Set adMail
+     *
+     * @param string $adMail
+     *
+     * @return Fournisseurs
+     */
+    public function setAdMail($adMail)
+    {
+        $this->adMail = $adMail;
+
+        return $this;
+    }
+
+    /**
+     * Get adMail
+     *
+     * @return string
+     */
+    public function getAdMail()
+    {
+        return $this->adMail;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Fournisseurs
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set numTel
+     *
+     * @param string $numTel
+     *
+     * @return Fournisseurs
+     */
+    public function setNumTel($numTel)
+    {
+        $this->numTel = $numTel;
+
+        return $this;
+    }
+
+    /**
+     * Get numTel
+     *
+     * @return string
+     */
+    public function getNumTel()
+    {
+        return $this->numTel;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param string $logo
+     *
+     * @return Fournisseurs
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param \AppBundle\Entity\Villes $ville
+     *
+     * @return Fournisseurs
+     */
+    public function setVille(\AppBundle\Entity\Villes $ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return \AppBundle\Entity\Villes
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
 }
