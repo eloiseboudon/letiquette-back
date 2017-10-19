@@ -46,7 +46,7 @@ class Produits
      *
      * @ORM\Column(name="Libelle", type="string", length=255)
      */
-    private $ibelle;
+    private $libelle;
 
     /**
      * @var string
@@ -69,4 +69,158 @@ class Produits
      */
     private $description;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set ibelle
+     *
+     * @param string $ibelle
+     *
+     * @return Produits
+     */
+    public function setIbelle($ibelle)
+    {
+        $this->ibelle = $ibelle;
+
+        return $this;
+    }
+
+    /**
+     * Get ibelle
+     *
+     * @return string
+     */
+    public function getIbelle()
+    {
+        return $this->ibelle;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param string $prix
+     *
+     * @return Produits
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return string
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Produits
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Produits
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set famille
+     *
+     * @param \AppBundle\Entity\Familles $famille
+     *
+     * @return Produits
+     */
+    public function setFamille(\AppBundle\Entity\Familles $famille = null)
+    {
+        $this->famille = $famille;
+
+        return $this;
+    }
+
+    /**
+     * Get famille
+     *
+     * @return \AppBundle\Entity\Familles
+     */
+    public function getFamille()
+    {
+        return $this->famille;
+    }
+
+    /**
+     * Set fournisseur
+     *
+     * @param \AppBundle\Entity\Fournisseurs $fournisseur
+     *
+     * @return Produits
+     */
+    public function setFournisseur(\AppBundle\Entity\Fournisseurs $fournisseur = null)
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \AppBundle\Entity\Fournisseurs
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
+    }
 }

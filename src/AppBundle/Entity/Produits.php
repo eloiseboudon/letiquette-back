@@ -46,7 +46,7 @@ class Produits
      *
      * @ORM\Column(name="Libelle", type="string", length=255)
      */
-    private $ibelle;
+    private $libelle;
 
     /**
      * @var string
@@ -81,27 +81,27 @@ class Produits
     }
 
     /**
-     * Set ibelle
+     * Set libelle
      *
-     * @param string $ibelle
+     * @param string $libelle
      *
      * @return Produits
      */
-    public function setIbelle($ibelle)
+    public function setLibelle($libelle)
     {
-        $this->ibelle = $ibelle;
+        $this->libelle = $libelle;
 
         return $this;
     }
 
     /**
-     * Get ibelle
+     * Get libelle
      *
      * @return string
      */
-    public function getIbelle()
+    public function getLibelle()
     {
-        return $this->ibelle;
+        return $this->libelle;
     }
 
     /**
@@ -224,3 +224,4 @@ class Produits
         return $this->fournisseur;
     }
 }
+

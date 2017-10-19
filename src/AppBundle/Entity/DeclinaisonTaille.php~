@@ -41,4 +41,62 @@ class DeclinaisonTaille
      */
     private $taille;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set produits
+     *
+     * @param \AppBundle\Entity\Produits $produits
+     *
+     * @return DeclinaisonTaille
+     */
+    public function setProduits(\AppBundle\Entity\Produits $produits = null)
+    {
+        $this->produits = $produits;
+
+        return $this;
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \AppBundle\Entity\Produits
+     */
+    public function getProduits()
+    {
+        return $this->produits;
+    }
+
+    /**
+     * Set taille
+     *
+     * @param \AppBundle\Entity\Tailles $taille
+     *
+     * @return DeclinaisonTaille
+     */
+    public function setTaille(\AppBundle\Entity\Tailles $taille = null)
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
+    /**
+     * Get taille
+     *
+     * @return \AppBundle\Entity\Tailles
+     */
+    public function getTaille()
+    {
+        return $this->taille;
+    }
 }

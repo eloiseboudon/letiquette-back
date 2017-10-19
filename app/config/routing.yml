@@ -2,7 +2,6 @@ app:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
 
-
 #PAYS
 pays:
     type: rest
@@ -13,3 +12,8 @@ pays:
 villes:
     type: rest
     resource: AppBundle\Controller\VillesController
+
+#PRODUITS
+produits:
+    type: rest
+    resource: AppBundle\Controller\ProduitsController
