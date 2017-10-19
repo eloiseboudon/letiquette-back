@@ -37,7 +37,7 @@ class ProduitsController extends Controller
             $formatted[]= array(
                 'libelle'=>$produit->getLibelle(),
                 'famille'=>$produit->getFamille(),
-                'fournisseur'=>$produit->getFournisseur(),
+                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
                 'prix'=>$produit->getPrix(),
                 'image'=>$produit->getImage(),
                 'description'=>$produit->getDescription()

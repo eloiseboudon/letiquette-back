@@ -2,13 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: Eloise
- * Date: 18/10/2017
- * Time: 15:50
+ * Date: 19/10/2017
+ * Time: 10:46
  */
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Clients;
+use AppBundle\Entity\Familles;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -22,9 +22,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, Content-Type, Accept");
-
-
-class ClientsController extends Controller
+class FamillesController extends Controller
 {
 
 }

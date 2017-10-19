@@ -17,3 +17,8 @@ villes:
 produits:
     type: rest
     resource: AppBundle\Controller\ProduitsController
+
+#FOURNISSEURS
+fournisseurs:
+    type: rest
+    resource: AppBundle\Controller\FournisseursController
