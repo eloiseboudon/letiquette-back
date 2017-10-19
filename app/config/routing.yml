@@ -22,3 +22,8 @@ produits:
 fournisseurs:
     type: rest
     resource: AppBundle\Controller\FournisseursController
+
+#FAMILLES
+familles:
+    type: rest
+    resource: AppBundle\Controller\FamillesController

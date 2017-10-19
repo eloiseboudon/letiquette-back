@@ -34,7 +34,7 @@ class Familles
      *
      * @ORM\Column(name="Famille", type="string", length=255)
      */
-    private $Famille;
+    private $famille;
 
     /**
      * @var string
@@ -63,7 +63,7 @@ class Familles
      */
     public function setFamille($famille)
     {
-        $this->Famille = $famille;
+        $this->famille = $famille;
 
         return $this;
     }
@@ -75,7 +75,7 @@ class Familles
      */
     public function getFamille()
     {
-        return $this->Famille;
+        return $this->famille;
     }
 
     /**

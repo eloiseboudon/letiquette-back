@@ -56,7 +56,6 @@ class VillesController extends Controller
             'pays' => $ville->getPays()->getPays()
         ];
 
-        $formatted->headers->set('Access-Control-Allow-Origin', '*');
 
         return new JsonResponse($formatted);
     }
