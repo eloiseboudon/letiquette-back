@@ -1,0 +1,72 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Eloise
+ * Date: 19/10/2017
+ * Time: 09:40
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Produits
+ *
+ * @ORM\Table(name="produits")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProduitsRepository")
+ */
+class Produits
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Familles", cascade={"persist"})
+     * @var Familles
+     */
+    private $famille;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseurs", cascade={"persist"})
+     * @var Fournisseurs
+     */
+    private $fournisseur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Libelle", type="string", length=255)
+     */
+    private $ibelle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Prix", type="decimal", scale=2)
+     */
+    private $prix;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Image", type="text")
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="text")
+     */
+    private $description;
+
+}
