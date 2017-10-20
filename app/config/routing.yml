@@ -18,6 +18,12 @@ produits:
     resource: AppBundle\Controller\ProduitsController
 
 #PRODUITS
+produitsFemmes:
+    type: rest
+    resource: AppBundle\Controller\ProduitsController
+
+
+#PRODUITS
 produitsSexe:
     type: rest
     resource: AppBundle\Controller\ProduitsController

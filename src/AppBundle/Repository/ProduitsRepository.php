@@ -44,4 +44,20 @@ class ProduitsRepository extends EntityRepository
     }
 
 
+    public function findProduitsFemmesBySexe($famille){
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->innerJoin('p.famille','fam')
+            ->addSelect('fam')
+            ->where($queryBuilder->expr()->eq('fam.sexe', $queryBuilder->expr()->literal("F")))
+            ->andWhere($queryBuilder->expr()->eq('fam.famille',':famille'))
+            ->setParameters(array('famille' => $famille))
+        ;
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+
+    }
+
+
 }

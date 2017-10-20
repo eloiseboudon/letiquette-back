@@ -31,7 +31,9 @@ class ProduitsController extends Controller
      */
     public function getProduitsAction(){
         $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')->findAll();
-
+        if (empty($produitList)) {
+            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
+        }
         $formatted = [];
 
         foreach ($produitList as $produit){
@@ -54,13 +56,11 @@ class ProduitsController extends Controller
      */
     public function getProduitsBySexeAction($sexe){
         $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitBySexe($sexe);
-
         if (empty($produitList)) {
             return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
         }
 
-//        $formatted = [];
-
+        $formatted = [];
         foreach ($produitList as $produit){
             $formatted[]= array(
                 'libelle'=>$produit->getLibelle(),
@@ -81,14 +81,11 @@ class ProduitsController extends Controller
      */
     public function getProduitsByFamilleAction($famille){
         $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitByFamille($famille);
-
         if (empty($produitList)) {
-//            return new JsonResponse(['message' => 'Aucun résultat trouvé '.$famille.''], Response::HTTP_NOT_FOUND);
-            return new JsonResponse($famille);
+            return new JsonResponse(['message' => 'Aucun résultat trouvé '.$famille.''], Response::HTTP_NOT_FOUND);
         }
 
-//        $formatted = [];
-
+        $formatted = [];
         foreach ($produitList as $produit){
             $formatted[]= array(
                 'libelle'=>$produit->getLibelle(),
@@ -103,5 +100,67 @@ class ProduitsController extends Controller
 
         return new JsonResponse($formatted);
     }
+
+
+
+
+    /**
+     * @Get("/produitsFemmes")
+     */
+    public function getProduitsFemmesAction(){
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
+        if (empty($produitList)) {
+            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
+//            return new JsonResponse($famille);
+        }
+
+        $formatted = [];
+        foreach ($produitList as $produit){
+            $formatted[]= array(
+                'libelle'=>$produit->getLibelle(),
+                'famille'=>$produit->getFamille()->getFamille(),
+                'sexe'=>$produit->getFamille()->getSexe(),
+                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
+                'prix'=>$produit->getPrix(),
+                'image'=>$produit->getImage(),
+                'description'=>$produit->getDescription()
+            );
+        }
+
+        return new JsonResponse($formatted);
+    }
+
+
+    /**
+     * @Get("/produitsFemmesByFamille/{famille}")
+     */
+    public function getProduitsFemmesByFamilleAction($famille){
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsFemmesBySexe($famille);
+        if (empty($produitList)) {
+            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
+//            return new JsonResponse($famille);
+        }
+
+        $formatted = [];
+        foreach ($produitList as $produit){
+            $formatted[]= array(
+                'libelle'=>$produit->getLibelle(),
+                'famille'=>$produit->getFamille()->getFamille(),
+                'sexe'=>$produit->getFamille()->getSexe(),
+                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
+                'prix'=>$produit->getPrix(),
+                'image'=>$produit->getImage(),
+                'description'=>$produit->getDescription()
+            );
+        }
+
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+
+
 
 }
