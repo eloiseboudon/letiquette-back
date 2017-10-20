@@ -7,7 +7,6 @@ pays:
     type: rest
     resource: AppBundle\Controller\PaysController
 
-
 #VILLES
 villes:
     type: rest
@@ -32,4 +31,10 @@ produitsFamille:
 fournisseurs:
     type: rest
     resource: AppBundle\Controller\FournisseursController
+
+#FAMILES
+familles:
+    type: rest
+    resource: AppBundle\Controller\FamillesController
+
 
