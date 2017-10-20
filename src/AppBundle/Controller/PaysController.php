@@ -30,7 +30,7 @@ class PaysController extends Controller
      */
     public function getPaysAction(){
 
-        $paysList = $this->getDoctrine()->getRepository('AppBundle:Fournisseur')->findAll();
+        $paysList = $this->getDoctrine()->getRepository('AppBundle:Pays')->findAll();
         $formatted = [];
 
         foreach ($paysList as $pays){
