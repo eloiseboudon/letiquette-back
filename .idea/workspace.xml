@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a4364579-fc5e-4149-9373-ea644808e179" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" />
-    </list>
+    <list default="true" id="a4364579-fc5e-4149-9373-ea644808e179" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProduitsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProduitsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
+            <state relative-caret-position="1229">
               <caret line="79" column="29" lean-forward="false" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="29" />
               <folding>
                 <element signature="e#123#153#0#PHP" expanded="true" />
@@ -105,7 +101,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
@@ -283,12 +279,12 @@
       <workItem from="1507729493293" duration="617000" />
       <workItem from="1507795456725" duration="3368000" />
       <workItem from="1508332750449" duration="18717000" />
-      <workItem from="1508486985027" duration="1058000" />
+      <workItem from="1508486985027" duration="1097000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25198000" />
+    <option name="totallyTimeSpent" value="25237000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -732,21 +728,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="79" column="29" lean-forward="false" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="29" />
-          <folding>
-            <element signature="e#123#153#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1229">
+          <caret line="79" column="29" lean-forward="false" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="29" />
+          <folding>
+            <element signature="e#123#153#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
