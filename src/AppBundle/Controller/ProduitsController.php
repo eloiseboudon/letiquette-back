@@ -45,13 +45,12 @@ class ProduitsController extends Controller
                 'description'=>$produit->getDescription()
             );
         }
-
         return new JsonResponse($formatted);
     }
 
 
     /**
-     * @Get("/produits/{sexe}")
+     * @Get("/produitsSexe/{sexe}")
      */
     public function getProduitsBySexeAction($sexe){
         $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitBySexe($sexe);
@@ -75,8 +74,34 @@ class ProduitsController extends Controller
         }
 
         return new JsonResponse($formatted);
+    }
 
+    /**
+     * @Get("/produitsFamille/{famille}")
+     */
+    public function getProduitsByFamilleAction($famille){
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitByFamille($famille);
 
+        if (empty($produitList)) {
+//            return new JsonResponse(['message' => 'Aucun résultat trouvé '.$famille.''], Response::HTTP_NOT_FOUND);
+            return new JsonResponse($famille);
+        }
+
+//        $formatted = [];
+
+        foreach ($produitList as $produit){
+            $formatted[]= array(
+                'libelle'=>$produit->getLibelle(),
+                'famille'=>$produit->getFamille()->getFamille(),
+                'sexe'=>$produit->getFamille()->getSexe(),
+                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
+                'prix'=>$produit->getPrix(),
+                'image'=>$produit->getImage(),
+                'description'=>$produit->getDescription()
+            );
+        }
+
+        return new JsonResponse($formatted);
     }
 
 }

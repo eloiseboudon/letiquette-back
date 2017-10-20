@@ -18,12 +18,18 @@ produits:
     type: rest
     resource: AppBundle\Controller\ProduitsController
 
+#PRODUITS
+produitsSexe:
+    type: rest
+    resource: AppBundle\Controller\ProduitsController
+
+#PRODUITS
+produitsFamille:
+    type: rest
+    resource: AppBundle\Controller\ProduitsController
+
 #FOURNISSEURS
 fournisseurs:
     type: rest
     resource: AppBundle\Controller\FournisseursController
 
-#FAMILLES
-familles:
-    type: rest
-    resource: AppBundle\Controller\FamillesController

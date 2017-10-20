@@ -34,7 +34,7 @@ class ProduitsRepository extends EntityRepository
         $queryBuilder = $this->createQueryBuilder('p');
         $queryBuilder->innerJoin('p.famille','fam')
             ->addSelect('fam')
-            ->where($queryBuilder->expr()->eq('fam.sexe',':famille'))
+            ->where($queryBuilder->expr()->eq('fam.famille',':famille'))
             ->setParameters(array('famille' => $famille));
 
         return $queryBuilder
