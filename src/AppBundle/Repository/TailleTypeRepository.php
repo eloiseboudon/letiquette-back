@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class TailleTypeRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

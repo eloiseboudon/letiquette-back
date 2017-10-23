@@ -30,7 +30,6 @@ class ProduitsRepository extends EntityRepository
 
 
     public function findProduitByFamille($famille){
-
         $queryBuilder = $this->createQueryBuilder('p');
         $queryBuilder->innerJoin('p.famille','fam')
             ->addSelect('fam')
@@ -40,7 +39,6 @@ class ProduitsRepository extends EntityRepository
         return $queryBuilder
             ->getQuery()
             ->getResult();
-
     }
 
 
