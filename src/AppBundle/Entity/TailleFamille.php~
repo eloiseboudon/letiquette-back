@@ -1,0 +1,105 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Eloise
+ * Date: 23/10/2017
+ * Time: 16:03
+ */
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TailleFamille
+ *
+ * @ORM\Table(name="tailleFamille")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TailleFamilleRepository")
+ *
+ * */
+
+class TailleFamille
+{
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Familles", cascade={"persist"})
+     * @var Familles
+     */
+    private $famille;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TailleType", cascade={"persist"})
+     * @var TailleType
+     */
+    private $tailleType;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set famille
+     *
+     * @param \AppBundle\Entity\Familles $famille
+     *
+     * @return TailleFamille
+     */
+    public function setFamille(\AppBundle\Entity\Familles $famille = null)
+    {
+        $this->famille = $famille;
+
+        return $this;
+    }
+
+    /**
+     * Get famille
+     *
+     * @return \AppBundle\Entity\Familles
+     */
+    public function getFamille()
+    {
+        return $this->famille;
+    }
+
+    /**
+     * Set tailleType
+     *
+     * @param \AppBundle\Entity\TailleType $tailleType
+     *
+     * @return TailleFamille
+     */
+    public function setTailleType(\AppBundle\Entity\TailleType $tailleType = null)
+    {
+        $this->tailleType = $tailleType;
+
+        return $this;
+    }
+
+    /**
+     * Get tailleType
+     *
+     * @return \AppBundle\Entity\TailleType
+     */
+    public function getTailleType()
+    {
+        return $this->tailleType;
+    }
+}

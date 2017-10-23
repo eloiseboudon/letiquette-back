@@ -43,6 +43,12 @@ class Familles
      */
     private $sexe;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FamilleGlobal", cascade={"persist"})
+     * @var FamilleGlobal
+     */
+    private $familleGlobal;
+
 
     /**
      * Get id
@@ -100,5 +106,29 @@ class Familles
     public function getSexe()
     {
         return $this->sexe;
+    }
+
+    /**
+     * Set familleGlobal
+     *
+     * @param \AppBundle\Entity\FamilleGlobal $familleGlobal
+     *
+     * @return Familles
+     */
+    public function setFamilleGlobal(\AppBundle\Entity\FamilleGlobal $familleGlobal = null)
+    {
+        $this->familleGlobal = $familleGlobal;
+
+        return $this;
+    }
+
+    /**
+     * Get familleGlobal
+     *
+     * @return \AppBundle\Entity\FamilleGlobal
+     */
+    public function getFamilleGlobal()
+    {
+        return $this->familleGlobal;
     }
 }
