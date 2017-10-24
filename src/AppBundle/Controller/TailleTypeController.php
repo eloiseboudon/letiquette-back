@@ -28,6 +28,22 @@ class TailleTypeController extends Controller
 {
 
     /**
+     * @Get("/tailleType")
+     */
+    public function getAllTaillesTypeAction(){
+        $tailletypeList = $this->getDoctrine()->getRepository('AppBundle:TailleType')->findAll();
+        $formatted = [];
+        foreach ($tailletypeList as $tailletype) {
+            $formatted[] = [
+                'id' => $tailletype->getId(),
+                'familleGlobal' => $tailletype->getFamilleGlobal()->getFamilleGlobal(),
+                'taille' => $tailletype->getTaille()->getTaille()
+            ];
+        }
+        return new JsonResponse($formatted);
+    }
+
+    /**
      * @Get("/tailleType/{id}")
      */
     public function getTaillesTypeByFamilleAction($id){
@@ -40,8 +56,8 @@ class TailleTypeController extends Controller
         foreach ($tailletypeList as $tailletype) {
             $formatted[] = [
                 'id' => $tailletype->getId(),
-                'familleGlobal' => $tailletype->getFamilleGlobal(),
-                'taille' => $tailletype->getTaille()
+                'familleGlobal' => $tailletype->getFamilleGlobal()->getFamilleGlobal(),
+                'taille' => $tailletype->getTaille()->getTaille()
             ];
         }
         return new JsonResponse($formatted);

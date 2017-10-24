@@ -44,6 +44,11 @@ familles:
     resource: AppBundle\Controller\FamillesController
 
 
+#TAILLE
+taille:
+    type: rest
+    resource: AppBundle\Controller\TaillesController
+
 #TAILLETYPE
 tailleType:
     type: rest
