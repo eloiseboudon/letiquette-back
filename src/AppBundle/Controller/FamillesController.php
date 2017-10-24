@@ -42,4 +42,26 @@ class FamillesController extends Controller
 
         return new JsonResponse($formatted);
     }
+
+
+    /**
+     * @Get("/familles/{sexe}")
+     */
+    public function getFamillesBySexeAction($sexe){
+        $famillesList = $this->getDoctrine()->getRepository('AppBundle:Familles')
+            ->findBy(
+                array('sexe' => $sexe)
+            );
+
+        $formatted = [];
+        foreach ($famillesList as $famille) {
+            $formatted[] = [
+                'id' => $famille->getId(),
+                'famille' => $famille->getFamille(),
+                'sexe' => $famille->getSexe(),
+                'global' => $famille->getFamilleGlobal()->getFamilleGlobal()
+            ];
+        }
+        return new JsonResponse($formatted);
+    }
 }
