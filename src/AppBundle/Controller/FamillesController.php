@@ -36,7 +36,8 @@ class FamillesController extends Controller
                 'id' => $famille->getId(),
                 'famille' => $famille->getFamille(),
                 'sexe' => $famille->getSexe(),
-                'global' => $famille->getFamilleGlobal()->getFamilleGlobal()
+                'global' => $famille->getFamilleGlobal()->getFamilleGlobal(),
+                'globalId' =>$famille->getFamilleGlobal()->getId()
             ];
         }
 
@@ -59,7 +60,8 @@ class FamillesController extends Controller
                 'id' => $famille->getId(),
                 'famille' => $famille->getFamille(),
                 'sexe' => $famille->getSexe(),
-                'global' => $famille->getFamilleGlobal()->getFamilleGlobal()
+                'global' => $famille->getFamilleGlobal()->getFamilleGlobal(),
+                'globalId' =>$famille->getFamilleGlobal()->getId()
             ];
         }
         return new JsonResponse($formatted);

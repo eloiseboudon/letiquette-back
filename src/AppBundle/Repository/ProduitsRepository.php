@@ -29,17 +29,17 @@ class ProduitsRepository extends EntityRepository
     }
 
 
-    public function findProduitByFamille($famille){
-        $queryBuilder = $this->createQueryBuilder('p');
-        $queryBuilder->innerJoin('p.famille','fam')
-            ->addSelect('fam')
-            ->where($queryBuilder->expr()->eq('fam.famille',':famille'))
-            ->setParameters(array('famille' => $famille));
-
-        return $queryBuilder
-            ->getQuery()
-            ->getResult();
-    }
+//    public function findProduitByFamille($famille){
+//        $queryBuilder = $this->createQueryBuilder('p');
+//        $queryBuilder->innerJoin('p.famille','fam')
+//            ->addSelect('fam')
+//            ->where($queryBuilder->expr()->eq('fam.famille',':famille'))
+//            ->setParameters(array('famille' => $famille));
+//
+//        return $queryBuilder
+//            ->getQuery()
+//            ->getResult();
+//    }
 
 
     public function findProduitsFemmesBySexe($famille){
@@ -54,8 +54,19 @@ class ProduitsRepository extends EntityRepository
         return $queryBuilder
             ->getQuery()
             ->getResult();
-
     }
 
+    public function findProduitsByFamille($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->innerJoin('p.famille', 'fam')
+            ->addSelect('fam')
+            ->where($queryBuilder->expr()->eq('fam.id', ':id'))
+            ->setParameters(array('id' => $id));
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
 
 }

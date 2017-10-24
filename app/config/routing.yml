@@ -49,7 +49,16 @@ taille:
     type: rest
     resource: AppBundle\Controller\TaillesController
 
+
 #TAILLETYPE
 tailleType:
     type: rest
     resource: AppBundle\Controller\TailleTypeController
+
+
+
+
+#DECLINAISON_TAILLE
+produitsTaille:
+    type: rest
+    resource: AppBundle\Controller\DeclinaisonTailleController
