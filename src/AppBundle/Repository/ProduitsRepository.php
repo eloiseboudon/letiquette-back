@@ -29,19 +29,6 @@ class ProduitsRepository extends EntityRepository
     }
 
 
-//    public function findProduitByFamille($famille){
-//        $queryBuilder = $this->createQueryBuilder('p');
-//        $queryBuilder->innerJoin('p.famille','fam')
-//            ->addSelect('fam')
-//            ->where($queryBuilder->expr()->eq('fam.famille',':famille'))
-//            ->setParameters(array('famille' => $famille));
-//
-//        return $queryBuilder
-//            ->getQuery()
-//            ->getResult();
-//    }
-
-
     public function findProduitsFemmesBySexe($famille){
         $queryBuilder = $this->createQueryBuilder('p');
         $queryBuilder->innerJoin('p.famille','fam')
@@ -56,8 +43,7 @@ class ProduitsRepository extends EntityRepository
             ->getResult();
     }
 
-    public function findProduitsByFamille($id)
-    {
+    public function findProduitsByFamille($id){
         $queryBuilder = $this->createQueryBuilder('p');
         $queryBuilder->innerJoin('p.famille', 'fam')
             ->addSelect('fam')
@@ -68,5 +54,10 @@ class ProduitsRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+
+
+
+
 
 }

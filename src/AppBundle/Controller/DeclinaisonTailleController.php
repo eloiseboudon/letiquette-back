@@ -24,7 +24,7 @@ class DeclinaisonTailleController extends Controller
     /**
      * @Get("/produitsTaille/{id}")
      */
-    public function getProduitsByTaillesAction($id){
+    public function getProduitsByTailleAction($id){
         $produitList = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
             ->findBy(
                 array('taille' => $id)
@@ -33,9 +33,6 @@ class DeclinaisonTailleController extends Controller
         $formatted = [];
         foreach ($produitList as $produit) {
             $formatted[] = [
-//                'id' => $produit->getId(),
-//                'taille' => $produit->getTaille()->getTaille(),
-//                'produit' => $produit->getProduit()->getId(),
                 'libelle'=>$produit->getProduit()->getLibelle(),
                 'famille'=>$produit->getProduit()->getFamille()->getFamille(),
                 'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
@@ -47,5 +44,33 @@ class DeclinaisonTailleController extends Controller
         }
         return new JsonResponse($formatted);
     }
+
+    /**
+     * @Get("/produitsTailleFamille/{idTaille}/{idFamille}")
+     */
+    public function getProduitsByTailleFamilleAction($idTaille, $idFamille){
+
+        $produitList = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
+            ->findProduitsByTaille_Famille($idTaille, $idFamille);
+
+        $formatted = [];
+        foreach ($produitList as $produit) {
+            $formatted[] = [
+                'id'=>$produit->getProduit()->getId(),
+                'taille' =>$produit->getTaille()->getTaille(),
+                'libelle'=>$produit->getProduit()->getLibelle(),
+                'famille'=>$produit->getProduit()->getFamille()->getFamille(),
+                'familleID'=>$produit->getProduit()->getFamille()->getId(),
+                'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
+                'fournisseur'=>$produit->getProduit()->getFournisseur()->getNomMarque(),
+                'prix'=>$produit->getProduit()->getPrix(),
+                'image'=>$produit->getProduit()->getImage(),
+                'description'=>$produit->getProduit()->getDescription()
+            ];
+        }
+        return new JsonResponse($formatted);
+    }
+
+
 
 }

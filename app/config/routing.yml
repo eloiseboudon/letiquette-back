@@ -62,3 +62,9 @@ tailleType:
 produitsTaille:
     type: rest
     resource: AppBundle\Controller\DeclinaisonTailleController
+
+
+#DECLINAISON_TAILLE
+produitsTailleFamille:
+    type: rest
+    resource: AppBundle\Controller\DeclinaisonTailleController
