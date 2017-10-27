@@ -44,8 +44,8 @@ class DeclinaisonTailleRepository extends EntityRepository
             $queryBuilder->setParameter("taille_".$id, $taille);
             $id++;
         }
-        
-        $queryBuilder->andWhere($orX);
+
+        $queryBuilder->andWhere($orX)->distinct();
 
         return $queryBuilder
             ->getQuery()

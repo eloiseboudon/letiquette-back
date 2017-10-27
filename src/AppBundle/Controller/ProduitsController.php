@@ -38,6 +38,7 @@ class ProduitsController extends Controller
 
         foreach ($produitList as $produit){
             $formatted[]= array(
+                'id'=>$produit->getId(),
                 'libelle'=>$produit->getLibelle(),
                 'famille'=>$produit->getFamille()->getFamille(),
                 'sexe'=>$produit->getFamille()->getSexe(),
@@ -64,6 +65,7 @@ class ProduitsController extends Controller
 
 
         $formatted[]= array(
+            'id'=>$produit->getId(),
             'libelle'=>$produit->getLibelle(),
             'famille'=>$produit->getFamille()->getFamille(),
             'sexe'=>$produit->getFamille()->getSexe(),
@@ -75,34 +77,7 @@ class ProduitsController extends Controller
 
         return new JsonResponse($formatted);
     }
-
-
-
-
-    /**
-     * @Get("/produitsSexe/{sexe}")
-     */
-//    public function getProduitsBySexeAction($sexe){
-//        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitBySexe($sexe);
-//        if (empty($produitList)) {
-//            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-//        }
-//
-//        $formatted = [];
-//        foreach ($produitList as $produit){
-//            $formatted[]= array(
-//                'libelle'=>$produit->getLibelle(),
-//                'famille'=>$produit->getFamille()->getFamille(),
-//                'sexe'=>$produit->getFamille()->getSexe(),
-//                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
-//                'prix'=>$produit->getPrix(),
-//                'image'=>$produit->getImage(),
-//                'description'=>$produit->getDescription()
-//            );
-//        }
-//
-//        return new JsonResponse($formatted);
-//    }
+    
 
 
     /**
@@ -117,6 +92,7 @@ class ProduitsController extends Controller
         $formatted = [];
         foreach ($produitList as $produit){
             $formatted[]= array(
+                'id'=>$produit->getId(),
                 'libelle'=>$produit->getLibelle(),
                 'famille'=>$produit->getFamille()->getFamille(),
 //                'familleID'=>$produit->getFamille()->getId(),
@@ -144,6 +120,7 @@ class ProduitsController extends Controller
         $formatted = [];
         foreach ($produitList as $produit){
             $formatted[]= array(
+                'id'=>$produit->getId(),
                 'libelle'=>$produit->getLibelle(),
                 'famille'=>$produit->getFamille()->getFamille(),
                 'sexe'=>$produit->getFamille()->getSexe(),

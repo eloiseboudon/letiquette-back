@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4364579-fc5e-4149-9373-ea644808e179" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/letiquette-back.iml" afterPath="$PROJECT_DIR$/.idea/letiquette-back.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/DeclinaisonCouleur.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/DeclinaisonCouleur.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeclinaisonTailleRepository.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DeclinaisonTailleRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+            <state relative-caret-position="600">
+              <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="21" />
               <folding>
                 <element signature="e#40#74#0#PHP" expanded="true" />
               </folding>
@@ -46,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProduitsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProduitsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="168" column="54" lean-forward="false" selection-start-line="168" selection-start-column="54" selection-end-line="168" selection-end-column="54" />
+            <state relative-caret-position="-624">
+              <caret line="79" column="4" lean-forward="false" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="4" />
               <folding>
                 <element signature="e#123#153#0#PHP" expanded="true" />
               </folding>
@@ -131,8 +126,8 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ProduitsFemmes.php" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
       </list>
     </option>
   </component>
@@ -268,12 +263,12 @@
       <workItem from="1508332750449" duration="18717000" />
       <workItem from="1508486985027" duration="6142000" />
       <workItem from="1508761081502" duration="30551000" />
-      <workItem from="1509025914013" duration="8960000" />
+      <workItem from="1509025914013" duration="10243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69793000" />
+    <option name="totallyTimeSpent" value="71076000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -684,16 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="168" column="54" lean-forward="false" selection-start-line="168" selection-start-column="54" selection-end-line="168" selection-end-column="54" />
-          <folding>
-            <element signature="e#123#153#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
@@ -706,10 +691,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+        <state relative-caret-position="600">
+          <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="21" />
           <folding>
             <element signature="e#40#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-624">
+          <caret line="79" column="4" lean-forward="false" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="4" />
+          <folding>
+            <element signature="e#123#153#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
