@@ -22,16 +22,19 @@ produitsFemmes:
     type: rest
     resource: AppBundle\Controller\ProduitsFemmesController
 
+#produitsFemmes/fournisseurs:
+#    type: rest
+#    resource: AppBundle\Controller\ProduitsFemmesController
 
-#PRODUITS
-produitsSexe:
-    type: rest
-    resource: AppBundle\Controller\ProduitsController
-
-#PRODUITS
-produitsFamille:
-    type: rest
-    resource: AppBundle\Controller\ProduitsController
+##PRODUITS
+#produitsSexe:
+#    type: rest
+#    resource: AppBundle\Controller\ProduitsController
+#
+##PRODUITS
+#produitsFamille:
+#    type: rest
+#    resource: AppBundle\Controller\ProduitsController
 
 #FOURNISSEURS
 fournisseurs:
@@ -65,6 +68,6 @@ produitsTaille:
 
 
 #DECLINAISON_TAILLE
-produitsTailleFamille:
-    type: rest
-    resource: AppBundle\Controller\DeclinaisonTailleController
+#produitsTailleFamille:
+#    type: rest
+#    resource: AppBundle\Controller\DeclinaisonTailleController

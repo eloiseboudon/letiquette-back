@@ -107,10 +107,10 @@ class ProduitsController extends Controller
 
 
     /**
-     * @Get("/produitsFiltres/{arrayTaille}")
+     * @Get("/produitsFiltres/taille/{arrayTaille}")
      */
-    public function getProduitsFiltresAction($arrayTaille){
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltres($arrayTaille);
+    public function getProduitsFiltreTailleAction($arrayTaille){
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTaille($arrayTaille);
 
         $formatted = [];
         foreach ($produitList as $produit) {
@@ -122,13 +122,37 @@ class ProduitsController extends Controller
                 'familleID'=>$produit->getProduit()->getFamille()->getId(),
                 'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
                 'fournisseur'=>$produit->getProduit()->getFournisseur()->getNomMarque(),
+                'fournisseurID'=>$produit->getProduit()->getFournisseur()->getId(),
                 'prix'=>$produit->getProduit()->getPrix(),
                 'image'=>$produit->getProduit()->getImage(),
                 'description'=>$produit->getProduit()->getDescription()
             ];
         }
         return new JsonResponse($formatted);
+    }
 
+    /**
+     * @Get("/produitsFiltres/{arrayTaille}/{arrayMarque}")
+     */
+    public function getProduitsFiltresAction($arrayTaille, $arrayMarque){
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltres($arrayTaille, $arrayMarque);
 
+        $formatted = [];
+        foreach ($produitList as $produit) {
+            $formatted[] = [
+                'id'=>$produit->getProduit()->getId(),
+                'taille' =>$produit->getTaille()->getTaille(),
+                'libelle'=>$produit->getProduit()->getLibelle(),
+                'famille'=>$produit->getProduit()->getFamille()->getFamille(),
+                'familleID'=>$produit->getProduit()->getFamille()->getId(),
+                'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
+                'fournisseur'=>$produit->getProduit()->getFournisseur()->getNomMarque(),
+                'fournisseurID'=>$produit->getProduit()->getFournisseur()->getId(),
+                'prix'=>$produit->getProduit()->getPrix(),
+                'image'=>$produit->getProduit()->getImage(),
+                'description'=>$produit->getProduit()->getDescription()
+            ];
+        }
+        return new JsonResponse($formatted);
     }
 }

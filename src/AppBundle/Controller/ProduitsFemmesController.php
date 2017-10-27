@@ -43,6 +43,7 @@ class ProduitsFemmesController extends Controller
                 'famille'=>$produit->getFamille()->getFamille(),
                 'sexe'=>$produit->getFamille()->getSexe(),
                 'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
+                'fournisseurID'=>$produit->getFournisseur()->getId(),
                 'prix'=>$produit->getPrix(),
                 'image'=>$produit->getImage(),
                 'description'=>$produit->getDescription()
@@ -70,6 +71,7 @@ class ProduitsFemmesController extends Controller
             'famille'=>$produit->getFamille()->getFamille(),
             'sexe'=>$produit->getFamille()->getSexe(),
             'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
+            'fournisseurID'=>$produit->getFournisseur()->getId(),
             'prix'=>$produit->getPrix(),
             'image'=>$produit->getImage(),
             'description'=>$produit->getDescription()
@@ -82,22 +84,40 @@ class ProduitsFemmesController extends Controller
 
 
 
-    /**
-     * @Get("/marquesFemmes/}")
-     */
-    public function getMarquesFemmesAction()
-    {
 
+    /**
+     * @Get("/produitsFemmes/fournisseurs/{fournisseur}")
+     */
+    public function getFournisseursFemmesAction()
+    {
+        $marqueList = $this->getDoctrine()->getRepository('AppBundle:PrdouitsFemmes')->findFournisseursFemmes();
+        if (empty($marqueList)) {
+            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
+        }
+        $formatted = [];
+
+        foreach ($marqueList as $marque){
+            $formatted[]= array(
+                'id'=>$produit->getId(),
+                'libelle'=>$produit->getLibelle(),
+                'famille'=>$produit->getFamille()->getFamille(),
+                'sexe'=>$produit->getFamille()->getSexe(),
+                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
+                'fournisseurID'=>$produit->getFournisseur()->getId(),
+                'prix'=>$produit->getPrix(),
+                'image'=>$produit->getImage(),
+                'description'=>$produit->getDescription()
+            );
+        }
+        return new JsonResponse($formatted);
     }
 
 
-
-
     /**
-     * @Get("/produitsFiltres/{arrayTaille}")
+     * @Get("/produitsFemmesFiltre/taille/{arrayTaille}")
      */
-    public function getProduitsFiltresAction($arrayTaille){
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltres($arrayTaille);
+    public function getProduitsFemmesFiltreTailleAction($arrayTaille){
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTailleFemmes($arrayTaille);
 
         $formatted = [];
         foreach ($produitList as $produit) {
@@ -109,6 +129,7 @@ class ProduitsFemmesController extends Controller
                 'familleID'=>$produit->getProduit()->getFamille()->getId(),
                 'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
                 'fournisseur'=>$produit->getProduit()->getFournisseur()->getNomMarque(),
+                'fournisseurID'=>$produit->getProduit()->getFournisseur()->getId(),
                 'prix'=>$produit->getProduit()->getPrix(),
                 'image'=>$produit->getProduit()->getImage(),
                 'description'=>$produit->getProduit()->getDescription()
@@ -116,4 +137,60 @@ class ProduitsFemmesController extends Controller
         }
         return new JsonResponse($formatted);
     }
+
+    /**
+     * @Get("/produitsFemmesFiltre/marque/{arrayMarque}")
+     */
+    public function getProduitsFemmesFiltreMarqueAction($arrayMarque){
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:ProduitsFemmes')->findProduitsFiltreMarqueFemmes($arrayMarque);
+
+        $formatted = [];
+        foreach ($produitList as $produit) {
+            $formatted[] = [
+                'id'=>$produit->getId(),
+                'libelle'=>$produit->getLibelle(),
+                'famille'=>$produit->getFamille()->getFamille(),
+                'sexe'=>$produit->getFamille()->getSexe(),
+                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
+                'fournisseurID'=>$produit->getFournisseur()->getId(),
+                'prix'=>$produit->getPrix(),
+                'image'=>$produit->getImage(),
+                'description'=>$produit->getDescription()
+            ];
+        }
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Get("/produitsFiltres/{arrayTaille}/{arrayMarque}")
+     */
+    public function getProduitsFemmesFiltresAction($arrayTaille, $arrayMarque){
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltresFemmes($arrayTaille, $arrayMarque);
+
+        $formatted = [];
+        foreach ($produitList as $produit) {
+            $formatted[] = [
+                'id'=>$produit->getProduit()->getId(),
+                'taille' =>$produit->getTaille()->getTaille(),
+                'libelle'=>$produit->getProduit()->getLibelle(),
+                'famille'=>$produit->getProduit()->getFamille()->getFamille(),
+                'familleID'=>$produit->getProduit()->getFamille()->getId(),
+                'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
+                'fournisseur'=>$produit->getProduit()->getFournisseur()->getNomMarque(),
+                'fournisseurID'=>$produit->getProduit()->getFournisseur()->getId(),
+                'prix'=>$produit->getProduit()->getPrix(),
+                'image'=>$produit->getProduit()->getImage(),
+                'description'=>$produit->getProduit()->getDescription()
+            ];
+        }
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+
+
+
+
 }

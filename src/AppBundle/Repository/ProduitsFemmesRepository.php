@@ -59,6 +59,45 @@ class ProduitsFemmesRepository extends EntityRepository
 
 
 
+    public function findFournisseursFemmes(){
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->innerJoin('p.fournisseur', 'f')
+            ->addSelect('f');
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+
+    }
+
+
+    public function findProduitsFiltreMarqueFemmes($arrayMarque){
+
+        $marqueSplit = explode(",", $arrayMarque);
+
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->join('p.famille', 'f')
+            ->addSelect('p')
+            ->where($queryBuilder->expr()->eq('f.sexe',$queryBuilder->expr()->literal("F")));
+
+        $idMarque=0;
+        $orXMarque = $queryBuilder->expr()->orX();
+
+
+        foreach ($marqueSplit as  $marque) {
+            $orXMarque->add($queryBuilder->expr()->eq('p.fournisseur', ":marque_".$idMarque));
+            $queryBuilder->setParameter("marque_".$idMarque, $marque);
+            $idMarque++;
+        }
+
+        $queryBuilder->andWhere($orXMarque);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+
+    }
+
 
 
 }

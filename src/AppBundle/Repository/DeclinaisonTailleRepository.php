@@ -28,7 +28,7 @@ class DeclinaisonTailleRepository extends EntityRepository
             ->getResult();
     }
 
-    public function findProduitsFiltres($arrayTaille){
+    public function findProduitsFiltreTaille($arrayTaille){
 
         $tailleSplit = explode(",", $arrayTaille);
 
@@ -36,16 +36,77 @@ class DeclinaisonTailleRepository extends EntityRepository
         $queryBuilder->join('t.produit', 'p')
             ->addSelect('p');
 
-        $id=0;
-        $orX = $queryBuilder->expr()->orX();
+        $idTaille=0;
+        $orXTaille = $queryBuilder->expr()->orX();
 
         foreach ($tailleSplit as  $taille) {
-            $orX->add($queryBuilder->expr()->eq('t.taille', ":taille_".$id));
-            $queryBuilder->setParameter("taille_".$id, $taille);
-            $id++;
+            $orXTaille->add($queryBuilder->expr()->eq('t.taille', ":taille_".$idTaille));
+            $queryBuilder->setParameter("taille_".$idTaille, $taille);
+            $idTaille++;
+        }
+        $queryBuilder->andWhere($orXTaille);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
+    public function findProduitsFiltres($arrayTaille, $arrayMarque){
+
+        $tailleSplit = explode(",", $arrayTaille);
+        $marqueSplit = explode(",", $arrayMarque);
+
+        $queryBuilder = $this->createQueryBuilder('t');
+        $queryBuilder->join('t.produit', 'p')
+            ->addSelect('p');
+
+        $idTaille=0;
+        $idMarque=0;
+        $orXTaille = $queryBuilder->expr()->orX();
+        $orXMarque = $queryBuilder->expr()->orX();
+
+        foreach ($tailleSplit as  $taille) {
+            $orXTaille->add($queryBuilder->expr()->eq('t.taille', ":taille_".$idTaille));
+            $queryBuilder->setParameter("taille_".$idTaille, $taille);
+            $idTaille++;
+        }
+        $queryBuilder->andWhere($orXTaille);
+
+        foreach ($marqueSplit as  $marque) {
+            $orXMarque->add($queryBuilder->expr()->eq('p.fournisseur', ":marque_".$idMarque));
+            $queryBuilder->setParameter("marque_".$idMarque, $marque);
+            $idMarque++;
         }
 
-        $queryBuilder->andWhere($orX)->distinct();
+
+        $queryBuilder->andWhere($orXMarque);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findProduitsFiltreTailleFemmes($arrayTaille){
+
+        $tailleSplit = explode(",", $arrayTaille);
+
+        $queryBuilder = $this->createQueryBuilder('t');
+        $queryBuilder->join('t.produit', 'p')
+        ->join('p.famille', 'f')
+            ->addSelect('p')
+            ->where($queryBuilder->expr()->eq('f.sexe',$queryBuilder->expr()->literal("F")));
+
+        $idTaille=0;
+        $orXTaille = $queryBuilder->expr()->orX();
+
+        foreach ($tailleSplit as  $taille) {
+            $orXTaille->add($queryBuilder->expr()->eq('t.taille', ":taille_".$idTaille));
+            $queryBuilder->setParameter("taille_".$idTaille, $taille);
+            $idTaille++;
+        }
+        $queryBuilder->andWhere($orXTaille);
 
         return $queryBuilder
             ->getQuery()
