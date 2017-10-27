@@ -20,7 +20,7 @@ produits:
 #PRODUITS
 produitsFemmes:
     type: rest
-    resource: AppBundle\Controller\ProduitsController
+    resource: AppBundle\Controller\ProduitsFemmesController
 
 
 #PRODUITS

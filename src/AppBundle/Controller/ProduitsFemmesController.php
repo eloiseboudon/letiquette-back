@@ -8,7 +8,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Produits;
+use AppBundle\Entity\ProduitsFemmes;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -23,14 +23,14 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, Content-Type, Accept");
 
-class ProduitsController extends Controller
+class ProduitsFemmesController extends Controller
 {
     /**
  *
- * @Get("/produits")
+ * @Get("/produitsFemmes")
  */
-    public function getProduitsAction(){
-        $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')->findAll();
+    public function getProduitsFemmesAction(){
+        $produitList = $this->getDoctrine()->getRepository('AppBundle:ProduitsFemmes')->findAll();
         if (empty($produitList)) {
             return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
         }
@@ -54,7 +54,7 @@ class ProduitsController extends Controller
 
     /**
      *
-     * @Get("/produits/{id}")
+     * @Get("/produitsFemmes/{id}")
      */
     public function getProduitsByIdAction($id){
         $produit = $this->getDoctrine()->getRepository('AppBundle:Produits')->find($id);
@@ -80,30 +80,17 @@ class ProduitsController extends Controller
 
 
 
-    /**
-     * @Get("/produitsFamille/{id}")
-     */
-    public function getProduitsFamilleAction($id){
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsByFamille($id);
-        if (empty($produitList)) {
-            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-        }
 
-        $formatted = [];
-        foreach ($produitList as $produit){
-            $formatted[]= array(
-                'id'=>$produit->getId(),
-                'libelle'=>$produit->getLibelle(),
-                'famille'=>$produit->getFamille()->getFamille(),
-                'sexe'=>$produit->getFamille()->getSexe(),
-                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
-                'prix'=>$produit->getPrix(),
-                'image'=>$produit->getImage(),
-                'description'=>$produit->getDescription()
-            );
-        }
-        return new JsonResponse($formatted);
+
+    /**
+     * @Get("/marquesFemmes/}")
+     */
+    public function getMarquesFemmesAction()
+    {
+
     }
+
+
 
 
     /**
@@ -128,7 +115,5 @@ class ProduitsController extends Controller
             ];
         }
         return new JsonResponse($formatted);
-
-
     }
 }
