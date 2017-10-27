@@ -28,4 +28,27 @@ class DeclinaisonTailleRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findProduitsFiltres($arrayTaille){
+
+        $tailleSplit = explode(",", $arrayTaille);
+
+        $queryBuilder = $this->createQueryBuilder('t');
+        $queryBuilder->join('t.produit', 'p')
+            ->addSelect('p');
+
+        $id=0;
+        $orX = $queryBuilder->expr()->orX();
+
+        foreach ($tailleSplit as  $taille) {
+            $orX->add($queryBuilder->expr()->eq('t.taille', ":taille_".$id));
+            $queryBuilder->setParameter("taille_".$id, $taille);
+            $id++;
+        }
+        
+        $queryBuilder->andWhere($orX);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
 }

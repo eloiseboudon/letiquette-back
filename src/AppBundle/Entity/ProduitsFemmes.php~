@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Eloise
+ * Date: 26/10/2017
+ * Time: 15:43
+ */
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Produits
+ *
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProduitsFemmesRepository")
+ */
+
+class ProduitsFemmes extends Produits
+{
+
+}

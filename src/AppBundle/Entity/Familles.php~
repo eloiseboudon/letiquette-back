@@ -109,30 +109,6 @@ class Familles
     }
 
     /**
-     * Set tailleType
-     *
-     * @param \AppBundle\Entity\TailleType $tailleType
-     *
-     * @return Familles
-     */
-    public function setTailleType(\AppBundle\Entity\TailleType $tailleType = null)
-    {
-        $this->tailleType = $tailleType;
-
-        return $this;
-    }
-
-    /**
-     * Get tailleType
-     *
-     * @return \AppBundle\Entity\TailleType
-     */
-    public function getTailleType()
-    {
-        return $this->tailleType;
-    }
-
-    /**
      * Set familleGlobal
      *
      * @param \AppBundle\Entity\FamilleGlobal $familleGlobal

@@ -100,4 +100,18 @@ class DeclinaisonCouleur
     {
         return $this->couleur;
     }
+
+    /**
+     * Set produit
+     *
+     * @param \AppBundle\Entity\Produits $produit
+     *
+     * @return DeclinaisonCouleur
+     */
+    public function setProduit(\AppBundle\Entity\Produits $produit = null)
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
 }
