@@ -162,7 +162,7 @@ class ProduitsFemmesController extends Controller
     }
 
     /**
-     * @Get("/produitsFiltres/{arrayTaille}/{arrayMarque}")
+     * @Get("/produitsFemmesFiltre/{arrayTaille}/{arrayMarque}")
      */
     public function getProduitsFemmesFiltresAction($arrayTaille, $arrayMarque){
         $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltresFemmes($arrayTaille, $arrayMarque);
