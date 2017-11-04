@@ -62,12 +62,15 @@ class ProduitsFemmes
      */
     private $image;
 
+
+
     /**
      * @var string
      *
      * @ORM\Column(name="Description", type="text")
      */
     private $description;
+
 
 
     /**
@@ -223,4 +226,6 @@ class ProduitsFemmes
     {
         return $this->fournisseur;
     }
+
+
 }
