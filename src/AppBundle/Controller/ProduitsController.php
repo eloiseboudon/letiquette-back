@@ -160,28 +160,6 @@ class ProduitsController extends Controller
     }
 
 
-    /**
-     * @Get("/femmes/marque/{arrayMarque}")
-     */
-    public function getProduitsFiltreSexeMarqueAction($arrayMarque)
-    {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsFiltreMarqueSexe($arrayMarque,"F");
-
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
-            );
-        }
-        return new JsonResponse($formatted);
-    }
 
     /**
      * @Get("/produits/{arrayTaille}/{arrayMarque}")
@@ -205,32 +183,6 @@ class ProduitsController extends Controller
                 'image' => $produit->getProduit()->getImage(),
                 'description' => $produit->getProduit()->getDescription()
             ];
-        }
-        return new JsonResponse($formatted);
-    }
-
-    /**
-     * @Get("/femmes")
-     */
-    public function getProduitsFemmesAction()
-    {
-        $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
-        if (empty($produitList)) {
-            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-        }
-        $formatted = [];
-
-        foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
-            );
         }
         return new JsonResponse($formatted);
     }
@@ -263,6 +215,83 @@ class ProduitsController extends Controller
     }
 
     /**
+     * @Get("/femmes")
+     */
+    public function getProduitsFemmesAction()
+    {
+        $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
+        if (empty($produitList)) {
+            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
+        }
+        $formatted = [];
+
+        foreach ($produitList as $produit) {
+            $formatted[] = array(
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription()
+            );
+        }
+        return new JsonResponse($formatted);
+    }
+
+
+    /**
+     * @Get("/femmes/marque/{arrayMarque}")
+     */
+    public function getProduitsFiltreSexeMarqueAction($arrayMarque)
+    {
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsFiltreMarqueSexe($arrayMarque,"F");
+
+        $formatted = [];
+        foreach ($produitList as $produit) {
+            $formatted[] = array(
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription()
+            );
+        }
+        return new JsonResponse($formatted);
+    }
+
+
+    /**
+     * @Get("/femmes/taille/{arrayTaille}")
+     */
+    public function getProduitsFiltreSexeTailleAction($arrayTaille)
+    {
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTailleSexe($arrayTaille,"F");
+
+        $formatted = [];
+        foreach ($produitList as $produit) {
+            $formatted[] = array(
+                'id' => $produit->getProduit()->getId(),
+                'taille' => $produit->getTaille()->getTaille(),
+                'libelle' => $produit->getProduit()->getLibelle(),
+                'famille' => $produit->getProduit()->getFamille()->getFamille(),
+                'familleID' => $produit->getProduit()->getFamille()->getId(),
+                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
+                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
+                'fournisseurID' => $produit->getProduit()->getFournisseur()->getId(),
+                'prix' => $produit->getProduit()->getPrix(),
+                'image' => $produit->getProduit()->getImage(),
+                'description' => $produit->getProduit()->getDescription()
+            );
+        }
+        return new JsonResponse($formatted);
+    }
+
+    /**
      * @Get("/femmes/{arrayTaille}/{arrayMarque}")
      */
     public function getProduitsFiltresFemmesAction($arrayTaille, $arrayMarque)
@@ -288,28 +317,6 @@ class ProduitsController extends Controller
         return new JsonResponse($formatted);
     }
 
-    /**
-     * @Get("/femmes/marque/{arrayMarque}")
-     */
-    public function getProduitsFemmesFiltreMarqueAction($arrayMarque){
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')
-            ->findProduitsFiltreMarque($arrayMarque,"F");
 
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            $formatted[] = [
-                'id'=>$produit->getId(),
-                'libelle'=>$produit->getLibelle(),
-                'famille'=>$produit->getFamille()->getFamille(),
-                'sexe'=>$produit->getFamille()->getSexe(),
-                'fournisseur'=>$produit->getFournisseur()->getNomMarque(),
-                'fournisseurID'=>$produit->getFournisseur()->getId(),
-                'prix'=>$produit->getPrix(),
-                'image'=>$produit->getImage(),
-                'description'=>$produit->getDescription()
-            ];
-        }
-        return new JsonResponse($formatted);
-    }
 
 }

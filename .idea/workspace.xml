@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4364579-fc5e-4149-9373-ea644808e179" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DeclinaisonTailleController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DeclinaisonTailleController.php" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsFemmesController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/ProduitsFemmes.php" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsFemmesRepository.php" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,26 +21,14 @@
     <executablePath>composer</executablePath>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5622986">
+    <splitter split-orientation="horizontal" split-proportion="0.47368422">
       <split-first>
         <leaf>
-          <file leaf-file-name="ProduitsController.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="533">
-                  <caret line="143" column="85" lean-forward="false" selection-start-line="143" selection-start-column="85" selection-end-line="143" selection-end-column="85" />
-                  <folding>
-                    <element signature="e#123#153#0#PHP" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+          <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-378">
-                  <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+                <state relative-caret-position="315">
+                  <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -46,7 +37,7 @@
           <file leaf-file-name="ProduitsRepository.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="281">
+                <state relative-caret-position="407">
                   <caret line="119" column="44" lean-forward="false" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="44" />
                   <folding />
                 </state>
@@ -67,12 +58,24 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="DeclinaisonTailleRepository.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="DeclinaisonTailleRepository.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="183">
-                  <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+                <state relative-caret-position="204">
+                  <caret line="127" column="48" lean-forward="false" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="48" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ProduitsController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="452">
+                  <caret line="287" column="73" lean-forward="false" selection-start-line="287" selection-start-column="73" selection-end-line="287" selection-end-column="73" />
+                  <folding>
+                    <element signature="e#123#153#0#PHP" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -117,13 +120,13 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/TaillesRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/FournisseursController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ProduitsFemmes.php" />
-        <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsFemmesRepository.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsFemmesController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DeclinaisonTailleController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsFemmesController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
+        <option value="$PROJECT_DIR$/app/config/routing.yml" />
       </list>
     </option>
   </component>
@@ -269,12 +272,12 @@
       <workItem from="1509605968678" duration="257000" />
       <workItem from="1509719971078" duration="942000" />
       <workItem from="1509874485711" duration="47000" />
-      <workItem from="1513064065389" duration="8618000" />
+      <workItem from="1513064065389" duration="10474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96870000" />
+    <option name="totallyTimeSpent" value="98726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
@@ -570,16 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsFemmesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1612">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="2" selection-end-line="112" selection-end-column="7" />
-          <folding>
-            <element signature="e#123#159#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ProduitsFemmesRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
@@ -620,14 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Tailles.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
@@ -660,29 +645,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsFemmesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        <state relative-caret-position="1533">
+          <caret line="73" column="40" lean-forward="true" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
+        <state relative-caret-position="407">
           <caret line="119" column="44" lean-forward="false" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="127" column="48" lean-forward="false" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="143" column="85" lean-forward="false" selection-start-line="143" selection-start-column="85" selection-end-line="143" selection-end-column="85" />
+        <state relative-caret-position="452">
+          <caret line="287" column="73" lean-forward="false" selection-start-line="287" selection-start-column="73" selection-end-line="287" selection-end-column="73" />
           <folding>
             <element signature="e#123#153#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
