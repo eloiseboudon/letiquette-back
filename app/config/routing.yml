@@ -23,6 +23,7 @@ femmes:
     resource: AppBundle\Controller\ProduitsController
 
 
+
 #PRODUITS
 #produitsFemmes:
 #    type: rest

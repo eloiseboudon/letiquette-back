@@ -14,12 +14,13 @@ use Doctrine\ORM\QueryBuilder;
  */
 class ProduitsRepository extends EntityRepository
 {
-    public function findProduitBySexe($sexe){
+    public function findProduitBySexe($sexe)
+    {
 
         $queryBuilder = $this->createQueryBuilder('p');
-        $queryBuilder->innerJoin('p.famille','fam')
+        $queryBuilder->innerJoin('p.famille', 'fam')
             ->addSelect('fam')
-            ->where($queryBuilder->expr()->eq('fam.sexe',':sexe'))
+            ->where($queryBuilder->expr()->eq('fam.sexe', ':sexe'))
             ->setParameters(array('sexe' => $sexe));
 
         return $queryBuilder
@@ -43,7 +44,8 @@ class ProduitsRepository extends EntityRepository
 //            ->getResult();
 //    }
 
-    public function findProduitsByFamille($id){
+    public function findProduitsByFamille($id)
+    {
         $queryBuilder = $this->createQueryBuilder('p');
         $queryBuilder->innerJoin('p.famille', 'fam')
             ->addSelect('fam')
@@ -56,30 +58,29 @@ class ProduitsRepository extends EntityRepository
     }
 
 
-
-
-    public function findProduitsFiltresByFamille($famille, $arrayMarques, $prixMin, $prixMax){
+    public function findProduitsFiltresByFamille($famille, $arrayMarques, $prixMin, $prixMax)
+    {
         $queryBuilder = $this->createQueryBuilder('p');
 
     }
 
-    public function findProduitsFiltres($arrayMarques, $prixMin, $prixMax){
+    public function findProduitsFiltres($arrayMarques, $prixMin, $prixMax)
+    {
 
         $queryBuilder = $this->createQueryBuilder('p');
 
     }
 
 
-
-    public function findFournisseursFemmes($id_four,$sexe){
+    public function findFournisseurs($fournisseur, $sexe)
+    {
         $queryBuilder = $this->createQueryBuilder('p');
         $queryBuilder->join('p.famille', 'fam')
-            ->where($queryBuilder->expr()->eq('fam.sexe',':sexe'))
-            ->setParameters(array('sexe' => $sexe));
-        $queryBuilder->join('p.fournisseur', 'fou')
-            ->addSelect('fou')
-        ->where($queryBuilder->expr()->eq('fou.id', ':id'))
-            ->setParameters(array('id' => $id_four));
+            ->join('p.fournisseur', 'fou')
+            ->addSelect('p')
+            ->where($queryBuilder->expr()->eq('fam.sexe', ':sexe'))
+            ->andWhere($queryBuilder->expr()->eq('fou.id', ':id'))
+            ->setParameters(array('id' => $fournisseur, 'sexe' => $sexe));
 
         return $queryBuilder
             ->getQuery()
@@ -87,8 +88,33 @@ class ProduitsRepository extends EntityRepository
 
     }
 
+    public function findProduitsFiltreMarque($arrayMarque, $sexe)
+    {
+
+        $marqueSplit = explode(",", $arrayMarque);
+
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->join('p.famille', 'f')
+            ->addSelect('p')
+            ->where($queryBuilder->expr()->eq('f.sexe', $queryBuilder->expr()->literal($sexe)));
+
+        $idMarque = 0;
+        $orXMarque = $queryBuilder->expr()->orX();
 
 
+        foreach ($marqueSplit as $marque) {
+            $orXMarque->add($queryBuilder->expr()->eq('p.fournisseur', ":marque_" . $idMarque));
+            $queryBuilder->setParameter("marque_" . $idMarque, $marque);
+            $idMarque++;
+        }
+
+        $queryBuilder->andWhere($orXMarque);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+
+    }
 
 
 }
