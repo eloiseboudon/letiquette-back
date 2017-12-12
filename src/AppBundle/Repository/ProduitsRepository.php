@@ -71,6 +71,24 @@ class ProduitsRepository extends EntityRepository
 
 
 
+    public function findFournisseursFemmes($id_four,$sexe){
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->join('p.famille', 'fam')
+            ->where($queryBuilder->expr()->eq('fam.sexe',':sexe'))
+            ->setParameters(array('sexe' => $sexe));
+        $queryBuilder->join('p.fournisseur', 'fou')
+            ->addSelect('fou')
+        ->where($queryBuilder->expr()->eq('fou.id', ':id'))
+            ->setParameters(array('id' => $id_four));
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+
+    }
+
+
+
 
 
 }

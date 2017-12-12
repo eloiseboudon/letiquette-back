@@ -17,10 +17,16 @@ produits:
     type: rest
     resource: AppBundle\Controller\ProduitsController
 
-#PRODUITS
-produitsFemmes:
+#PRODUITSFEMMES
+femmes:
     type: rest
-    resource: AppBundle\Controller\ProduitsFemmesController
+    resource: AppBundle\Controller\ProduitsController
+
+
+#PRODUITS
+#produitsFemmes:
+#    type: rest
+#    resource: AppBundle\Controller\ProduitsFemmesController
 
 #produitsFemmes/fournisseurs:
 #    type: rest

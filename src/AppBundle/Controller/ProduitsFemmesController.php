@@ -96,7 +96,7 @@ class ProduitsFemmesController extends Controller
         }
         $formatted = [];
 
-        foreach ($marqueList as $marque){
+        foreach ($marqueList as $produit){
             $formatted[]= array(
                 'id'=>$produit->getId(),
                 'libelle'=>$produit->getLibelle(),
