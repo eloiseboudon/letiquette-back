@@ -149,4 +149,8 @@ class DeclinaisonTailleRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+
+
+
 }

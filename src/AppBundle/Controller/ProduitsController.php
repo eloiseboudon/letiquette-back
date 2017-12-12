@@ -109,11 +109,13 @@ class ProduitsController extends Controller
 
 
     /**
-     * @Get("/produitsFiltres/taille/{arrayTaille}")
-     */
+ * @Get("/produits/taille/{arrayTaille}")
+ */
     public function getProduitsFiltreTailleAction($arrayTaille)
     {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTaille($arrayTaille);
+        $produitList = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:DeclinaisonTaille')
+            ->findProduitsFiltreTaille($arrayTaille);
 
         $formatted = [];
         foreach ($produitList as $produit) {
@@ -135,7 +137,54 @@ class ProduitsController extends Controller
     }
 
     /**
-     * @Get("/produitsFiltres/{arrayTaille}/{arrayMarque}")
+     * @Get("/produits/marque/{arrayMarque}")
+     */
+    public function getProduitsFiltreMarqueAction($arrayMarque)
+    {
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsFiltreMarque($arrayMarque);
+
+        $formatted = [];
+        foreach ($produitList as $produit) {
+            $formatted[] = [
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription()
+            ];
+        }
+        return new JsonResponse($formatted);
+    }
+
+
+    /**
+     * @Get("/femmes/marque/{arrayMarque}")
+     */
+    public function getProduitsFiltreSexeMarqueAction($arrayMarque)
+    {
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsFiltreMarqueSexe($arrayMarque,"F");
+
+        $formatted = [];
+        foreach ($produitList as $produit) {
+            $formatted[] = array(
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription()
+            );
+        }
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Get("/produits/{arrayTaille}/{arrayMarque}")
      */
     public function getProduitsFiltresAction($arrayTaille, $arrayMarque)
     {
