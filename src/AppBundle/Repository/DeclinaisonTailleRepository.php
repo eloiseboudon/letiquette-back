@@ -125,7 +125,7 @@ class DeclinaisonTailleRepository extends EntityRepository
             ->getResult();
     }
 
-    public function findProduitsFiltreTailleFemmes($arrayTaille){
+    public function findProduitsFiltreTailleSexe($arrayTaille,$sexe){
 
         $tailleSplit = explode(",", $arrayTaille);
 
@@ -133,7 +133,7 @@ class DeclinaisonTailleRepository extends EntityRepository
         $queryBuilder->join('t.produit', 'p')
         ->join('p.famille', 'f')
             ->addSelect('p')
-            ->where($queryBuilder->expr()->eq('f.sexe',$queryBuilder->expr()->literal("F")));
+            ->where($queryBuilder->expr()->eq('f.sexe',$queryBuilder->expr()->literal($sexe)));
 
         $idTaille=0;
         $orXTaille = $queryBuilder->expr()->orX();

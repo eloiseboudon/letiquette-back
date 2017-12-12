@@ -23,16 +23,6 @@ femmes:
     resource: AppBundle\Controller\ProduitsController
 
 
-
-#PRODUITS
-#produitsFemmes:
-#    type: rest
-#    resource: AppBundle\Controller\ProduitsFemmesController
-
-#produitsFemmes/fournisseurs:
-#    type: rest
-#    resource: AppBundle\Controller\ProduitsFemmesController
-
 ##PRODUITS
 #produitsSexe:
 #    type: rest
