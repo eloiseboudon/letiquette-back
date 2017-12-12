@@ -34,7 +34,7 @@ class Familles
      *
      * @ORM\Column(name="Famille", type="string", length=255)
      */
-    private $Famille;
+    private $famille;
 
     /**
      * @var string
@@ -42,6 +42,12 @@ class Familles
      * @ORM\Column(name="Sexe", type="string", length=10)
      */
     private $sexe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FamilleGlobal", cascade={"persist"})
+     * @var FamilleGlobal
+     */
+    private $familleGlobal;
 
 
     /**
@@ -63,7 +69,7 @@ class Familles
      */
     public function setFamille($famille)
     {
-        $this->Famille = $famille;
+        $this->famille = $famille;
 
         return $this;
     }
@@ -75,7 +81,7 @@ class Familles
      */
     public function getFamille()
     {
-        return $this->Famille;
+        return $this->famille;
     }
 
     /**
@@ -100,5 +106,29 @@ class Familles
     public function getSexe()
     {
         return $this->sexe;
+    }
+
+    /**
+     * Set familleGlobal
+     *
+     * @param \AppBundle\Entity\FamilleGlobal $familleGlobal
+     *
+     * @return Familles
+     */
+    public function setFamilleGlobal(\AppBundle\Entity\FamilleGlobal $familleGlobal = null)
+    {
+        $this->familleGlobal = $familleGlobal;
+
+        return $this;
+    }
+
+    /**
+     * Get familleGlobal
+     *
+     * @return \AppBundle\Entity\FamilleGlobal
+     */
+    public function getFamilleGlobal()
+    {
+        return $this->familleGlobal;
     }
 }

@@ -2,14 +2,79 @@ app:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
 
-
 #PAYS
 pays:
     type: rest
     resource: AppBundle\Controller\PaysController
 
-
 #VILLES
 villes:
     type: rest
     resource: AppBundle\Controller\VillesController
+
+#PRODUITS
+produits:
+    type: rest
+    resource: AppBundle\Controller\ProduitsController
+
+#PRODUITSFEMMES
+femmes:
+    type: rest
+    resource: AppBundle\Controller\ProduitsController
+
+
+
+#PRODUITS
+#produitsFemmes:
+#    type: rest
+#    resource: AppBundle\Controller\ProduitsFemmesController
+
+#produitsFemmes/fournisseurs:
+#    type: rest
+#    resource: AppBundle\Controller\ProduitsFemmesController
+
+##PRODUITS
+#produitsSexe:
+#    type: rest
+#    resource: AppBundle\Controller\ProduitsController
+#
+##PRODUITS
+#produitsFamille:
+#    type: rest
+#    resource: AppBundle\Controller\ProduitsController
+
+#FOURNISSEURS
+fournisseurs:
+    type: rest
+    resource: AppBundle\Controller\FournisseursController
+
+#FAMILES
+familles:
+    type: rest
+    resource: AppBundle\Controller\FamillesController
+
+
+#TAILLE
+taille:
+    type: rest
+    resource: AppBundle\Controller\TaillesController
+
+
+#TAILLETYPE
+tailleType:
+    type: rest
+    resource: AppBundle\Controller\TailleTypeController
+
+
+
+
+#DECLINAISON_TAILLE
+produitsTaille:
+    type: rest
+    resource: AppBundle\Controller\DeclinaisonTailleController
+
+
+#DECLINAISON_TAILLE
+#produitsTailleFamille:
+#    type: rest
+#    resource: AppBundle\Controller\DeclinaisonTailleController

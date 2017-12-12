@@ -11,12 +11,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Produits
+ * ProduitsFemmes
  *
- * @ORM\Table(name="produits")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProduitsRepository")
+ * @ORM\Table(name="produitsFemmes")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProduitsFemmesRepository")
  */
-class Produits
+class ProduitsFemmes
 {
     /**
      * @var int
@@ -62,12 +62,15 @@ class Produits
      */
     private $image;
 
+
+
     /**
      * @var string
      *
      * @ORM\Column(name="Description", type="text")
      */
     private $description;
+
 
 
     /**
@@ -223,4 +226,6 @@ class Produits
     {
         return $this->fournisseur;
     }
+
+
 }

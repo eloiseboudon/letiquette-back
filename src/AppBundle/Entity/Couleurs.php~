@@ -35,4 +35,38 @@ class Couleurs
      */
     private $Couleur;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set couleur
+     *
+     * @param string $couleur
+     *
+     * @return Couleurs
+     */
+    public function setCouleur($couleur)
+    {
+        $this->Couleur = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * Get couleur
+     *
+     * @return string
+     */
+    public function getCouleur()
+    {
+        return $this->Couleur;
+    }
 }

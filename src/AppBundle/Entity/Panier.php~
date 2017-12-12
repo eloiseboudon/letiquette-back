@@ -40,4 +40,62 @@ class Panier
      */
     private $date;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Panier
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \AppBundle\Entity\Clients $client
+     *
+     * @return Panier
+     */
+    public function setClient(\AppBundle\Entity\Clients $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \AppBundle\Entity\Clients
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
 }

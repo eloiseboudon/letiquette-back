@@ -26,13 +26,15 @@ class PaysController extends Controller
 {
 
     /**
-     * @Rest\Get("/pays")
+     * @Get("/pays")
      */
     public function getPaysAction(){
+
         $paysList = $this->getDoctrine()->getRepository('AppBundle:Pays')->findAll();
         $formatted = [];
 
         foreach ($paysList as $pays){
+
             $formatted[]=[
                 'id' => $pays->getId(),
                 'name' => $pays->getPays()

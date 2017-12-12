@@ -51,4 +51,86 @@ class DetailPanier
 
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return DetailPanier
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * Set panier
+     *
+     * @param \AppBundle\Entity\Panier $panier
+     *
+     * @return DetailPanier
+     */
+    public function setPanier(\AppBundle\Entity\Panier $panier = null)
+    {
+        $this->panier = $panier;
+
+        return $this;
+    }
+
+    /**
+     * Get panier
+     *
+     * @return \AppBundle\Entity\Panier
+     */
+    public function getPanier()
+    {
+        return $this->panier;
+    }
+
+    /**
+     * Set produit
+     *
+     * @param \AppBundle\Entity\Produits $produit
+     *
+     * @return DetailPanier
+     */
+    public function setProduit(\AppBundle\Entity\Produits $produit = null)
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \AppBundle\Entity\Produits
+     */
+    public function getProduit()
+    {
+        return $this->produit;
+    }
 }

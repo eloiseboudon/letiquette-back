@@ -32,7 +32,7 @@ class DeclinaisonTaille
  * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Produits", cascade={"persist"})
  * @var Produits
  */
-    private $produits;
+    private $produit;
 
 
     /**
@@ -41,4 +41,62 @@ class DeclinaisonTaille
      */
     private $taille;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set produit
+     *
+     * @param \AppBundle\Entity\Produits $produit
+     *
+     * @return DeclinaisonTaille
+     */
+    public function setProduit(\AppBundle\Entity\Produits $produit = null)
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \AppBundle\Entity\Produit
+     */
+    public function getProduit()
+    {
+        return $this->produit;
+    }
+
+    /**
+     * Set taille
+     *
+     * @param \AppBundle\Entity\Tailles $taille
+     *
+     * @return DeclinaisonTaille
+     */
+    public function setTaille(\AppBundle\Entity\Tailles $taille = null)
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
+    /**
+     * Get taille
+     *
+     * @return \AppBundle\Entity\Tailles
+     */
+    public function getTaille()
+    {
+        return $this->taille;
+    }
 }

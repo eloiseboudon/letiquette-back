@@ -34,7 +34,7 @@ class DeclinaisonCouleur
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Produits", cascade={"persist"})
      * @var Produits
      */
-    private $produits;
+    private $produit;
 
 
     /**
@@ -42,4 +42,76 @@ class DeclinaisonCouleur
      * @var Couleurs
      */
     private $couleur;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set produit
+     *
+     * @param \AppBundle\Entity\Produits $produit
+     *
+     * @return DeclinaisonCouleur
+     */
+    public function setProduits(\AppBundle\Entity\Produits $produit = null)
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \AppBundle\Entity\Produits
+     */
+    public function getProduit()
+    {
+        return $this->produit;
+    }
+
+    /**
+     * Set couleur
+     *
+     * @param \AppBundle\Entity\Couleurs $couleur
+     *
+     * @return DeclinaisonCouleur
+     */
+    public function setCouleur(\AppBundle\Entity\Couleurs $couleur = null)
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * Get couleur
+     *
+     * @return \AppBundle\Entity\Couleurs
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
+    }
+
+    /**
+     * Set produit
+     *
+     * @param \AppBundle\Entity\Produits $produit
+     *
+     * @return DeclinaisonCouleur
+     */
+    public function setProduit(\AppBundle\Entity\Produits $produit = null)
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
 }
