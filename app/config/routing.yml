@@ -22,6 +22,10 @@ femmes:
     type: rest
     resource: AppBundle\Controller\ProduitsController
 
+images:
+    type: rest
+    resource: AppBundle\Controller\ImagesProduitController
+
 
 ##PRODUITS
 #produitsSexe:
@@ -54,8 +58,6 @@ taille:
 tailleType:
     type: rest
     resource: AppBundle\Controller\TailleTypeController
-
-
 
 
 #DECLINAISON_TAILLE
