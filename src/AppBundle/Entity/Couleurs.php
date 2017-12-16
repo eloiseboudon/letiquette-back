@@ -33,7 +33,7 @@ class Couleurs
      *
      * @ORM\Column(name="Couleur", type="string", length=255)
      */
-    private $Couleur;
+    private $couleur;
 
 
     /**

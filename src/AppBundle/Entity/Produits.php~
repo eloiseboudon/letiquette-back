@@ -69,6 +69,13 @@ class Produits
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Couleurs", cascade={"persist"})
+     * @var Couleurs
+     */
+    private $couleur;
+
+
 
     /**
      * Get id
@@ -222,5 +229,29 @@ class Produits
     public function getFournisseur()
     {
         return $this->fournisseur;
+    }
+
+    /**
+     * Set couleur
+     *
+     * @param \AppBundle\Entity\Couleurs $couleur
+     *
+     * @return Produits
+     */
+    public function setCouleur(\AppBundle\Entity\Couleurs $couleur = null)
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * Get couleur
+     *
+     * @return \AppBundle\Entity\Couleurs
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
     }
 }
