@@ -54,6 +54,12 @@ taille:
     resource: AppBundle\Controller\TaillesController
 
 
+#COULEUR
+couleurs:
+    type: rest
+    resource: AppBundle\Controller\CouleursController
+
+
 #TAILLETYPE
 tailleType:
     type: rest
