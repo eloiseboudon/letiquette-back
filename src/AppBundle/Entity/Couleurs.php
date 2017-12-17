@@ -31,9 +31,16 @@ class Couleurs
     /**
      * @var string
      *
-     * @ORM\Column(name="Couleur", type="string", length=255)
+     * @ORM\Column(name="couleur", type="string", length=255)
      */
     private $couleur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
 
 
     /**
@@ -55,7 +62,7 @@ class Couleurs
      */
     public function setCouleur($couleur)
     {
-        $this->Couleur = $couleur;
+        $this->couleur = $couleur;
 
         return $this;
     }
@@ -67,6 +74,30 @@ class Couleurs
      */
     public function getCouleur()
     {
-        return $this->Couleur;
+        return $this->couleur;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Couleurs
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }
