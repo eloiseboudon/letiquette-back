@@ -38,16 +38,32 @@ class ProduitsController extends Controller
         $formatted = [];
 
         foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
-            );
+            if($produit->getCouleur() != null){
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription(),
+                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
+                    'couleur' => $produit->getCouleur()->getName()
+                );
+
+            }else{
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription()
+                );
+            }
         }
         return new JsonResponse($formatted);
     }
@@ -65,17 +81,32 @@ class ProduitsController extends Controller
         }
         $formatted = [];
 
+        if($produit->getCouleur() != null){
+            $formatted[] = array(
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription(),
+                'couleur_hexa' => $produit->getCouleur()->getCouleur(),
+                'couleur' => $produit->getCouleur()->getName()
+            );
 
-        $formatted[] = array(
-            'id' => $produit->getId(),
-            'libelle' => $produit->getLibelle(),
-            'famille' => $produit->getFamille()->getFamille(),
-            'sexe' => $produit->getFamille()->getSexe(),
-            'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-            'prix' => $produit->getPrix(),
-            'image' => $produit->getImage(),
-            'description' => $produit->getDescription()
-        );
+        }else{
+            $formatted[] = array(
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription()
+            );
+        }
 
         return new JsonResponse($formatted);
     }
@@ -93,16 +124,32 @@ class ProduitsController extends Controller
 
         $formatted = [];
         foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
-            );
+            if($produit->getCouleur() != null){
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription(),
+                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
+                    'couleur' => $produit->getCouleur()->getName()
+                );
+
+            }else{
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription()
+                );
+            }
         }
         return new JsonResponse($formatted);
     }
@@ -145,16 +192,32 @@ class ProduitsController extends Controller
 
         $formatted = [];
         foreach ($produitList as $produit) {
-            $formatted[] = [
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
-            ];
+            if($produit->getCouleur() != null){
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription(),
+                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
+                    'couleur' => $produit->getCouleur()->getName()
+                );
+
+            }else{
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription()
+                );
+            }
         }
         return new JsonResponse($formatted);
     }
@@ -198,18 +261,33 @@ class ProduitsController extends Controller
             return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
         }
         $formatted = [];
-
         foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
-            );
+            if($produit->getCouleur() != null){
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription(),
+                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
+                    'couleur' => $produit->getCouleur()->getName()
+                );
+
+            }else{
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription()
+                );
+            }
         }
         return new JsonResponse($formatted);
     }
@@ -226,16 +304,32 @@ class ProduitsController extends Controller
         $formatted = [];
 
         foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
-            );
+            if($produit->getCouleur() != null){
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription(),
+                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
+                    'couleur' => $produit->getCouleur()->getName()
+                );
+
+            }else{
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription()
+                );
+            }
         }
         return new JsonResponse($formatted);
     }
@@ -250,16 +344,32 @@ class ProduitsController extends Controller
 
         $formatted = [];
         foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
-            );
+            if($produit->getCouleur() != null){
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription(),
+                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
+                    'couleur' => $produit->getCouleur()->getName()
+                );
+
+            }else{
+                $formatted[] = array(
+                    'id' => $produit->getId(),
+                    'libelle' => $produit->getLibelle(),
+                    'famille' => $produit->getFamille()->getFamille(),
+                    'sexe' => $produit->getFamille()->getSexe(),
+                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                    'prix' => $produit->getPrix(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription()
+                );
+            }
         }
         return new JsonResponse($formatted);
     }
