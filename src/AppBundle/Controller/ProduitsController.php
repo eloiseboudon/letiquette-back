@@ -49,7 +49,7 @@ class ProduitsController extends Controller
                     'image' => $produit->getImage(),
                     'description' => $produit->getDescription(),
                     'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur_name' => $produit->getCouleur()->getName()
+                    'couleur' => $produit->getCouleur()->getName()
                 );
 
             }else{
@@ -92,7 +92,7 @@ class ProduitsController extends Controller
                 'image' => $produit->getImage(),
                 'description' => $produit->getDescription(),
                 'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                'couleur_name' => $produit->getCouleur()->getName()
+                'couleur' => $produit->getCouleur()->getName()
             );
 
         }else{
@@ -135,7 +135,7 @@ class ProduitsController extends Controller
                     'image' => $produit->getImage(),
                     'description' => $produit->getDescription(),
                     'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur_name' => $produit->getCouleur()->getName()
+                    'couleur' => $produit->getCouleur()->getName()
                 );
 
             }else{
@@ -203,7 +203,7 @@ class ProduitsController extends Controller
                     'image' => $produit->getImage(),
                     'description' => $produit->getDescription(),
                     'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur_name' => $produit->getCouleur()->getName()
+                    'couleur' => $produit->getCouleur()->getName()
                 );
 
             }else{
@@ -273,7 +273,7 @@ class ProduitsController extends Controller
                     'image' => $produit->getImage(),
                     'description' => $produit->getDescription(),
                     'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur_name' => $produit->getCouleur()->getName()
+                    'couleur' => $produit->getCouleur()->getName()
                 );
 
             }else{
@@ -315,7 +315,7 @@ class ProduitsController extends Controller
                     'image' => $produit->getImage(),
                     'description' => $produit->getDescription(),
                     'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur_name' => $produit->getCouleur()->getName()
+                    'couleur' => $produit->getCouleur()->getName()
                 );
 
             }else{
@@ -355,7 +355,7 @@ class ProduitsController extends Controller
                     'image' => $produit->getImage(),
                     'description' => $produit->getDescription(),
                     'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur_name' => $produit->getCouleur()->getName()
+                    'couleur' => $produit->getCouleur()->getName()
                 );
 
             }else{
