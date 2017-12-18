@@ -22,9 +22,10 @@ class DeclinaisonTailleController extends Controller
 {
 
     /**
-     * @Get("/produitsTaille/produit/{id}")
+     * @Get("/tailles/produit/{id}")
      */
-    public function getTaillesByProduitAction($id){
+    public function getTaillesByProduitAction($id)
+    {
         $produitList = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
             ->findBy(
                 array('produit' => $id)
@@ -32,27 +33,31 @@ class DeclinaisonTailleController extends Controller
 
         $formatted = [];
         foreach ($produitList as $produit) {
-            $formatted[] = [
+            $formatted[] = array(
+                'id' => $produit->getProduit()->getId(),
                 'taille' => $produit->getTaille()->getTaille(),
-                'libelle'=>$produit->getProduit()->getLibelle(),
-                'famille'=>$produit->getProduit()->getFamille()->getFamille(),
-                'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur'=>$produit->getProduit()->getFournisseur()->getNomMarque(),
-                'prix'=>$produit->getProduit()->getPrix(),
-                'image'=>$produit->getProduit()->getImage(),
-                'description'=>$produit->getProduit()->getDescription()
-            ];
+                'libelle' => $produit->getProduit()->getLibelle(),
+                'famille' => $produit->getProduit()->getFamille()->getFamille(),
+                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
+                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getProduit()->getPrix(),
+                'image' => $produit->getProduit()->getImage(),
+                'description' => $produit->getProduit()->getDescription(),
+                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
+                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
+
+            );
         }
+
         return new JsonResponse($formatted);
     }
 
 
-
-
     /**
-     * @Get("/produitsTaille/{id}")
+     * @Get("/tailles/{id}")
      */
-    public function getProduitsByTailleAction($id){
+    public function getProduitsByTailleAction($id)
+    {
         $produitList = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
             ->findBy(
                 array('taille' => $id)
@@ -60,45 +65,52 @@ class DeclinaisonTailleController extends Controller
 
         $formatted = [];
         foreach ($produitList as $produit) {
-            $formatted[] = [
-                'libelle'=>$produit->getProduit()->getLibelle(),
-                'famille'=>$produit->getProduit()->getFamille()->getFamille(),
-                'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur'=>$produit->getProduit()->getFournisseur()->getNomMarque(),
-                'prix'=>$produit->getProduit()->getPrix(),
-                'image'=>$produit->getProduit()->getImage(),
-                'description'=>$produit->getProduit()->getDescription()
-            ];
+            $formatted[] = array(
+                'id' => $produit->getProduit()->getId(),
+                'taille' => $produit->getTaille()->getTaille(),
+                'libelle' => $produit->getProduit()->getLibelle(),
+                'famille' => $produit->getProduit()->getFamille()->getFamille(),
+                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
+                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getProduit()->getPrix(),
+                'image' => $produit->getProduit()->getImage(),
+                'description' => $produit->getProduit()->getDescription(),
+                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
+                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
+
+            );
         }
         return new JsonResponse($formatted);
     }
 
     /**
-     * @Get("/produitsTailleFamille/{idTaille}/{idFamille}")
+     * @Get("/tailles/{idTaille}/{idFamille}")
      */
-    public function getProduitsByTailleFamilleAction($idTaille, $idFamille){
+    public function getProduitsByTailleFamilleAction($idTaille, $idFamille)
+    {
 
         $produitList = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
             ->findProduitsByTaille_Famille($idTaille, $idFamille);
 
         $formatted = [];
         foreach ($produitList as $produit) {
-            $formatted[] = [
-                'id'=>$produit->getProduit()->getId(),
-                'taille' =>$produit->getTaille()->getTaille(),
-                'libelle'=>$produit->getProduit()->getLibelle(),
-                'famille'=>$produit->getProduit()->getFamille()->getFamille(),
-                'familleID'=>$produit->getProduit()->getFamille()->getId(),
-                'sexe'=>$produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur'=>$produit->getProduit()->getFournisseur()->getNomMarque(),
-                'prix'=>$produit->getProduit()->getPrix(),
-                'image'=>$produit->getProduit()->getImage(),
-                'description'=>$produit->getProduit()->getDescription()
-            ];
+            $formatted[] = array(
+                'id' => $produit->getProduit()->getId(),
+                'taille' => $produit->getTaille()->getTaille(),
+                'libelle' => $produit->getProduit()->getLibelle(),
+                'famille' => $produit->getProduit()->getFamille()->getFamille(),
+                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
+                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getProduit()->getPrix(),
+                'image' => $produit->getProduit()->getImage(),
+                'description' => $produit->getProduit()->getDescription(),
+                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
+                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
+
+            );
         }
         return new JsonResponse($formatted);
     }
-
 
 
 }

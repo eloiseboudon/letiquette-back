@@ -30,16 +30,16 @@ class TaillesController extends Controller
      *
      * @Get("/taille")
      */
-    public function getVillesAction(){
-        $taillesList = $this->getDoctrine()->getRepository('AppBundle:Tailles')->findAll();
-        $formatted = [];
-        foreach ($taillesList as $taille){
-            $formatted[]=[
-                'id' => $taille->getId(),
-                'taille' => $taille->getTaille()
-            ];
-        }
-
-        return new JsonResponse($formatted);
-    }
+//    public function getVillesAction(){
+//        $taillesList = $this->getDoctrine()->getRepository('AppBundle:Tailles')->findAll();
+//        $formatted = [];
+//        foreach ($taillesList as $taille){
+//            $formatted[]=[
+//                'id' => $taille->getId(),
+//                'taille' => $taille->getTaille()
+//            ];
+//        }
+//
+//        return new JsonResponse($formatted);
+//    }
 }

@@ -49,9 +49,9 @@ familles:
 
 
 #TAILLE
-taille:
+tailles:
     type: rest
-    resource: AppBundle\Controller\TaillesController
+    resource: AppBundle\Controller\DeclinaisonTailleController
 
 
 #COULEUR
@@ -67,9 +67,9 @@ tailleType:
 
 
 #DECLINAISON_TAILLE
-produitsTaille:
-    type: rest
-    resource: AppBundle\Controller\DeclinaisonTailleController
+#produitsTaille:
+#    type: rest
+#    resource: AppBundle\Controller\DeclinaisonTailleController
 
 
 #DECLINAISON_TAILLE
