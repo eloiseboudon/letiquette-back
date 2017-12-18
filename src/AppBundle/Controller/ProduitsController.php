@@ -38,32 +38,19 @@ class ProduitsController extends Controller
         $formatted = [];
 
         foreach ($produitList as $produit) {
-            if($produit->getCouleur() != null){
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription(),
-                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur' => $produit->getCouleur()->getName()
-                );
+            $formatted[] = array(
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription(),
+                'couleur_hexa' => ($produit->getCouleur() != null ? $produit->getCouleur()->getCouleur() : null),
+                'couleur' => ($produit->getCouleur() != null ? $produit->getCouleur()->getName() : null)
 
-            }else{
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription()
-                );
-            }
+            );
         }
         return new JsonResponse($formatted);
     }
@@ -73,7 +60,8 @@ class ProduitsController extends Controller
      *
      * @Get("/produits/{id}")
      */
-    public function getProduitsByIdAction($id)
+    public
+    function getProduitsByIdAction($id)
     {
         $produit = $this->getDoctrine()->getRepository('AppBundle:Produits')->find($id);
         if (empty($produit)) {
@@ -81,7 +69,7 @@ class ProduitsController extends Controller
         }
         $formatted = [];
 
-        if($produit->getCouleur() != null){
+        if ($produit->getCouleur() != null) {
             $formatted[] = array(
                 'id' => $produit->getId(),
                 'libelle' => $produit->getLibelle(),
@@ -95,7 +83,7 @@ class ProduitsController extends Controller
                 'couleur' => $produit->getCouleur()->getName()
             );
 
-        }else{
+        } else {
             $formatted[] = array(
                 'id' => $produit->getId(),
                 'libelle' => $produit->getLibelle(),
@@ -104,7 +92,9 @@ class ProduitsController extends Controller
                 'fournisseur' => $produit->getFournisseur()->getNomMarque(),
                 'prix' => $produit->getPrix(),
                 'image' => $produit->getImage(),
-                'description' => $produit->getDescription()
+                'description' => $produit->getDescription(),
+                'couleur_hexa' => null,
+                'couleur' => null
             );
         }
 
@@ -113,9 +103,10 @@ class ProduitsController extends Controller
 
 
     /**
-     * @Get("/produitsFamille/{id}")
+     * @Get("/produits/famille/{id}")
      */
-    public function getProduitsFamilleAction($id)
+    public
+    function getProduitsFamilleAction($id)
     {
         $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsByFamille($id);
         if (empty($produitList)) {
@@ -124,263 +115,33 @@ class ProduitsController extends Controller
 
         $formatted = [];
         foreach ($produitList as $produit) {
-            if($produit->getCouleur() != null){
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription(),
-                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur' => $produit->getCouleur()->getName()
-                );
+            $formatted[] = array(
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription(),
+                'couleur_hexa' => ($produit->getCouleur() != null ? $produit->getCouleur()->getCouleur() : null),
+                'couleur' => ($produit->getCouleur() != null ? $produit->getCouleur()->getName() : null)
 
-            }else{
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription()
-                );
-            }
+            );
         }
         return new JsonResponse($formatted);
     }
 
 
     /**
- * @Get("/produits/taille/{arrayTaille}")
- */
-    public function getProduitsFiltreTailleAction($arrayTaille)
+     * @Get("/produits/taille/{arrayTaille}")
+     */
+    public
+    function getProduitsFiltreTailleAction($arrayTaille)
     {
         $produitList = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:DeclinaisonTaille')
             ->findProduitsFiltreTaille($arrayTaille);
-
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            $formatted[] = [
-                'id' => $produit->getProduit()->getId(),
-                'taille' => $produit->getTaille()->getTaille(),
-                'libelle' => $produit->getProduit()->getLibelle(),
-                'famille' => $produit->getProduit()->getFamille()->getFamille(),
-                'familleID' => $produit->getProduit()->getFamille()->getId(),
-                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-                'fournisseurID' => $produit->getProduit()->getFournisseur()->getId(),
-                'prix' => $produit->getProduit()->getPrix(),
-                'image' => $produit->getProduit()->getImage(),
-                'description' => $produit->getProduit()->getDescription()
-            ];
-        }
-        return new JsonResponse($formatted);
-    }
-
-    /**
-     * @Get("/produits/marque/{arrayMarque}")
-     */
-    public function getProduitsFiltreMarqueAction($arrayMarque)
-    {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsFiltreMarque($arrayMarque);
-
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            if($produit->getCouleur() != null){
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription(),
-                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur' => $produit->getCouleur()->getName()
-                );
-
-            }else{
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription()
-                );
-            }
-        }
-        return new JsonResponse($formatted);
-    }
-
-
-
-    /**
-     * @Get("/produits/{arrayTaille}/{arrayMarque}")
-     */
-    public function getProduitsFiltresAction($arrayTaille, $arrayMarque)
-    {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltres($arrayTaille, $arrayMarque);
-
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            $formatted[] = [
-                'id' => $produit->getProduit()->getId(),
-                'taille' => $produit->getTaille()->getTaille(),
-                'libelle' => $produit->getProduit()->getLibelle(),
-                'famille' => $produit->getProduit()->getFamille()->getFamille(),
-                'familleID' => $produit->getProduit()->getFamille()->getId(),
-                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-                'fournisseurID' => $produit->getProduit()->getFournisseur()->getId(),
-                'prix' => $produit->getProduit()->getPrix(),
-                'image' => $produit->getProduit()->getImage(),
-                'description' => $produit->getProduit()->getDescription()
-            ];
-        }
-        return new JsonResponse($formatted);
-    }
-
-    /**
-     * @Get("/produits/fournisseur/{fournisseur}/sexe/{sexe}")
-     */
-    public function getFournisseursBySexeAction($fournisseur,$sexe)
-    {
-        $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')
-            ->findFournisseurs($fournisseur,$sexe);
-        if (empty($produitList)) {
-            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-        }
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            if($produit->getCouleur() != null){
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription(),
-                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur' => $produit->getCouleur()->getName()
-                );
-
-            }else{
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription()
-                );
-            }
-        }
-        return new JsonResponse($formatted);
-    }
-
-    /**
-     * @Get("/femmes")
-     */
-    public function getProduitsFemmesAction()
-    {
-        $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
-        if (empty($produitList)) {
-            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-        }
-        $formatted = [];
-
-        foreach ($produitList as $produit) {
-            if($produit->getCouleur() != null){
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription(),
-                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur' => $produit->getCouleur()->getName()
-                );
-
-            }else{
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription()
-                );
-            }
-        }
-        return new JsonResponse($formatted);
-    }
-
-
-    /**
-     * @Get("/femmes/marque/{arrayMarque}")
-     */
-    public function getProduitsFiltreSexeMarqueAction($arrayMarque)
-    {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsFiltreMarqueSexe($arrayMarque,"F");
-
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            if($produit->getCouleur() != null){
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription(),
-                    'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                    'couleur' => $produit->getCouleur()->getName()
-                );
-
-            }else{
-                $formatted[] = array(
-                    'id' => $produit->getId(),
-                    'libelle' => $produit->getLibelle(),
-                    'famille' => $produit->getFamille()->getFamille(),
-                    'sexe' => $produit->getFamille()->getSexe(),
-                    'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                    'prix' => $produit->getPrix(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription()
-                );
-            }
-        }
-        return new JsonResponse($formatted);
-    }
-
-
-    /**
-     * @Get("/femmes/taille/{arrayTaille}")
-     */
-    public function getProduitsFiltreSexeTailleAction($arrayTaille)
-    {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTailleSexe($arrayTaille,"F");
 
         $formatted = [];
         foreach ($produitList as $produit) {
@@ -389,40 +150,78 @@ class ProduitsController extends Controller
                 'taille' => $produit->getTaille()->getTaille(),
                 'libelle' => $produit->getProduit()->getLibelle(),
                 'famille' => $produit->getProduit()->getFamille()->getFamille(),
-                'familleID' => $produit->getProduit()->getFamille()->getId(),
                 'sexe' => $produit->getProduit()->getFamille()->getSexe(),
                 'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-                'fournisseurID' => $produit->getProduit()->getFournisseur()->getId(),
                 'prix' => $produit->getProduit()->getPrix(),
                 'image' => $produit->getProduit()->getImage(),
-                'description' => $produit->getProduit()->getDescription()
+                'description' => $produit->getProduit()->getDescription(),
+                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
+                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
+
             );
         }
         return new JsonResponse($formatted);
     }
 
+
     /**
-     * @Get("/femmes/{arrayTaille}/{arrayMarque}")
+     * @Get("/femmes")
      */
-    public function getProduitsFiltresFemmesAction($arrayTaille, $arrayMarque)
+    public
+    function getProduitsFemmesAction()
     {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltresFemmes($arrayTaille, $arrayMarque);
+        $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
+        if (empty($produitList)) {
+            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
+        }
+        $formatted = [];
+
+        foreach ($produitList as $produit) {
+            $formatted[] = array(
+                'id' => $produit->getId(),
+                'libelle' => $produit->getLibelle(),
+                'famille' => $produit->getFamille()->getFamille(),
+                'sexe' => $produit->getFamille()->getSexe(),
+                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+                'prix' => $produit->getPrix(),
+                'image' => $produit->getImage(),
+                'description' => $produit->getDescription(),
+                'couleur_hexa' => ($produit->getCouleur() != null ? $produit->getCouleur()->getCouleur() : null),
+                'couleur' => ($produit->getCouleur() != null ? $produit->getCouleur()->getName() : null)
+
+            );
+        }
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+
+    /**
+     * @Get("/femmes/taille/{arrayTaille}")
+     */
+    public
+    function getProduitsFiltreSexeTailleAction($arrayTaille)
+    {
+        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTailleSexe($arrayTaille, "F");
 
         $formatted = [];
         foreach ($produitList as $produit) {
-            $formatted[] = [
+            $formatted[] = array(
                 'id' => $produit->getProduit()->getId(),
                 'taille' => $produit->getTaille()->getTaille(),
                 'libelle' => $produit->getProduit()->getLibelle(),
                 'famille' => $produit->getProduit()->getFamille()->getFamille(),
-                'familleID' => $produit->getProduit()->getFamille()->getId(),
                 'sexe' => $produit->getProduit()->getFamille()->getSexe(),
                 'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-                'fournisseurID' => $produit->getProduit()->getFournisseur()->getId(),
                 'prix' => $produit->getProduit()->getPrix(),
                 'image' => $produit->getProduit()->getImage(),
-                'description' => $produit->getProduit()->getDescription()
-            ];
+                'description' => $produit->getProduit()->getDescription(),
+                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
+                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
+
+            );
         }
         return new JsonResponse($formatted);
     }
