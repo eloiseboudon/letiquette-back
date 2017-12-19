@@ -10,6 +10,7 @@ namespace AppBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Couleurs
@@ -32,6 +33,7 @@ class Couleurs
      * @var string
      *
      * @ORM\Column(name="couleur", type="string", length=255)
+     *
      */
     private $couleur;
 
@@ -39,6 +41,8 @@ class Couleurs
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *
+     * @Serializer\Groups({"produit"})
      */
     private $name;
 

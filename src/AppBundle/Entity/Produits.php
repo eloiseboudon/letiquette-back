@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Produits
@@ -24,6 +25,8 @@ class Produits
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     *  @Serializer\Groups({"produit"})
      */
     private $id;
 
@@ -31,6 +34,8 @@ class Produits
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Familles", cascade={"persist"})
      * @var Familles
+     *
+     *  @Serializer\Groups({"produit"})
      */
     private $famille;
 
@@ -38,6 +43,8 @@ class Produits
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseurs", cascade={"persist"})
      * @var Fournisseurs
+     *
+     *  @Serializer\Groups({"produit"})
      */
     private $fournisseur;
 
@@ -45,6 +52,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="Libelle", type="string", length=255)
+     *
+     *  @Serializer\Groups({"produit"})
      */
     private $libelle;
 
@@ -52,6 +61,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="Prix", type="decimal", scale=2)
+     *
+     *  @Serializer\Groups({"produit"})
      */
     private $prix;
 
@@ -59,6 +70,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="Image", type="text")
+     *
+     *  @Serializer\Groups({"produit"})
      */
     private $image;
 
@@ -66,16 +79,33 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="Description", type="text")
+     *
+     *  @Serializer\Groups({"produit"})
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Couleurs", cascade={"persist"})
      * @var Couleurs
+     *
+     *  @Serializer\Groups({"produit"})
      */
     private $couleur;
 
 
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get id
