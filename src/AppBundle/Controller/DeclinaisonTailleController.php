@@ -18,6 +18,11 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Origin, Content-Type, Accept");
+
 class DeclinaisonTailleController extends Controller
 {
 
@@ -34,17 +39,17 @@ class DeclinaisonTailleController extends Controller
         $formatted = [];
         foreach ($produitList as $produit) {
             $formatted[] = array(
-                'id' => $produit->getProduit()->getId(),
-                'taille' => $produit->getTaille()->getTaille(),
-                'libelle' => $produit->getProduit()->getLibelle(),
-                'famille' => $produit->getProduit()->getFamille()->getFamille(),
-                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getProduit()->getPrix(),
-                'image' => $produit->getProduit()->getImage(),
-                'description' => $produit->getProduit()->getDescription(),
-                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
-                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
+                'id' => $produit->getTaille()->getId(),
+                'name' => $produit->getTaille()->getTaille(),
+//                'libelle' => $produit->getProduit()->getLibelle(),
+//                'famille' => $produit->getProduit()->getFamille()->getFamille(),
+//                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
+//                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
+//                'prix' => $produit->getProduit()->getPrix(),
+//                'image' => $produit->getProduit()->getImage(),
+//                'description' => $produit->getProduit()->getDescription(),
+//                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
+//                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
 
             );
         }
