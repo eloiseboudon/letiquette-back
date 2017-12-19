@@ -36,8 +36,8 @@ class FournisseursController extends Controller
             $formatted[]=[
                 'id' => $fournisseur->getId(),
                 'ville' => $fournisseur->getVille()->getVille(),
-                'nomMarque' => $fournisseur->getNomMarque(),
-                'nomResponsable' => $fournisseur->getNomResponsable(),
+                'nom_marque' => $fournisseur->getNomMarque(),
+                'nom_responsable' => $fournisseur->getNomResponsable(),
                 'adMail' => $fournisseur->getAdMail(),
                 'adresse' => $fournisseur->getAdresse(),
                 'numTel' => $fournisseur->getNumTel(),

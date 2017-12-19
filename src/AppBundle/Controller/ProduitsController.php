@@ -69,34 +69,19 @@ class ProduitsController extends Controller
         }
         $formatted = [];
 
-        if ($produit->getCouleur() != null) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription(),
-                'couleur_hexa' => $produit->getCouleur()->getCouleur(),
-                'couleur' => $produit->getCouleur()->getName()
-            );
+        $formatted[] = array(
+            'id' => $produit->getId(),
+            'libelle' => $produit->getLibelle(),
+            'famille' => $produit->getFamille()->getFamille(),
+            'sexe' => $produit->getFamille()->getSexe(),
+            'fournisseur' => $produit->getFournisseur()->getNomMarque(),
+            'prix' => $produit->getPrix(),
+            'image' => $produit->getImage(),
+            'description' => $produit->getDescription(),
+            'couleur_hexa' => ($produit->getCouleur() != null ? $produit->getCouleur()->getCouleur() : null),
+            'couleur' => ($produit->getCouleur() != null ? $produit->getCouleur()->getName() : null)
 
-        } else {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription(),
-                'couleur_hexa' => null,
-                'couleur' => null
-            );
-        }
+        );
 
         return new JsonResponse($formatted);
     }
