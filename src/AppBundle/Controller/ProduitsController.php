@@ -35,11 +35,25 @@ class ProduitsController extends Controller
         if (empty($produitList)) {
             return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
         }
+
+
         $formatted = [];
 
         foreach ($produitList as $produit) {
+            $tailles = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
+                ->findBy(
+                    array('produit' => $produit->getId())
+                );
+
+            foreach ($tailles as $taille)
+            $taille_[] = array(
+                'id' => $taille->getTaille()->getId(),
+                'taille' => $taille->getTaille()->getTaille()
+            );
+
             $formatted[] = array(
                 'id' => $produit->getId(),
+                'taille' => (array($taille_[0],$taille_[1])),
                 'libelle' => $produit->getLibelle(),
                 'famille' => $produit->getFamille()->getFamille(),
                 'sexe' => $produit->getFamille()->getSexe(),
@@ -67,6 +81,7 @@ class ProduitsController extends Controller
         if (empty($produit)) {
             return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
         }
+
         $formatted = [];
 
         $formatted[] = array(
@@ -180,9 +195,6 @@ class ProduitsController extends Controller
     }
 
 
-
-
-
     /**
      * @Get("/femmes/taille/{arrayTaille}")
      */
@@ -210,7 +222,6 @@ class ProduitsController extends Controller
         }
         return new JsonResponse($formatted);
     }
-
 
 
 }

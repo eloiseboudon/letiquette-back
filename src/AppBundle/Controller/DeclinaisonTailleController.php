@@ -35,17 +35,16 @@ class DeclinaisonTailleController extends Controller
         foreach ($produitList as $produit) {
             $formatted[] = array(
                 'id' => $produit->getProduit()->getId(),
-                'taille' => $produit->getTaille()->getTaille(),
-                'libelle' => $produit->getProduit()->getLibelle(),
-                'famille' => $produit->getProduit()->getFamille()->getFamille(),
-                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getProduit()->getPrix(),
-                'image' => $produit->getProduit()->getImage(),
-                'description' => $produit->getProduit()->getDescription(),
-                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
-                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
-
+                'taille' => $produit->getTaille()->getTaille()
+//                'libelle' => $produit->getProduit()->getLibelle(),
+//                'famille' => $produit->getProduit()->getFamille()->getFamille(),
+//                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
+//                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
+//                'prix' => $produit->getProduit()->getPrix(),
+//                'image' => $produit->getProduit()->getImage(),
+//                'description' => $produit->getProduit()->getDescription(),
+//                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
+//                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
             );
         }
 
