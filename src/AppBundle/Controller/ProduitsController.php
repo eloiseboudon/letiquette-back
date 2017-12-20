@@ -17,7 +17,7 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use JMS\Serializer\SerializationContext;
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
@@ -170,28 +170,14 @@ class ProduitsController extends Controller
     public
     function getProduitsFemmesAction()
     {
-        $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
-        if (empty($produitList)) {
-            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-        }
-        $formatted = [];
+        $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
+        $data = $this->get('jms_serializer')->serialize($produits, 'json');
 
-        foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription(),
-                'couleur_hexa' => ($produit->getCouleur() != null ? $produit->getCouleur()->getCouleur() : null),
-                'couleur' => ($produit->getCouleur() != null ? $produit->getCouleur()->getName() : null)
 
-            );
-        }
-        return new JsonResponse($formatted);
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 
