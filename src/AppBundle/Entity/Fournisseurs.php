@@ -7,7 +7,9 @@
  */
 
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 
 
@@ -40,6 +42,8 @@ class Fournisseurs
      * @var string
      *
      * @ORM\Column(name="nomMarque", type="string", length=255)
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $nomMarque;
 

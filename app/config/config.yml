@@ -83,3 +83,13 @@ fos_rest:
               - { path: '^/', priorities: ['json'], fallback_format: 'json' }
     body_listener:
         enabled: true
+    serializer:
+            serialize_null: true
+
+
+
+#jms_serializer
+jms_serializer:
+    visitors:
+        json:
+            options: 0
