@@ -17,6 +17,7 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use JMS\Serializer\SerializationContext;
 
 class DeclinaisonTailleController extends Controller
 {
@@ -26,29 +27,19 @@ class DeclinaisonTailleController extends Controller
      */
     public function getTaillesByProduitAction($id)
     {
-        $produitList = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
+        $taille = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
             ->findBy(
                 array('produit' => $id)
             );
 
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getProduit()->getId(),
-                'taille' => $produit->getTaille()->getTaille()
-//                'libelle' => $produit->getProduit()->getLibelle(),
-//                'famille' => $produit->getProduit()->getFamille()->getFamille(),
-//                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
-//                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-//                'prix' => $produit->getProduit()->getPrix(),
-//                'image' => $produit->getProduit()->getImage(),
-//                'description' => $produit->getProduit()->getDescription(),
-//                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
-//                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
-            );
-        }
+        $data = $this->get('jms_serializer')
+            ->serialize($taille, 'json',
+                SerializationContext::create()->setSerializeNull(true));
 
-        return new JsonResponse($formatted);
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 

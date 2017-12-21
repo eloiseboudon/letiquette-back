@@ -40,7 +40,7 @@ class ProduitsController extends Controller
                     array('produit' => $item->getId())
                 );
             foreach ($tailles as $taille) {
-                array_push($produits,$taille);
+                array_push($produits, $taille);
             }
         }
 
@@ -150,4 +150,30 @@ class ProduitsController extends Controller
     }
 
 
+    /**
+     * @Get("/tout")
+     */
+    public
+    function getEverythingAction()
+    {
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findEverything();
+
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+//        $formatted = [];
+//
+//        foreach ($produits as $produit){
+//            $formatted[]=[
+//                'id' => $produit->getId(),
+//
+//            ];
+//        }
+//    }
+//return new JsonResponse($formatted);
+    }
 }

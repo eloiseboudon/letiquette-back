@@ -42,4 +42,33 @@ class ProduitsRepository extends EntityRepository
             ->getResult();
     }
 
+
+    public function findEverything()
+    {
+//        $queryBuilder = $this->_em->createQueryBuilder('p')
+//            ->select('e')
+//            ->leftjoin('AppBundle:DeclinaisonEthique', 'e','WITH','e.produit=p')
+//            ->leftjoin('AppBundle:DeclinaisonTaille', 't','WITH','t.produit=p');
+//
+//
+//        return $queryBuilder
+//            ->getQuery()
+//            ->getResult();
+
+
+
+
+
+
+        $queryBuilder = $this->_em->createQuery('SELECT p,e,t
+        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p
+        LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p');
+
+
+        return $queryBuilder
+            ->getScalarResult();
+
+
+    }
+
 }
