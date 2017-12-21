@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Produits
@@ -24,6 +25,8 @@ class Produits
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $id;
 
@@ -31,6 +34,8 @@ class Produits
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Familles", cascade={"persist"})
      * @var Familles
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $famille;
 
@@ -38,6 +43,8 @@ class Produits
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseurs", cascade={"persist"})
      * @var Fournisseurs
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $fournisseur;
 
@@ -45,6 +52,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="Libelle", type="string", length=255)
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $libelle;
 
@@ -52,6 +61,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="Prix", type="decimal", scale=2)
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $prix;
 
@@ -59,6 +70,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="Image", type="text")
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $image;
 
@@ -66,12 +79,16 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="Description", type="text")
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Couleurs", cascade={"persist"})
      * @var Couleurs
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $couleur;
 

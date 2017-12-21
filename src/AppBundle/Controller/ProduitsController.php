@@ -31,42 +31,17 @@ class ProduitsController extends Controller
      */
     public function getProduitsAction()
     {
-        $produitList = $this->getDoctrine()->getRepository('AppBundle:Produits')->findAll();
-        if (empty($produitList)) {
-            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-        }
+        $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->findAll();
+
+        
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 
 
-        $formatted = [];
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
 
-        foreach ($produitList as $produit) {
-            $tailles = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
-                ->findBy(
-                    array('produit' => $produit->getId())
-                );
-
-            foreach ($tailles as $taille)
-            $taille_[] = array(
-                'id' => $taille->getTaille()->getId(),
-                'taille' => $taille->getTaille()->getTaille()
-            );
-
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'taille' => (array($taille_[0],$taille_[1])),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription(),
-                'couleur_hexa' => ($produit->getCouleur() != null ? $produit->getCouleur()->getCouleur() : null),
-                'couleur' => ($produit->getCouleur() != null ? $produit->getCouleur()->getName() : null)
-
-            );
-        }
-        return new JsonResponse($formatted);
+        return $response;
     }
 
 
@@ -77,28 +52,15 @@ class ProduitsController extends Controller
     public
     function getProduitsByIdAction($id)
     {
-        $produit = $this->getDoctrine()->getRepository('AppBundle:Produits')->find($id);
-        if (empty($produit)) {
-            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-        }
+        $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->find($id);
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 
-        $formatted = [];
 
-        $formatted[] = array(
-            'id' => $produit->getId(),
-            'libelle' => $produit->getLibelle(),
-            'famille' => $produit->getFamille()->getFamille(),
-            'sexe' => $produit->getFamille()->getSexe(),
-            'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-            'prix' => $produit->getPrix(),
-            'image' => $produit->getImage(),
-            'description' => $produit->getDescription(),
-            'couleur_hexa' => ($produit->getCouleur() != null ? $produit->getCouleur()->getCouleur() : null),
-            'couleur' => ($produit->getCouleur() != null ? $produit->getCouleur()->getName() : null)
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
 
-        );
-
-        return new JsonResponse($formatted);
+        return $response;
     }
 
 
@@ -108,28 +70,15 @@ class ProduitsController extends Controller
     public
     function getProduitsFamilleAction($id)
     {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsByFamille($id);
-        if (empty($produitList)) {
-            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
-        }
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsByFamille($id);
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getId(),
-                'libelle' => $produit->getLibelle(),
-                'famille' => $produit->getFamille()->getFamille(),
-                'sexe' => $produit->getFamille()->getSexe(),
-                'fournisseur' => $produit->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getPrix(),
-                'image' => $produit->getImage(),
-                'description' => $produit->getDescription(),
-                'couleur_hexa' => ($produit->getCouleur() != null ? $produit->getCouleur()->getCouleur() : null),
-                'couleur' => ($produit->getCouleur() != null ? $produit->getCouleur()->getName() : null)
 
-            );
-        }
-        return new JsonResponse($formatted);
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 
@@ -139,28 +88,18 @@ class ProduitsController extends Controller
     public
     function getProduitsFiltreTailleAction($arrayTaille)
     {
-        $produitList = $this->getDoctrine()->getManager()
+        $produits = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:DeclinaisonTaille')
             ->findProduitsFiltreTaille($arrayTaille);
 
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getProduit()->getId(),
-                'taille' => $produit->getTaille()->getTaille(),
-                'libelle' => $produit->getProduit()->getLibelle(),
-                'famille' => $produit->getProduit()->getFamille()->getFamille(),
-                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getProduit()->getPrix(),
-                'image' => $produit->getProduit()->getImage(),
-                'description' => $produit->getProduit()->getDescription(),
-                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
-                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 
-            );
-        }
-        return new JsonResponse($formatted);
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 
@@ -171,7 +110,8 @@ class ProduitsController extends Controller
     function getProduitsFemmesAction()
     {
         $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
-        $data = $this->get('jms_serializer')->serialize($produits, 'json');
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 
 
         $response = new Response($data);
@@ -187,26 +127,16 @@ class ProduitsController extends Controller
     public
     function getProduitsFiltreSexeTailleAction($arrayTaille)
     {
-        $produitList = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTailleSexe($arrayTaille, "F");
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTailleSexe($arrayTaille, "F");
 
-        $formatted = [];
-        foreach ($produitList as $produit) {
-            $formatted[] = array(
-                'id' => $produit->getProduit()->getId(),
-                'taille' => $produit->getTaille()->getTaille(),
-                'libelle' => $produit->getProduit()->getLibelle(),
-                'famille' => $produit->getProduit()->getFamille()->getFamille(),
-                'sexe' => $produit->getProduit()->getFamille()->getSexe(),
-                'fournisseur' => $produit->getProduit()->getFournisseur()->getNomMarque(),
-                'prix' => $produit->getProduit()->getPrix(),
-                'image' => $produit->getProduit()->getImage(),
-                'description' => $produit->getProduit()->getDescription(),
-                'couleur_hexa' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getCouleur() : null),
-                'couleur' => ($produit->getProduit()->getCouleur() != null ? $produit->getProduit()->getCouleur()->getName() : null)
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 
-            );
-        }
-        return new JsonResponse($formatted);
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 

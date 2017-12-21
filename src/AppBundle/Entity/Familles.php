@@ -11,6 +11,7 @@ namespace AppBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Familles
@@ -33,6 +34,8 @@ class Familles
      * @var string
      *
      * @ORM\Column(name="Famille", type="string", length=255)
+     *
+     * @Serializer\Groups({"produits"})
      */
     private $famille;
 
