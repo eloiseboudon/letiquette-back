@@ -33,10 +33,20 @@ class ProduitsController extends Controller
     {
         $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->findAll();
 
-        
-        $data = $this->get('jms_serializer')->serialize($produits, 'json',
-            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 
+        foreach ($produits as $item) {
+            $tailles = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
+                ->findBy(
+                    array('produit' => $item->getId())
+                );
+            foreach ($tailles as $taille) {
+                array_push($produits,$taille);
+            }
+        }
+
+        $data = $this->get('jms_serializer')
+            ->serialize($produits, 'json',
+                SerializationContext::create()->setSerializeNull(true));
 
         $response = new Response($data);
         $response->headers->set('Content-Type', 'application/json');
