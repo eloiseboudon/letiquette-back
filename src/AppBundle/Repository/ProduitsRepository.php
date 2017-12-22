@@ -45,25 +45,31 @@ class ProduitsRepository extends EntityRepository
 
     public function findEverything()
     {
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->leftJoin('AppBundle:DeclinaisonEthique', 'e', 'WITH', 'e.produit=p')
-            ->leftJoin('AppBundle:DeclinaisonTaille', 't', 'WITH', 't.produit=p')
-            ->leftJoin('e.pointEthique', 'pe')
-            ->leftJoin('t.taille', 'ta')
-            ->leftjoin('p.fournisseur','f')
-            ->leftJoin('p.couleur','c')
-            ->addSelect('pe.nomEthique, ta.taille,f.nomMarque,c.name');
+        $queryBuilder = $this->_em->createQuery('SELECT p.id,p.libelle,p.prix,p.description,
+ta.taille, pe.nomEthique as ethique, fa.famille, c.name as couleur , fo.nomMarque as marque
+        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
+       LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta
+       LEFT JOIN p.famille fa LEFT JOIN p.couleur c LEFT JOIN p.fournisseur fo');
 
         return $queryBuilder
-            ->getQuery()
-            ->getScalarResult();
+            ->getResult();
+    }
 
-//        $queryBuilder = $this->_em->createQuery('SELECT p,pe.nomEthique,ta.taille
-//        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
-//       LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta');
-//
-//        return $queryBuilder
-//            ->getResult();
+
+
+
+    public function findEverythingSexe($sexe)
+    {
+        $queryBuilder = $this->_em->createQuery('SELECT p.id,p.libelle,p.prix,p.description, p.image,
+ta.taille, pe.nomEthique as ethique, fa.famille, c.name as couleur , fo.nomMarque as marque
+        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
+       LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta
+       LEFT JOIN p.famille fa LEFT JOIN p.couleur c LEFT JOIN p.fournisseur fo
+       WHERE fa.sexe = :sexe')
+        ->setParameter('sexe',$sexe);
+
+        return $queryBuilder
+            ->getResult();
     }
 
 }

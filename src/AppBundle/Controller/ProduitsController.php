@@ -166,4 +166,22 @@ class ProduitsController extends Controller
 
         return $response;
     }
+
+
+    /**
+     * @Get("/tout/femmes")
+     */
+    public
+    function getEverythingFemmesAction()
+    {
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findEverythingSexe("F");
+
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
 }
