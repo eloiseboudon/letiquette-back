@@ -1,0 +1,104 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Eloise
+ * Date: 21/12/2017
+ * Time: 10:59
+ */
+
+namespace AppBundle\Entity;
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DeclinaisonEthique
+ *
+ * @ORM\Table(name="declinaisonEthique")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DeclinaisonEthiqueRepository")
+ */
+class DeclinaisonEthique
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Produits", cascade={"persist"})
+     * @var Produits
+     */
+    private $produit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PointsEthique", cascade={"persist"})
+     * @var PointsEthique
+     */
+    private $pointEthique;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set produit
+     *
+     * @param \AppBundle\Entity\Produits $produit
+     *
+     * @return DeclinaisonEthique
+     */
+    public function setProduit(\AppBundle\Entity\Produits $produit = null)
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \AppBundle\Entity\Produits
+     */
+    public function getProduit()
+    {
+        return $this->produit;
+    }
+
+
+    /**
+     * Set pointEthique
+     *
+     * @param \AppBundle\Entity\PointsEthique $pointEthique
+     *
+     * @return DeclinaisonEthique
+     */
+    public function setPointEthique(\AppBundle\Entity\PointsEthique $pointEthique = null)
+    {
+        $this->pointEthique = $pointEthique;
+
+        return $this;
+    }
+
+    /**
+     * Get pointEthique
+     *
+     * @return \AppBundle\Entity\PointsEthique
+     */
+    public function getPointEthique()
+    {
+        return $this->pointEthique;
+    }
+}
