@@ -165,15 +165,5 @@ class ProduitsController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
-//        $formatted = [];
-//
-//        foreach ($produits as $produit){
-//            $formatted[]=[
-//                'id' => $produit->getId(),
-//
-//            ];
-//        }
-//    }
-//return new JsonResponse($formatted);
     }
 }

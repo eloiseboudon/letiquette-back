@@ -45,30 +45,25 @@ class ProduitsRepository extends EntityRepository
 
     public function findEverything()
     {
-//        $queryBuilder = $this->_em->createQueryBuilder('p')
-//            ->select('e')
-//            ->leftjoin('AppBundle:DeclinaisonEthique', 'e','WITH','e.produit=p')
-//            ->leftjoin('AppBundle:DeclinaisonTaille', 't','WITH','t.produit=p');
-//
-//
-//        return $queryBuilder
-//            ->getQuery()
-//            ->getResult();
-
-
-
-
-
-
-        $queryBuilder = $this->_em->createQuery('SELECT p,e,t
-        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p
-        LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p');
-
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->leftJoin('AppBundle:DeclinaisonEthique', 'e', 'WITH', 'e.produit=p')
+            ->leftJoin('AppBundle:DeclinaisonTaille', 't', 'WITH', 't.produit=p')
+            ->leftJoin('e.pointEthique', 'pe')
+            ->leftJoin('t.taille', 'ta')
+            ->leftjoin('p.fournisseur','f')
+            ->leftJoin('p.couleur','c')
+            ->addSelect('pe.nomEthique, ta.taille,f.nomMarque,c.name');
 
         return $queryBuilder
+            ->getQuery()
             ->getScalarResult();
 
-
+//        $queryBuilder = $this->_em->createQuery('SELECT p,pe.nomEthique,ta.taille
+//        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
+//       LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta');
+//
+//        return $queryBuilder
+//            ->getResult();
     }
 
 }
