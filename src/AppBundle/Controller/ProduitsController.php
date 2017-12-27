@@ -34,16 +34,6 @@ class ProduitsController extends Controller
         $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->findAll();
 
 
-        foreach ($produits as $item) {
-            $tailles = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
-                ->findBy(
-                    array('produit' => $item->getId())
-                );
-            foreach ($tailles as $taille) {
-                array_push($produits, $taille);
-            }
-        }
-
         $data = $this->get('jms_serializer')
             ->serialize($produits, 'json',
                 SerializationContext::create()->setSerializeNull(true));
