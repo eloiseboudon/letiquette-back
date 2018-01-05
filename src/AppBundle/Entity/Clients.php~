@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as FosUser;
 
 
 
@@ -17,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="clients")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ClientsRepository")
  */
-class Clients
+class Clients extends FosUser
 {
     /**
      * @var int
@@ -26,7 +27,7 @@ class Clients
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Villes", cascade={"persist"})
@@ -71,6 +72,14 @@ class Clients
      * @ORM\Column(name="numTel", type="string", length=255)
      */
     private $numTel;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
 
     /**
      * Get id

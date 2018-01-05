@@ -94,3 +94,6 @@ tout:
 impactsethiques:
     type: rest
     resource: AppBundle\Controller\PointsEthiqueController
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

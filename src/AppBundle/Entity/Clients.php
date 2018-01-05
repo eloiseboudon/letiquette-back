@@ -27,7 +27,7 @@ class Clients extends FosUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Villes", cascade={"persist"})

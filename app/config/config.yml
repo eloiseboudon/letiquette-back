@@ -89,8 +89,11 @@ fos_rest:
 #FOS_USER
 fos_user:
     db_driver: orm
-    firewewall_name: main
+    firewall_name: main
     user_class: AppBundle\Entity\Clients
+    from_email:
+        address: "boudon.eloise@gmail.com"
+        sender_name: "FosUserElo"
 
 
 #jms_serializer
