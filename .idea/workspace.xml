@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< master
     <list default="true" id="a4364579-fc5e-4149-9373-ea644808e179" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< master
+=======
+      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PointsEthiqueController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/PointsEthiqueController.php" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
+>>>>>>> point ethique produits
     </list>
+=======
+    <list default="true" id="a4364579-fc5e-4149-9373-ea644808e179" name="Default" comment="" />
+>>>>>>> workspace
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,33 +27,79 @@
     <executablePath>composer</executablePath>
   </component>
   <component name="FileEditorManager">
+<<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> workspace
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="security.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< master
+<<<<<<< master
             <state relative-caret-position="112">
+=======
+            <state relative-caret-position="-219">
+>>>>>>> workspace
+=======
+            <state relative-caret-position="112">
+>>>>>>> hgf
               <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> hgf
       <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/services.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< master
+=======
+=======
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+>>>>>>> hgf
+      <file leaf-file-name="ClientsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ClientsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+>>>>>>> workspace
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< master
+<<<<<<< master
       <file leaf-file-name="ClientsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ClientsController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="256">
               <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
               <folding />
+=======
+      <file leaf-file-name="RegistrationController.php" pinned="false" current-in-tab="true">
+=======
+      <file leaf-file-name="RegistrationController.php" pinned="false" current-in-tab="false">
+>>>>>>> hgf
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/RegistrationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+              <folding>
+                <element signature="e#299#348#0#PHP" expanded="true" />
+              </folding>
+>>>>>>> workspace
             </state>
           </provider>
         </entry>
@@ -60,17 +116,189 @@
           </provider>
         </entry>
       </file>
+<<<<<<< master
+<<<<<<< master
       <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="821">
               <caret line="94" column="58" lean-forward="false" selection-start-line="94" selection-start-column="58" selection-end-line="94" selection-end-column="58" />
+=======
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+=======
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
+>>>>>>> hgf
+        <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="773">
+              <caret line="95" column="58" lean-forward="false" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
+>>>>>>> workspace
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+<<<<<<< master
+=======
+    <splitter split-orientation="horizontal" split-proportion="0.52260983">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="FournisseursController.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/FournisseursController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#123#157#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ProduitsRepository.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="976">
+                  <caret line="62" column="101" lean-forward="false" selection-start-line="62" selection-start-column="101" selection-end-line="62" selection-end-column="101" />
+                  <folding>
+                    <element signature="e#41#75#0#PHP" expanded="true" />
+                    <marker date="1513951352568" expanded="true" signature="1182:1602" ph="SELECT p.id,... AppBundle" />
+                    <marker date="1513951352568" expanded="true" signature="1774:2232" ph="SELECT p.id,... AppBundle" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Fournisseurs.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Fournisseurs.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="656">
+                  <caret line="47" column="22" lean-forward="false" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="22" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Tailles.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Tailles.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="976">
+                  <caret line="66" column="29" lean-forward="false" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="29" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DeclinaisonTailleRepository.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/DeclinaisonTailleRepository.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="176">
+                  <caret line="12" column="58" lean-forward="false" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="58" />
+                  <folding>
+                    <element signature="e#40#74#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DeclinaisonTailleController.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DeclinaisonTailleController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="16">
+                  <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#6#88#0#PHP" expanded="true" />
+                    <element signature="e#123#162#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Produits.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Produits.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="704">
+                  <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="56" selection-end-column="7" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Couleurs.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Couleurs.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="224">
+                  <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ProduitsController.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#123#153#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="837">
+                  <caret line="95" column="58" lean-forward="false" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="ImagesProduit.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ImagesProduit.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PointsEthique.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PointsEthique.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="464">
+                  <caret line="34" column="35" lean-forward="false" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="35" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PointsEthiqueController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/PointsEthiqueController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="416">
+                  <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#124#159#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+>>>>>>> point ethique produits
+=======
+>>>>>>> workspace
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,9 +350,15 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DeclinaisonEthiqueController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/DetailsEthiqueRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php" />
+<<<<<<< master
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/PointsEthiqueController.php" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
+=======
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/PointsEthiqueController.php" />
+        <option value="$PROJECT_DIR$/app/config/routing.yml" />
+>>>>>>> point ethique produits
       </list>
     </option>
   </component>
@@ -185,12 +419,16 @@
       <path value="$PROJECT_DIR$/vendor/jms/serializer" />
       <path value="$PROJECT_DIR$/vendor/jms/serializer-bundle" />
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+<<<<<<< master
+=======
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+>>>>>>> workspace
       <path value="$PROJECT_DIR$/vendor/propel/propel1" />
       <path value="$PROJECT_DIR$/vendor/phing/phing" />
       <path value="$PROJECT_DIR$/vendor/willdurand/propel-typehintable-behavior" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
@@ -214,7 +452,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< master
+<<<<<<< master
       <pane id="Scope" />
+=======
+>>>>>>> point ethique produits
+=======
+      <pane id="Scope" />
+>>>>>>> workspace
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -254,11 +499,80 @@
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="default" type="2a2b976b:PhpTreeStructureProvider$1" />
+<<<<<<< master
+=======
             </path>
+            <path>
+              <item name="letiquette-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="letiquette-back" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="letiquette-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="letiquette-back" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="letiquette-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="letiquette-back" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="letiquette-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="letiquette-back" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="friendsofsymfony" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+<<<<<<< master
+            <path>
+              <item name="letiquette-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="letiquette-back" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="friendsofsymfony" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="letiquette-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="letiquette-back" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="friendsofsymfony" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="letiquette-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="letiquette-back" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="friendsofsymfony" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="letiquette-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="letiquette-back" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="friendsofsymfony" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Registration" type="2a2b976b:PhpTreeStructureProvider$1" />
+>>>>>>> workspace
+            </path>
+=======
+>>>>>>> hgf
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< master
+<<<<<<< master
+=======
+      <pane id="Scope" />
+>>>>>>> point ethique produits
+=======
+>>>>>>> workspace
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -322,11 +636,16 @@
       <workItem from="1513701395721" duration="3000" />
       <workItem from="1513756495752" duration="5395000" />
       <workItem from="1513839687954" duration="19076000" />
-      <workItem from="1513929397212" duration="12921000" />
+      <workItem from="1513929397212" duration="13092000" />
+      <workItem from="1514287254148" duration="1005000" />
+      <workItem from="1514367840658" duration="460000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< master
+<<<<<<< master
+<<<<<<< master
     <option name="totallyTimeSpent" value="147627000" />
   </component>
   <component name="ToolWindowManager">
@@ -334,6 +653,28 @@
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23845327" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <option name="totallyTimeSpent" value="149052000" />
+=======
+    <option name="totallyTimeSpent" value="149055000" />
+>>>>>>> workspace
+=======
+    <option name="totallyTimeSpent" value="149120000" />
+>>>>>>> hgf
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
+    <layout>
+<<<<<<< master
+<<<<<<< master
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1707841" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> point ethique produits
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25456497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> workspace
+=======
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25456497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> hgf
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -354,7 +695,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+<<<<<<< master
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16863587" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1707841" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> workspace
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -377,6 +722,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< master
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ClientsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -392,6 +738,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> hgf
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/DetailsEthique.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -490,13 +838,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsFemmesController.php" />
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ImagesProduit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ImagesProduitController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
@@ -577,6 +918,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< master
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/FournisseursController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -584,6 +926,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> point ethique produits
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/DeclinaisonEthique.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -612,6 +956,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< master
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PointsEthique.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -619,16 +964,18 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> point ethique produits
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Tailles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="865">
+        <state relative-caret-position="976">
           <caret line="66" column="29" lean-forward="false" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Produits.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
+        <state relative-caret-position="704">
           <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="56" selection-end-column="7" />
         </state>
       </provider>
@@ -649,8 +996,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Fournisseurs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
+        <state relative-caret-position="656">
           <caret line="47" column="22" lean-forward="false" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="22" />
+<<<<<<< master
         </state>
       </provider>
     </entry>
@@ -684,21 +1032,108 @@
         <state relative-caret-position="117">
           <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding />
+=======
+>>>>>>> workspace
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ImagesProduit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PointsEthique.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< master
+        <state relative-caret-position="300">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+=======
+        <state relative-caret-position="464">
+          <caret line="34" column="35" lean-forward="false" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="35" />
+<<<<<<< master
+>>>>>>> point ethique produits
+          <folding />
+=======
+>>>>>>> workspace
+        </state>
+      </provider>
+    </entry>
+<<<<<<< master
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="821">
+          <caret line="94" column="58" lean-forward="false" selection-start-line="94" selection-start-column="58" selection-end-line="94" selection-end-column="58" />
+          <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/FournisseursController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ProduitsRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="976">
+          <caret line="62" column="101" lean-forward="false" selection-start-line="62" selection-start-column="101" selection-end-line="62" selection-end-column="101" />
+<<<<<<< master
+          <folding>
+            <element signature="e#41#75#0#PHP" expanded="true" />
+            <marker date="1513951352568" expanded="true" signature="1182:1602" ph="SELECT p.id,... AppBundle" />
+            <marker date="1513951352568" expanded="true" signature="1774:2232" ph="SELECT p.id,... AppBundle" />
+          </folding>
+>>>>>>> point ethique produits
+=======
+>>>>>>> workspace
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ProduitsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="336">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/PointsEthiqueController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="e#299#348#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="821">
-          <caret line="94" column="58" lean-forward="false" selection-start-line="94" selection-start-column="58" selection-end-line="94" selection-end-column="58" />
+        <state relative-caret-position="773">
+          <caret line="95" column="58" lean-forward="false" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
           <folding />
         </state>
       </provider>

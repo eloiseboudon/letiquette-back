@@ -90,6 +90,10 @@ tout:
     type: rest
     resource: AppBundle\Controller\ProduitsController
 
+<<<<<<< master
+=======
+
+>>>>>>> point ethique produits
 impactsethiques:
     type: rest
     resource: AppBundle\Controller\PointsEthiqueController
