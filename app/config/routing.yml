@@ -89,3 +89,7 @@ tailleType:
 tout:
     type: rest
     resource: AppBundle\Controller\ProduitsController
+
+impactsethiques:
+    type: rest
+    resource: AppBundle\Controller\PointsEthiqueController
