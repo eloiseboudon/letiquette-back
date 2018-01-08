@@ -95,7 +95,6 @@ fos_user:
         address: "boudon.eloise@gmail.com"
         sender_name: "FosUserElo"
 
-
 #jms_serializer
 jms_serializer:
     visitors:

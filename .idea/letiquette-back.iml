@@ -29,8 +29,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/namshi/jose" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phing/phing" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpcollection/phpcollection" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/propel/propel1" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/link" />
@@ -54,6 +56,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/willdurand/jsonp-callback-validator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/willdurand/negotiation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/willdurand/propel-typehintable-behavior" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -85,8 +88,10 @@
           <root url="file://$MODULE_DIR$/vendor/monolog/monolog" />
           <root url="file://$MODULE_DIR$/vendor/namshi/jose" />
           <root url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
+          <root url="file://$MODULE_DIR$/vendor/phing/phing" />
           <root url="file://$MODULE_DIR$/vendor/phpcollection/phpcollection" />
           <root url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
+          <root url="file://$MODULE_DIR$/vendor/propel/propel1" />
           <root url="file://$MODULE_DIR$/vendor/psr/cache" />
           <root url="file://$MODULE_DIR$/vendor/psr/container" />
           <root url="file://$MODULE_DIR$/vendor/psr/link" />
@@ -110,6 +115,7 @@
           <root url="file://$MODULE_DIR$/vendor/twig/twig" />
           <root url="file://$MODULE_DIR$/vendor/willdurand/jsonp-callback-validator" />
           <root url="file://$MODULE_DIR$/vendor/willdurand/negotiation" />
+          <root url="file://$MODULE_DIR$/vendor/willdurand/propel-typehintable-behavior" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/composer" />
@@ -137,8 +143,10 @@
           <root url="file://$MODULE_DIR$/vendor/monolog/monolog" />
           <root url="file://$MODULE_DIR$/vendor/namshi/jose" />
           <root url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
+          <root url="file://$MODULE_DIR$/vendor/phing/phing" />
           <root url="file://$MODULE_DIR$/vendor/phpcollection/phpcollection" />
           <root url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
+          <root url="file://$MODULE_DIR$/vendor/propel/propel1" />
           <root url="file://$MODULE_DIR$/vendor/psr/cache" />
           <root url="file://$MODULE_DIR$/vendor/psr/container" />
           <root url="file://$MODULE_DIR$/vendor/psr/link" />
@@ -162,6 +170,7 @@
           <root url="file://$MODULE_DIR$/vendor/twig/twig" />
           <root url="file://$MODULE_DIR$/vendor/willdurand/jsonp-callback-validator" />
           <root url="file://$MODULE_DIR$/vendor/willdurand/negotiation" />
+          <root url="file://$MODULE_DIR$/vendor/willdurand/propel-typehintable-behavior" />
         </SOURCES>
       </library>
     </orderEntry>

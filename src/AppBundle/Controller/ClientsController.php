@@ -27,4 +27,25 @@ header("Access-Control-Allow-Headers: Origin, Content-Type, Accept");
 class ClientsController extends Controller
 {
 
+    /**
+     *
+     * @Get("/user/test")
+     */
+    public function RoleUserAction(Request $request)
+    {
+        return $this->render('Roles/role-user.html.twig');
+
+    }
+
+
+    /**
+     *
+     * @Get("/admin/test")
+     */
+    public function RoleAdminAction(Request $request)
+    {
+        return $this->render('Roles/role-admin.html.twig');
+
+    }
+
 }

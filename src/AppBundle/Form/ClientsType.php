@@ -15,7 +15,14 @@ class ClientsType extends AbstractType
     {
         $builder->add('nom')->add('prenom')->add('adMail')->add('adresse')->add('numTel')->add('ville');
     }
-    
+
+
+    public function getParent()
+    {
+        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+    }
+
+
     /**
      * {@inheritdoc}
      */
@@ -34,5 +41,10 @@ class ClientsType extends AbstractType
         return 'appbundle_clients';
     }
 
+
+    public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
 
 }
