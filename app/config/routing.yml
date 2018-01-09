@@ -2,6 +2,9 @@ app:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
 
+login_check:
+    path: /login_check
+
 #PAYS
 pays:
     type: rest
@@ -90,10 +93,7 @@ tout:
     type: rest
     resource: AppBundle\Controller\ProduitsController
 
-<<<<<<< master
-=======
 
->>>>>>> point ethique produits
 impactsethiques:
     type: rest
     resource: AppBundle\Controller\PointsEthiqueController
