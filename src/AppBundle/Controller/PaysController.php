@@ -17,9 +17,6 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Origin, Content-Type, Accept");
 
 
 class PaysController extends Controller

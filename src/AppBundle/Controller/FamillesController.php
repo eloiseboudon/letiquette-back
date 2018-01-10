@@ -19,9 +19,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Origin, Content-Type, Accept");
 class FamillesController extends Controller
 {
     /**

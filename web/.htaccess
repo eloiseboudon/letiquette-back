@@ -21,12 +21,11 @@ DirectoryIndex app.php
 
 #Elo
 
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
-    Header set Access-Control-Allow-Headers "content-type, origin, accept"
-
 
     RewriteEngine On
+
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
