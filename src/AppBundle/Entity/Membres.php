@@ -12,12 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * Clients
+ * Membres
  *
- * @ORM\Table(name="clients")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ClientsRepository")
+ * @ORM\Table(name="membres")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MembresRepository")
  */
-class Clients
+class Membres
 {
     /**
      * @var int
@@ -28,6 +28,21 @@ class Clients
      */
     private $id;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=255)
+     */
+    private $login;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $password;
+    protected $plainPassword;
+
+
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Villes", cascade={"persist"})
      * @var Villes
@@ -37,7 +52,7 @@ class Clients
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
@@ -45,7 +60,7 @@ class Clients
     /**
      * @var string
      *
-     * @ORM\Column(name="Prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
 
@@ -60,7 +75,7 @@ class Clients
     /**
      * @var string
      *
-     * @ORM\Column(name="Adresse", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255)
      */
     private $adresse;
 
@@ -87,7 +102,7 @@ class Clients
      *
      * @param string $nom
      *
-     * @return Clients
+     * @return Membres
      */
     public function setNom($nom)
     {
@@ -111,7 +126,7 @@ class Clients
      *
      * @param string $prenom
      *
-     * @return Clients
+     * @return Membres
      */
     public function setPrenom($prenom)
     {
@@ -135,7 +150,7 @@ class Clients
      *
      * @param string $adMail
      *
-     * @return Clients
+     * @return Membres
      */
     public function setAdMail($adMail)
     {
@@ -159,7 +174,7 @@ class Clients
      *
      * @param string $adresse
      *
-     * @return Clients
+     * @return Membres
      */
     public function setAdresse($adresse)
     {
@@ -183,7 +198,7 @@ class Clients
      *
      * @param string $numTel
      *
-     * @return Clients
+     * @return Membres
      */
     public function setNumTel($numTel)
     {
@@ -207,7 +222,7 @@ class Clients
      *
      * @param \AppBundle\Entity\Villes $ville
      *
-     * @return Clients
+     * @return Membres
      */
     public function setVille(\AppBundle\Entity\Villes $ville = null)
     {
@@ -224,5 +239,53 @@ class Clients
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set login
+     *
+     * @param string $login
+     *
+     * @return Membres
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * Get login
+     *
+     * @return string
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Membres
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }

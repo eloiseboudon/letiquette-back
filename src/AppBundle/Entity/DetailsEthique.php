@@ -31,10 +31,10 @@ class DetailsEthique
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Clients", cascade={"persist"})
-     * @var Clients
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membres", cascade={"persist"})
+     * @var Membres
      */
-    private $client;
+    private $membre;
 
 
     /**
@@ -90,27 +90,27 @@ class DetailsEthique
     }
 
     /**
-     * Set client
+     * Set membre
      *
-     * @param \AppBundle\Entity\Clients $client
+     * @param \AppBundle\Entity\Membres $membre
      *
      * @return DetailsEthique
      */
-    public function setClient(\AppBundle\Entity\Clients $client = null)
+    public function setMembre(\AppBundle\Entity\Membres $membre = null)
     {
-        $this->client = $client;
+        $this->membre = $membre;
 
         return $this;
     }
 
     /**
-     * Get client
+     * Get membre
      *
-     * @return \AppBundle\Entity\Clients
+     * @return \AppBundle\Entity\Membres
      */
-    public function getClient()
+    public function getMembre()
     {
-        return $this->client;
+        return $this->membre;
     }
 
     /**

@@ -28,6 +28,21 @@ class Clients
      */
     private $id;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=255)
+     */
+    private $login;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $password;
+    protected $plainPassword;
+
+
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Villes", cascade={"persist"})
      * @var Villes
@@ -37,7 +52,7 @@ class Clients
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
@@ -45,7 +60,7 @@ class Clients
     /**
      * @var string
      *
-     * @ORM\Column(name="Prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
 
@@ -60,7 +75,7 @@ class Clients
     /**
      * @var string
      *
-     * @ORM\Column(name="Adresse", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255)
      */
     private $adresse;
 
