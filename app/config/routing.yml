@@ -5,6 +5,11 @@ app:
 login_check:
     path: /login_check
 
+
+membres:
+    type: rest
+    resource: AppBundle\Controller\MembresController
+
 #PAYS
 pays:
     type: rest

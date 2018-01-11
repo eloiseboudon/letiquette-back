@@ -8,7 +8,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 
 
 /**
@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="membres")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MembresRepository")
  */
-class Membres
+class Membres implements UserInterface
 {
     /**
      * @var int
@@ -310,6 +310,12 @@ class Membres
     {
         return null;
     }
+
+    public function getUsername()
+    {
+        return $this->login;
+    }
+
 
     public function eraseCredentials()
     {

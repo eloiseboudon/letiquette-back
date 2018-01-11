@@ -28,9 +28,22 @@ class MembresController extends Controller
      */
     public function postMembreAction(Request $request){
 
+        $ville = $this->getDoctrine()->getRepository('AppBundle:Villes')->find($request->get('idVille'));
+
+        if (empty($ville)){
+            return new JsonResponse(['message' => 'Ville not found'], Response::HTTP_NOT_FOUND);
+        }
+
         $membre = new Membres();
         $encoder = $this->get('security.password_encoder');
-        $encoded = $encoder->encodePassword($membre, $membre->getPlainPassword());
+        $encoded = $encoder->encodePassword($membre,$request->get('password'));
+        $membre->setNom($request->get('nom'));
+        $membre->setPrenom($request->get('prenom'));
+        $membre->setLogin($request->get('login'));
+        $membre->setAdresse($request->get('adresse'));
+        $membre->setAdMail($request->get('email'));
+        $membre->setNumTel($request->get('telephone'));
+        $membre->setVille($ville);
         $membre->setPassword($encoded);
 
         $em = $this->getDoctrine()->getManager();;
