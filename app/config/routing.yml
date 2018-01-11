@@ -10,6 +10,11 @@ membres:
     type: rest
     resource: AppBundle\Controller\MembresController
 
+
+auth-token:
+    type:     rest
+    resource: AppBundle\Controller\AuthTokenController
+
 #PAYS
 pays:
     type: rest
