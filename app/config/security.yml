@@ -13,12 +13,13 @@ security:
                     cost: 12
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    gary:
-                        password: pass
-                        roles: 'ROLE_USER'
+        auth_token_user_provider:
+            id: auth_token_user_provider
+
+
+#
+#    providers:
+#        in_memory: { memory: ~ }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -26,8 +27,16 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-#        main:
-#            anonymous: ~
+        main:
+            pattern: ^/login
+            stateless: true
+            simple_preauth:
+                authenticator: auth_token_authenticator
+            provider: auth_token_user_provider
+            anonymous: ~
+
+
+
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
@@ -35,17 +44,17 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
-        login:
-            pattern:  ^/login
-            stateless: true
-            anonymous: true
-            form_login:
-                check_path:               /login_check
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
-                username_parameter: username
-                password_parameter: password
+#        login:
+#            pattern:  ^/login
+#            stateless: true
+#            anonymous: true
+#            form_login:
+#                check_path:               /login_check
+#                success_handler:          lexik_jwt_authentication.handler.authentication_success
+#                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+#                require_previous_session: false
+#                username_parameter: username
+#                password_parameter: password
 
 #        api:
 #            pattern:   ^/
@@ -54,6 +63,6 @@ security:
 #                authenticators:
 #                    - lexik_jwt_authentication.jwt_token_authenticator
 
-    access_control:
-            - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/,       roles: IS_AUTHENTICATED_FULLY }
+#    access_control:
+#            - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#            - { path: ^/,       roles: IS_AUTHENTICATED_FULLY }

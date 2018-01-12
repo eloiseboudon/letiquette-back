@@ -2,8 +2,17 @@ app:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
 
-login_check:
-    path: /login_check
+#login_check:
+#    path: /login_check
+
+membres:
+    type: rest
+    resource: AppBundle\Controller\MembresController
+
+
+auth-token:
+    type:     rest
+    resource: AppBundle\Controller\AuthTokenController
 
 #PAYS
 pays:
@@ -19,6 +28,10 @@ villes:
 produits:
     type: rest
     resource: AppBundle\Controller\ProduitsController
+
+panier:
+    type: rest
+    resource: AppBundle\Controller\PanierController
 
 #PRODUITSFEMMES
 femmes:
