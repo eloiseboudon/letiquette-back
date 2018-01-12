@@ -22,17 +22,17 @@ class AuthTokenMembreProvider implements UserProviderInterface
     public function __construct(EntityRepository $authTokenRepository, EntityRepository $membreRepository)
     {
         $this->authTokenRepository = $authTokenRepository;
-        $this->userRepository = $membreRepository;
+        $this->membreRepository = $membreRepository;
     }
 
     public function getAuthToken($authTokenHeader)
     {
-        return $this->authTokenRepository->findOneByValue($authTokenHeader);
+        return $this->authTokenRepository->findOneBy(['value' => $authTokenHeader]);
     }
 
     public function loadUserByUsername($email)
     {
-        return $this->membreRepository->findByEmail($email);
+        return $this->membreRepository->findBy(['email' => $email]);
     }
 
     public function refreshUser(UserInterface $user)

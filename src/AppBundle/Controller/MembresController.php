@@ -64,6 +64,9 @@ class MembresController extends Controller
     }
 
 
+
+
+
     private function updateMembre(Request $request)
     {
         $membre = $this->getDoctrine()->getRepository('AppBundle:Membres')->find($request->get('id'));
