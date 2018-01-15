@@ -26,7 +26,10 @@ framework:
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id: session.handler.native_file
+#        handler_id: ~
+        storage_id: session.storage.php_bridge
         save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        cookie_lifetime: 360
     fragments: ~
     http_method_override: true
     assets: ~

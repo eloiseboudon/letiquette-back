@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Panier
@@ -34,7 +35,7 @@ class Panier
     private $membre;
 
     /**
-     * @var string
+     * @var \DateTime
      *
      * @ORM\Column(name="Date", type="datetime")
      */
