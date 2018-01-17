@@ -9,7 +9,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\DetailPanier;
-use AppBundle\Entity\Membres;
 use AppBundle\Entity\Panier;
 use JMS\Serializer\SerializationContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -50,7 +49,7 @@ class PanierController extends Controller
     public function ajouterProduitAction(Request $request)
     {
         if (!$request->request->get('idPanier')){
-        $panier = $this->creerPanier($request->get('idMembre'));
+        $panier = $this->creerPanier();
     } else {
         $panier = $this->getDoctrine()->getRepository('AppBundle:Panier')->find($request->get('idPanier'));
     }
@@ -123,17 +122,10 @@ class PanierController extends Controller
     }
 
 
-    private function creerPanier($id_membre)
+    private function creerPanier()
     {
-        $membre = $this->getDoctrine()->getRepository('AppBundle:Membres')->find($id_membre);
-
-        if (empty($membre)) {
-            return new JsonResponse(['message' => 'Membre not found'], Response::HTTP_NOT_FOUND);
-        }
         $panier = new Panier();
         $panier->setDate(new \DateTime('now'));
-        $panier->setMembre($membre);
-
 
         $em = $this->getDoctrine()->getManager();;
         $em->persist($panier);
