@@ -9,7 +9,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\DetailPanier;
-use AppBundle\Entity\Membres;
 use AppBundle\Entity\Panier;
 use JMS\Serializer\SerializationContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,8 +28,7 @@ class PanierController extends Controller
      */
     public function getPanierAction($id)
     {
-        $panier = $this->getDoctrine()->getRepository('AppBundle:DetailPanier')->find($id);
-
+        $panier = $this->getDoctrine()->getRepository('AppBundle:DetailPanier')->findBy(['panier' => $id]);
 
         $data = $this->get('jms_serializer')
             ->serialize($panier, 'json',
@@ -45,39 +43,17 @@ class PanierController extends Controller
 
     /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Post("/panier")
-     */
-    public function creerPanierAction(Request $request)
-    {
-        $membre = $this->getDoctrine()->getRepository('AppBundle:Membres')->find($request->get('idMembre'));
-
-        if (empty($membre)) {
-            return new JsonResponse(['message' => 'Membre not found'], Response::HTTP_NOT_FOUND);
-        }
-        $panier = new Panier();
-
-        $panier->setDate(new \DateTime('now'));
-        $panier->setMembre($membre);
-
-
-        $em = $this->getDoctrine()->getManager();;
-        $em->persist($panier);
-        $em->flush();
-
-        return $panier;
-    }
-
-
-    /**
-     * @Rest\View(statusCode=Response::HTTP_CREATED)
      * @Rest\Post("/panier/ajout")
      */
     public function ajouterProduitAction(Request $request)
     {
-
+        if (!$request->request->get('idPanier')){
+        $panier = $this->creerPanier();
+    } else {
         $panier = $this->getDoctrine()->getRepository('AppBundle:Panier')->find($request->get('idPanier'));
-        $produit = $this->getDoctrine()->getRepository('AppBundle:Produits')->find($request->get('idProduit'));
+    }
 
+        $produit = $this->getDoctrine()->getRepository('AppBundle:Produits')->find($request->get('idProduit'));
 
         if (empty($panier)) {
             return new JsonResponse(['message' => 'Panier not found'], Response::HTTP_NOT_FOUND);
@@ -86,7 +62,6 @@ class PanierController extends Controller
         if (empty($produit)) {
             return new JsonResponse(['message' => 'Produit not found'], Response::HTTP_NOT_FOUND);
         }
-
 
         $detailPanier = new DetailPanier();
         $detailPanier->setPanier($panier);
@@ -106,15 +81,12 @@ class PanierController extends Controller
      */
     public function modifierPanierAction(Request $request)
     {
-
         $detailPanier = $this->getDoctrine()->getRepository('AppBundle:DetailPanier')->findOneBy(['panier' => $request->get('idPanier'),
             'produit' => $request->get('idProduit')]);
-
 
         if (empty($detailPanier)) {
             return new JsonResponse(['message' => 'Panier not found'], Response::HTTP_NOT_FOUND);
         }
-
 
         $detailPanier->setQuantite($detailPanier->getQuantite() + 1);
 
@@ -132,15 +104,12 @@ class PanierController extends Controller
      */
     public function supprimerProduitAction(Request $request)
     {
-
         $detailPanier = $this->getDoctrine()->getRepository('AppBundle:DetailPanier')->findOneBy(['panier' => $request->get('idPanier'),
             'produit' => $request->get('idProduit')]);
-
 
         if (empty($detailPanier)) {
             return new JsonResponse(['message' => 'Panier not found'], Response::HTTP_NOT_FOUND);
         }
-
 
         $detailPanier->setQuantite($detailPanier->getQuantite() + 1);
 
@@ -148,8 +117,20 @@ class PanierController extends Controller
         $em->remove($detailPanier);
         $em->flush();
 
-
         return new JsonResponse(['message' => 'Panier vidé']);
+    }
+
+
+    private function creerPanier()
+    {
+        $panier = new Panier();
+        $panier->setDate(new \DateTime('now'));
+
+        $em = $this->getDoctrine()->getManager();;
+        $em->persist($panier);
+        $em->flush();
+
+        return $panier;
     }
 
 }

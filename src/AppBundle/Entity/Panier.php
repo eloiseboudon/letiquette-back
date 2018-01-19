@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Panier
@@ -27,14 +28,9 @@ class Panier
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membres", cascade={"persist"})
-     * @var Membres
-     */
-    private $membre;
 
     /**
-     * @var string
+     * @var \DateTime
      *
      * @ORM\Column(name="Date", type="datetime")
      */
@@ -75,27 +71,5 @@ class Panier
         return $this->date;
     }
 
-    /**
-     * Set membre
-     *
-     * @param \AppBundle\Entity\Membres $membre
-     *
-     * @return Panier
-     */
-    public function setMembre(\AppBundle\Entity\Membres $membre = null)
-    {
-        $this->membre = $membre;
 
-        return $this;
-    }
-
-    /**
-     * Get membre
-     *
-     * @return \AppBundle\Entity\Membres
-     */
-    public function getMembre()
-    {
-        return $this->membre;
-    }
 }

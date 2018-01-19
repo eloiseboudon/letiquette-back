@@ -10,6 +10,7 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use JMS\Serializer\SerializationContext;
 
 
 //header("Access-Control-Allow-Origin: *");
@@ -24,18 +25,15 @@ class VillesController extends Controller
      * @Get("/villes")
      */
     public function getVillesAction(){
-        $villesList = $this->getDoctrine()->getRepository('AppBundle:Villes')->findAll();
-        $formatted = [];
-        foreach ($villesList as $ville){
-            $formatted[]=[
-                'id' => $ville->getId(),
-                'name' => $ville->getVille(),
-                'codePostal' => $ville->getCodePostal(),
-                'pays' => $ville->getPays()->getPays()
-            ];
-        }
+        $villes = $this->getDoctrine()->getRepository('AppBundle:Villes')->findAll();
+        $data = $this->get('jms_serializer')
+            ->serialize($villes, 'json',
+                SerializationContext::create()->setSerializeNull(true));
 
-        return new JsonResponse($formatted);
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 
@@ -43,21 +41,20 @@ class VillesController extends Controller
      * @Get("/villes/{id}")
      */
     public function getVillesIdAction($id){
-        $ville = $this->getDoctrine()->getRepository('AppBundle:Villes')->find($id);
+        $villes = $this->getDoctrine()->getRepository('AppBundle:Villes')->find($id);
 
         if (empty($ville)) {
             return new JsonResponse(['message' => 'Ville not found'], Response::HTTP_NOT_FOUND);
         }
 
-        $formatted[]=[
-            'id' => $ville->getId(),
-            'name' => $ville->getVille(),
-            'codePostal' => $ville->getCodePostal(),
-            'pays' => $ville->getPays()->getPays()
-        ];
+        $data = $this->get('jms_serializer')
+            ->serialize($villes, 'json',
+                SerializationContext::create()->setSerializeNull(true));
 
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
 
-        return new JsonResponse($formatted);
+        return $response;
     }
 
     /**

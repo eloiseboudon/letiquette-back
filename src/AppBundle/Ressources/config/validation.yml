@@ -1,7 +1,0 @@
-AppBundle\Entity\Pays:
-    constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
-    properties:
-        name:
-            - NotBlank: ~
-            - Type: string
