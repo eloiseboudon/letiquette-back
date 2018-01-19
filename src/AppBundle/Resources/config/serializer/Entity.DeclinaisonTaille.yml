@@ -1,0 +1,5 @@
+AppBundle\Entity\DeclinaisonTaille:
+    exclusion_policy: none
+    properties:
+        taille:
+            groups: ['taille']

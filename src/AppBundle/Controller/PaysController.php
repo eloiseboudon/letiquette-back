@@ -15,8 +15,7 @@ use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Patch;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-
+use JMS\Serializer\SerializationContext;
 
 
 class PaysController extends Controller
@@ -27,18 +26,15 @@ class PaysController extends Controller
      */
     public function getPaysAction(){
 
-        $paysList = $this->getDoctrine()->getRepository('AppBundle:Pays')->findAll();
-        $formatted = [];
+        $pays = $this->getDoctrine()->getRepository('AppBundle:Pays')->findAll();
+        $data = $this->get('jms_serializer')
+            ->serialize($pays, 'json',
+                SerializationContext::create()->setSerializeNull(true));
 
-        foreach ($paysList as $pays){
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
 
-            $formatted[]=[
-                'id' => $pays->getId(),
-                'name' => $pays->getPays()
-            ];
-        }
-
-        return new JsonResponse($formatted);
+        return $response;
     }
 
 
@@ -51,12 +47,14 @@ class PaysController extends Controller
         if (empty($pays)) {
             return new JsonResponse(['message' => 'Pays not found'], Response::HTTP_NOT_FOUND);
         }
+        $data = $this->get('jms_serializer')
+            ->serialize($pays, 'json',
+                SerializationContext::create()->setSerializeNull(true));
 
-        $formatted[]=[
-            'id' => $pays->getId(),
-            'name' => $pays->getPays()
-        ];
-        return new JsonResponse($formatted);
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
     /**
