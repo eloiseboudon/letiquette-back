@@ -27,10 +27,14 @@ class DeclinaisonTailleController extends Controller
      */
     public function getTaillesByProduitAction(Request $request)
     {
-        $taille = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
+        $produitTailles = $this->getDoctrine()->getRepository('AppBundle:DeclinaisonTaille')
             ->findBy(
                 array('produit' => $request->get('id'))
             );
+        $taille = [];
+        foreach ($produitTailles as $produitTaille) {
+            $taille[] = $this->getDoctrine()->getRepository('AppBundle:Tailles')->find($produitTaille->getTaille());
+        }
 
         $data = $this->get('jms_serializer')
             ->serialize($taille, 'json',

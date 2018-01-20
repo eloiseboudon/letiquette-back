@@ -1,5 +1,7 @@
 AppBundle\Entity\Tailles:
     exclusion_policy: none
     properties:
+        id:
+            groups: ['taille']
         taille:
             groups: ['taille']

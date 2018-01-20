@@ -49,6 +49,12 @@ class DetailPanier
      */
     private $quantite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tailles", cascade={"persist"})
+     * @var Tailles
+     */
+    private $taille;
+
 
 
 

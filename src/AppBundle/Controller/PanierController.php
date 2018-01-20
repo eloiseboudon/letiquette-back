@@ -53,7 +53,13 @@ class PanierController extends Controller
         $panier = $this->getDoctrine()->getRepository('AppBundle:Panier')->find($request->get('idPanier'));
     }
 
+        $taille = $this->getDoctrine()->getRepository('AppBundle:Tailles')->find($request->get('idTaille'));
+
         $produit = $this->getDoctrine()->getRepository('AppBundle:Produits')->find($request->get('idProduit'));
+
+        if(empty($taille)){
+            return new JsonResponse(['message' => 'Taille not found'], Response::HTTP_NOT_FOUND);
+        }
 
         if (empty($panier)) {
             return new JsonResponse(['message' => 'Panier not found'], Response::HTTP_NOT_FOUND);
@@ -66,6 +72,7 @@ class PanierController extends Controller
         $detailPanier = new DetailPanier();
         $detailPanier->setPanier($panier);
         $detailPanier->setProduit($produit);
+        $detailPanier->setTaille($taille);
         $detailPanier->setQuantite(1);
 
         $em = $this->getDoctrine()->getManager();;
@@ -77,12 +84,11 @@ class PanierController extends Controller
 
     /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Put("/panier/modifier")
+     * @Rest\Put("/panier/quantitePlus")
      */
-    public function modifierPanierAction(Request $request)
+    public function quantitePlusPanierAction(Request $request)
     {
-        $detailPanier = $this->getDoctrine()->getRepository('AppBundle:DetailPanier')->findOneBy(['panier' => $request->get('idPanier'),
-            'produit' => $request->get('idProduit')]);
+        $detailPanier = $this->getDoctrine()->getRepository('AppBundle:DetailPanier')->find($request->get('idDetailPanier'));
 
         if (empty($detailPanier)) {
             return new JsonResponse(['message' => 'Panier not found'], Response::HTTP_NOT_FOUND);
@@ -97,23 +103,40 @@ class PanierController extends Controller
         return $detailPanier;
     }
 
-
     /**
-     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
-     * @Rest\Delete("/panier/supprimerProduit")
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Put("/panier/quantiteMoins")
      */
-    public function supprimerProduitAction(Request $request)
+    public function quantiteMoinsPanierAction(Request $request)
     {
-        $detailPanier = $this->getDoctrine()->getRepository('AppBundle:DetailPanier')->findOneBy(['panier' => $request->get('idPanier'),
-            'produit' => $request->get('idProduit')]);
+        $detailPanier = $this->getDoctrine()->getRepository('AppBundle:DetailPanier')->find($request->get('idDetailPanier'));
 
         if (empty($detailPanier)) {
             return new JsonResponse(['message' => 'Panier not found'], Response::HTTP_NOT_FOUND);
         }
 
-        $detailPanier->setQuantite($detailPanier->getQuantite() + 1);
+        $detailPanier->setQuantite($detailPanier->getQuantite() - 1);
+
+        $em = $this->getDoctrine()->getManager();;
+        $em->merge($detailPanier);
+        $em->flush();
+
+        return $detailPanier;
+    }
+
+
+
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     * @Rest\Delete("/panier/supprimerProduit/{id}")
+     */
+    public function supprimerProduitAction(Request $request)
+    {
+
 
         $em = $this->getDoctrine()->getManager();
+        $detailPanier = $em->getRepository('AppBundle:DetailPanier')->find($request->get('id'));
         $em->remove($detailPanier);
         $em->flush();
 

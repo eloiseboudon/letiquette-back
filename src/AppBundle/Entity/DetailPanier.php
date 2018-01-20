@@ -49,6 +49,12 @@ class DetailPanier
      */
     private $quantite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tailles", cascade={"persist"})
+     * @var Tailles
+     */
+    private $taille;
+
 
 
 
@@ -132,5 +138,29 @@ class DetailPanier
     public function getProduit()
     {
         return $this->produit;
+    }
+
+    /**
+     * Set taille
+     *
+     * @param \AppBundle\Entity\Tailles $taille
+     *
+     * @return DetailPanier
+     */
+    public function setTaille(\AppBundle\Entity\Tailles $taille = null)
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
+    /**
+     * Get taille
+     *
+     * @return \AppBundle\Entity\Tailles
+     */
+    public function getTaille()
+    {
+        return $this->taille;
     }
 }
