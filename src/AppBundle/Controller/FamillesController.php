@@ -45,21 +45,60 @@ class FamillesController extends Controller
      * @Get("/familles/{sexe}")
      */
     public function getFamillesBySexeAction($sexe){
-        $famillesList = $this->getDoctrine()->getRepository('AppBundle:Familles')
+        $familles = $this->getDoctrine()->getRepository('AppBundle:Familles')
             ->findBy(
                 array('sexe' => $sexe)
             );
 
-        $formatted = [];
-        foreach ($famillesList as $famille) {
-            $formatted[] = [
-                'id' => $famille->getId(),
-                'famille' => $famille->getFamille(),
-                'sexe' => $famille->getSexe(),
-                'global' => $famille->getFamilleGlobal()->getFamilleGlobal(),
-                'globalId' =>$famille->getFamilleGlobal()->getId()
-            ];
-        }
-        return new JsonResponse($formatted);
+        $data = $this->get('jms_serializer')
+            ->serialize($familles, 'json',
+                SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+
+    /**
+     * @Get("/familles/{sexe}/{familleGlobal}")
+     */
+    public function getFamillesBySexeAndFamilleGlobalAction($sexe,$familleGlobal){
+        $familles = $this->getDoctrine()->getRepository('AppBundle:Familles')
+            ->findBy(
+                array('sexe' => $sexe, 'familleGlobal' => $familleGlobal)
+            );
+
+
+        $data = $this->get('jms_serializer')
+            ->serialize($familles, 'json',
+                SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+
+    /**
+     * @Get("/familles/globales/{familleGlobal}")
+     */
+    public function getFamillesByFamilleGlobalAction($familleGlobal){
+        $familles = $this->getDoctrine()->getRepository('AppBundle:Familles')
+            ->findBy(
+                array('familleGlobal' => $familleGlobal)
+            );
+
+
+        $data = $this->get('jms_serializer')
+            ->serialize($familles, 'json',
+                SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 }

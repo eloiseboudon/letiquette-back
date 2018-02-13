@@ -42,27 +42,20 @@ images:
     type: rest
     resource: AppBundle\Controller\ImagesProduitController
 
-
-##PRODUITS
-#produitsSexe:
-#    type: rest
-#    resource: AppBundle\Controller\ProduitsController
-#
-##PRODUITS
-#produitsFamille:
-#    type: rest
-#    resource: AppBundle\Controller\ProduitsController
-
 #FOURNISSEURS
 fournisseurs:
     type: rest
     resource: AppBundle\Controller\FournisseursController
 
-#FAMILES
+#FAMILLES
 familles:
     type: rest
     resource: AppBundle\Controller\FamillesController
 
+ #FAMILLESGLOBALES
+famillesGlobales:
+    type: rest
+    resource: AppBundle\Controller\FamilleGlobalController
 
 #TAILLE
 tailles:
@@ -75,7 +68,6 @@ ethique:
     resource: AppBundle\Controller\DeclinaisonEthiqueController
 
 
-
 #COULEUR
 couleurs:
     type: rest
@@ -86,20 +78,6 @@ couleurs:
 tailleType:
     type: rest
     resource: AppBundle\Controller\TailleTypeController
-
-
-#DECLINAISON_TAILLE
-#produitsTaille:
-#    type: rest
-#    resource: AppBundle\Controller\DeclinaisonTailleController
-
-
-#DECLINAISON_TAILLE
-#produitsTailleFamille:
-#    type: rest
-#    resource: AppBundle\Controller\DeclinaisonTailleController
-
-
 
 
 tout:

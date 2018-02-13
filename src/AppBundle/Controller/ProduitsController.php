@@ -80,6 +80,42 @@ class ProduitsController extends Controller
 
 
     /**
+     * @Get("/produits/famille/{id}/sexe/{sexe}")
+     */
+    public
+    function getProduitsFamillebySexeAction($id,$sexe)
+    {
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsByFamillebySexe($id,$sexe);
+
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+
+
+    /**
+     * @Get("/produits/familleGlobal/{id}/sexe/{sexe}")
+     */
+    public
+    function getProduitsFamilleGlobalbySexeAction($id,$sexe)
+    {
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsByFamilleGlobalebySexe($id,$sexe);
+
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
      * @Get("/produits/taille/{arrayTaille}")
      */
     public
