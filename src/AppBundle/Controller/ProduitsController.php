@@ -68,9 +68,9 @@ class ProduitsController extends Controller
     function getProduitsFamilleAction($id)
     {
         $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsByFamille($id);
-        $data = $this->get('jms_serializer')->serialize($produits, 'json',
-            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setSerializeNull(true));
 
         $response = new Response($data);
         $response->headers->set('Content-Type', 'application/json');
@@ -103,19 +103,19 @@ class ProduitsController extends Controller
     /**
      * @Get("/femmes")
      */
-    public
-    function getProduitsFemmesAction()
-    {
-        $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
-        $data = $this->get('jms_serializer')->serialize($produits, 'json',
-            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
-
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
+//    public
+//    function getProduitsFemmesAction()
+//    {
+//        $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
+//        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+//            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
+//
+//
+//        $response = new Response($data);
+//        $response->headers->set('Content-Type', 'application/json');
+//
+//        return $response;
+//    }
 
 
     /**

@@ -14,31 +14,32 @@ use Doctrine\ORM\QueryBuilder;
  */
 class ProduitsRepository extends EntityRepository
 {
-    public function findProduitBySexe($sexe)
-    {
-
-        $queryBuilder = $this->createQueryBuilder('p');
-        $queryBuilder->innerJoin('p.famille', 'fam')
-            ->addSelect('fam')
-            ->where($queryBuilder->expr()->eq('fam.sexe', ':sexe'))
-            ->setParameters(array('sexe' => $sexe));
-
-        return $queryBuilder
-            ->getQuery()
-            ->getResult();
-
-    }
+//    public function findProduitBySexe($sexe)
+//    {
+//
+//        $queryBuilder = $this->createQueryBuilder('p');
+//        $queryBuilder->innerJoin('p.famille', 'fam')
+//            ->addSelect('fam')
+//            ->where($queryBuilder->expr()->eq('fam.sexe', ':sexe'))
+//            ->setParameters(array('sexe' => $sexe));
+//
+//        return $queryBuilder
+//            ->getQuery()
+//            ->getResult();
+//
+//    }
 
     public function findProduitsByFamille($id)
     {
-        $queryBuilder = $this->createQueryBuilder('p');
-        $queryBuilder->innerJoin('p.famille', 'fam')
-            ->addSelect('fam')
-            ->where($queryBuilder->expr()->eq('fam.id', ':id'))
+        $queryBuilder = $this->_em->createQuery('SELECT p.id,p.libelle,p.prix,p.description, p.image,
+        ta.taille, pe.nomEthique as ethique, fa.famille, c.name as couleur , fo.nomMarque as marque
+        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
+        LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta
+        LEFT JOIN p.famille fa LEFT JOIN p.couleur c LEFT JOIN p.fournisseur fo
+        WHERE fa.id = :id')
             ->setParameters(array('id' => $id));
 
         return $queryBuilder
-            ->getQuery()
             ->getResult();
     }
 
