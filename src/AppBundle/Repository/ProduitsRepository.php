@@ -60,17 +60,107 @@ class ProduitsRepository extends EntityRepository
             ->getResult();
     }
 
-
-
-    public function findProduitsByFamilleGlobalebySexe($id, $sexe)
+    public function findProduitUniqueByFamilleGlobalebySexe($id, $sexe)
     {
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->join('p.famille', 'f')
+            ->join('f.familleGlobal', 'fg')
+            ->where($queryBuilder->expr()->eq('fg.id', ':id'))
+            ->andWhere($queryBuilder->expr()->eq('f.sexe', ':sexe'))
+            ->setParameters(array(':id' => $id, 'sexe' => $sexe));
 
+        return $queryBuilder
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    public function findEverything()
+    {
+        $queryBuilder = $this->_em->createQuery('SELECT p.id,p.libelle,p.prix,p.description,
+        ta.taille, pe.nomEthique as ethique, fa.famille, c.name as couleur , fo.nomMarque as marque
+        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
+        LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta
+        LEFT JOIN p.famille fa LEFT JOIN p.couleur c LEFT JOIN p.fournisseur fo');
+
+        return $queryBuilder
+            ->getResult();
+    }
+
+    public function findEverythingSexe($sexe)
+    {
         $queryBuilder = $this->_em->createQuery('SELECT p.id,p.libelle,p.prix,p.description, p.image,
         ta.taille, pe.nomEthique as ethique, fa.famille, c.name as couleur , fo.nomMarque as marque
         FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
         LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta
         LEFT JOIN p.famille fa LEFT JOIN p.couleur c LEFT JOIN p.fournisseur fo
-       WHERE fa.familleGlobal = :id AND fa.sexe=:sexe')
+        WHERE fa.sexe = :sexe')
+            ->setParameter('sexe', $sexe);
+
+        return $queryBuilder
+            ->getResult();
+    }
+
+    public function crossSelling($famillesGlobales, $sexe)
+    {
+        $produit = [];
+
+        for ($i = 0; $i < 5; $i++) {
+
+            if ($this->findIDProduitByFamilleGlobalebySexe($famillesGlobales[$i], $sexe)) {
+                $rand = array_rand($this->findIDProduitByFamilleGlobalebySexe($famillesGlobales[$i], $sexe));
+                $produit[$i] = $this->findIDProduitByFamilleGlobalebySexe($famillesGlobales[$i], $sexe)[$rand];
+            }
+        }
+        $retour = [];
+        for ($j = 0; $j < sizeof($produit); $j++) {
+            array_push($retour, $produit[$j]);
+        }
+        return $retour;
+
+    }
+
+    public function findIDProduitByFamilleGlobalebySexe($id, $sexe)
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->join('p.famille', 'f')
+            ->join('f.familleGlobal', 'fg')
+            ->where($queryBuilder->expr()->eq('fg.id', ':id'))
+            ->andWhere($queryBuilder->expr()->eq('f.sexe', ':sexe'))
+            ->setParameters(array(':id' => $id, 'sexe' => $sexe));
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    public function upSelling($idFamilleGlobale, $sexe)
+    {
+        $produit = [];
+
+        $rand = array_rand($this->findIDProduitByFamilleGlobalebySexe($idFamilleGlobale, $sexe), 5);
+
+        for ($i = 0; $i < 5; $i++) {
+            $produit[$i] = $this->findIDProduitByFamilleGlobalebySexe($idFamilleGlobale, $sexe)[$rand[$i]];
+        }
+        $retour = [];
+        for ($j = 0; $j < sizeof($produit); $j++) {
+            array_push($retour, $produit[$j]);
+        }
+        return $retour;
+
+    }
+
+    public function findProduitsByFamilleGlobalebySexe($id, $sexe)
+    {
+        $queryBuilder = $this->_em->createQuery('SELECT p.id,p.libelle,p.prix,p.description, p.image,
+        ta.taille, pe.nomEthique as ethique, fa.famille, c.name as couleur , fo.nomMarque as marque
+        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
+        LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta
+        LEFT JOIN p.famille fa LEFT JOIN p.couleur c LEFT JOIN p.fournisseur fo
+        WHERE fa.familleGlobal = :id AND fa.sexe=:sexe')
             ->setParameter('id', $id)
             ->setParameter('sexe', $sexe);
 
@@ -78,32 +168,5 @@ class ProduitsRepository extends EntityRepository
             ->getResult();
     }
 
-
-    public function findEverything()
-    {
-        $queryBuilder = $this->_em->createQuery('SELECT p.id,p.libelle,p.prix,p.description,
-ta.taille, pe.nomEthique as ethique, fa.famille, c.name as couleur , fo.nomMarque as marque
-        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
-       LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta
-       LEFT JOIN p.famille fa LEFT JOIN p.couleur c LEFT JOIN p.fournisseur fo');
-
-        return $queryBuilder
-            ->getResult();
-    }
-
-
-    public function findEverythingSexe($sexe)
-    {
-        $queryBuilder = $this->_em->createQuery('SELECT p.id,p.libelle,p.prix,p.description, p.image,
-ta.taille, pe.nomEthique as ethique, fa.famille, c.name as couleur , fo.nomMarque as marque
-        FROM AppBundle:Produits p LEFT JOIN AppBundle:DeclinaisonEthique e WITH e.produit=p LEFT JOIN e.pointEthique pe
-       LEFT JOIN AppBundle:DeclinaisonTaille t WITH t.produit=p LEFT JOIN t.taille ta
-       LEFT JOIN p.famille fa LEFT JOIN p.couleur c LEFT JOIN p.fournisseur fo
-       WHERE fa.sexe = :sexe')
-            ->setParameter('sexe', $sexe);
-
-        return $queryBuilder
-            ->getResult();
-    }
 
 }

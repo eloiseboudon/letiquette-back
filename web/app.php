@@ -8,6 +8,8 @@ if (PHP_VERSION_ID < 70000) {
 }
 
 $kernel = new AppKernel('prod', false);
+//Pour mise en Prod mettre a true
+//$kernel = new AppKernel('prod', true);
 if (PHP_VERSION_ID < 70000) {
     $kernel->loadClassCache();
 }
