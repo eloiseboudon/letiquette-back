@@ -220,7 +220,7 @@ class ProduitsController extends Controller
         $idFamilleGlobale = $produit->getFamille()->getFamilleGlobal()->getId();
 
         $produits =  $this->getDoctrine()->getRepository('AppBundle:Produits')
-            ->upSelling($idFamilleGlobale, $produit->getFamille()->getSexe());
+            ->upSelling($idFamilleGlobale, $produit->getFamille()->getSexe(), $idProduit);
 
         $data = $this->get('jms_serializer')->serialize($produits, 'json',
             SerializationContext::create()->setSerializeNull(true));

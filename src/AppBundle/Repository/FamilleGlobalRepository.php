@@ -13,20 +13,14 @@ use Doctrine\ORM\QueryBuilder;
 class FamilleGlobalRepository extends EntityRepository
 {
     public function findOther($idFamilleGlobale){
-
         $queryBuilder = $this->createQueryBuilder('fg');
         $queryBuilder->where($queryBuilder->expr()->neq('fg.id',':idFamilleGlobale'))
             ->setParameter('idFamilleGlobale', $idFamilleGlobale);
+
         return $queryBuilder
             ->getQuery()
             ->getResult();
 
-
-//        $queryBuilder= $this->_em->createQuery('SELECT f.id, f.familleGlobal FROM AppBundle:FamilleGlobal f WHERE f.id NOT LIKE :idFamilleGlobal')
-//            ->setParameter('idFamilleGlobal', $idFamilleGlobale);
-//
-//        return $queryBuilder
-//            ->getResult();
     }
 
 }

@@ -102,22 +102,60 @@ class ProduitsRepository extends EntityRepository
             ->getResult();
     }
 
-    public function crossSelling($famillesGlobales, $sexe)
+    public function upSelling($idFamilleGlobale, $sexe, $idProduit)
     {
-        $produit = [];
+        $produits = [];
 
-        for ($i = 0; $i < 5; $i++) {
+        $arrayfam = $this->findDiffIDProduitByFamilleGlobalebySexe($idFamilleGlobale, $sexe, $idProduit);
 
-            if ($this->findIDProduitByFamilleGlobalebySexe($famillesGlobales[$i], $sexe)) {
-                $rand = array_rand($this->findIDProduitByFamilleGlobalebySexe($famillesGlobales[$i], $sexe));
-                $produit[$i] = $this->findIDProduitByFamilleGlobalebySexe($famillesGlobales[$i], $sexe)[$rand];
+        if ($arrayfam) {
+            $nb = min(sizeof($arrayfam), 4);
+
+            $rand = array_rand($arrayfam, $nb);
+
+            if (is_array($rand)) {
+                for ($i = 0; $i < $nb; $i++) {
+                    array_push($produits, $arrayfam[$rand[$i]]);
+                }
+            } else {
+                array_push($produits, $arrayfam[$rand]);
             }
         }
-        $retour = [];
-        for ($j = 0; $j < sizeof($produit); $j++) {
-            array_push($retour, $produit[$j]);
+
+        return $produits;
+    }
+
+    public function findDiffIDProduitByFamilleGlobalebySexe($id, $sexe, $idProduit)
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->join('p.famille', 'f')
+            ->join('f.familleGlobal', 'fg')
+            ->where($queryBuilder->expr()->eq('fg.id', ':id'))
+            ->andWhere($queryBuilder->expr()->eq('f.sexe', ':sexe'))
+            ->andWhere($queryBuilder->expr()->neq('p.id', ':idProduit'))
+            ->setParameters(array(':id' => $id, 'sexe' => $sexe, 'idProduit' => $idProduit));
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function crossSelling($famillesGlobales, $sexe)
+    {
+        $arrayIdFamilleGlobal = [];
+        for ($i = 0; $i < sizeof($famillesGlobales); $i++) {
+            array_push($arrayIdFamilleGlobal, $famillesGlobales[$i]->getId());
         }
-        return $retour;
+
+        $produits = [];
+
+        for ($i = 0; $i < 5; $i++) {
+            if (($sexe == 'F' && $arrayIdFamilleGlobal[$i] != '5') || ($sexe == 'M' && $arrayIdFamilleGlobal[$i] != '4')) {
+                $rand = array_rand($this->findIDProduitByFamilleGlobalebySexe($arrayIdFamilleGlobal[$i], $sexe));
+                array_push($produits, $this->findIDProduitByFamilleGlobalebySexe($arrayIdFamilleGlobal[$i], $sexe)[$rand]);
+            }
+        }
+        return $produits;
 
     }
 
@@ -133,23 +171,6 @@ class ProduitsRepository extends EntityRepository
         return $queryBuilder
             ->getQuery()
             ->getResult();
-
-    }
-
-    public function upSelling($idFamilleGlobale, $sexe)
-    {
-        $produit = [];
-
-        $rand = array_rand($this->findIDProduitByFamilleGlobalebySexe($idFamilleGlobale, $sexe), 5);
-
-        for ($i = 0; $i < 5; $i++) {
-            $produit[$i] = $this->findIDProduitByFamilleGlobalebySexe($idFamilleGlobale, $sexe)[$rand[$i]];
-        }
-        $retour = [];
-        for ($j = 0; $j < sizeof($produit); $j++) {
-            array_push($retour, $produit[$j]);
-        }
-        return $retour;
 
     }
 

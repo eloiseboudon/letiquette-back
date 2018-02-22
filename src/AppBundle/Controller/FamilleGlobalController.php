@@ -27,9 +27,7 @@ class FamilleGlobalController extends Controller
      */
     public function getFamillesGlobalesAction()
     {
-
         $familles = $this->getDoctrine()->getRepository('AppBundle:FamilleGlobal')->findAll();
-
 
         $data = $this->get('jms_serializer')
             ->serialize($familles, 'json',
