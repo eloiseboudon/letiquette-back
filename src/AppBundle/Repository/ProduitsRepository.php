@@ -150,10 +150,11 @@ class ProduitsRepository extends EntityRepository
         $produits = [];
 
         for ($i = 0; $i < 5; $i++) {
-            if (($sexe == 'F' && $arrayIdFamilleGlobal[$i] != '5') || ($sexe == 'M' && $arrayIdFamilleGlobal[$i] != '4')) {
-                $rand = array_rand($this->findIDProduitByFamilleGlobalebySexe($arrayIdFamilleGlobal[$i], $sexe));
-                array_push($produits, $this->findIDProduitByFamilleGlobalebySexe($arrayIdFamilleGlobal[$i], $sexe)[$rand]);
-            }
+            if ($this->findIDProduitByFamilleGlobalebySexe($arrayIdFamilleGlobal[$i], $sexe))
+                if (($sexe == 'F' && $arrayIdFamilleGlobal[$i] != '5') || ($sexe == 'M' && $arrayIdFamilleGlobal[$i] != '4')) {
+                    $rand = array_rand($this->findIDProduitByFamilleGlobalebySexe($arrayIdFamilleGlobal[$i], $sexe));
+                    array_push($produits, $this->findIDProduitByFamilleGlobalebySexe($arrayIdFamilleGlobal[$i], $sexe)[$rand]);
+                }
         }
         return $produits;
 

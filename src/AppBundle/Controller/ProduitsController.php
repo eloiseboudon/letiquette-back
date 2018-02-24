@@ -187,6 +187,24 @@ class ProduitsController extends Controller
     }
 
     /**
+     * @Get("/tout/hommes")
+     */
+    public
+    function getEverythingHommesAction()
+    {
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findEverythingSexe("M");
+
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+
+    /**
      * @Get("/produits/cross_selling/{idProduit}")
      */
     public function CrossSellingAction($idProduit)
