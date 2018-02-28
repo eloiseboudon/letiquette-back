@@ -47,6 +47,10 @@ familles:
     type: rest
     resource: AppBundle\Controller\FamillesController
 
+#FAMILLESGLOBALES
+famillesGlobales:
+    type: rest
+    resource: AppBundle\Controller\FamilleGlobalController
 
 #TAILLE
 tailles:
@@ -59,12 +63,10 @@ ethique:
     resource: AppBundle\Controller\DeclinaisonEthiqueController
 
 
-
 #COULEUR
 couleurs:
     type: rest
     resource: AppBundle\Controller\CouleursController
-
 
 #TAILLETYPE
 tailleType:
@@ -85,15 +87,10 @@ tailleType:
 
 
 
-
 tout:
     type: rest
     resource: AppBundle\Controller\ProduitsController
 
-<<<<<<< master
-=======
-
->>>>>>> point ethique produits
 impactsethiques:
     type: rest
     resource: AppBundle\Controller\PointsEthiqueController

@@ -43,6 +43,14 @@ class DeclinaisonTaille
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Quantite", type="integer")
+     */
+    private $quantite;
+
+
+    /**
      * Get id
      *
      * @return integer
@@ -99,4 +107,30 @@ class DeclinaisonTaille
     {
         return $this->taille;
     }
+
+
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return DeclinaisonTaille
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
 }
