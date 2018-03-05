@@ -43,9 +43,9 @@ class DeclinaisonTaille
 
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="Quantite", type="integer")
+     * @ORM\Column(name="quantite", type="integer")
      */
     private $quantite;
 

@@ -191,4 +191,18 @@ class ProduitsRepository extends EntityRepository
     }
 
 
+    public function search($search)
+    {
+        $queryBuilder = $this->_em->createQuery(
+            'SELECT p from AppBundle:Produits p
+JOIN p.fournisseur fo JOIN p.famille fa 
+WHERE p.libelle LIKE :search
+')
+            ->setParameter('search', '%' . $search . '%');
+
+        return $queryBuilder->getResult();
+
+    }
+
+
 }

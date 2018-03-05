@@ -1,0 +1,43 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Eloise
+ * Date: 05/03/2018
+ * Time: 08:33
+ */
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Wishlist
+ *
+ * @ORM\Table(name="wishlist")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\WishlistRepository")
+ */
+class Wishlist
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Produits", cascade={"persist"})
+     * @var Produits
+     */
+    private $produit;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membres", cascade={"persist"})
+     * @var Membres
+     */
+    private $membre;
+
+
+}

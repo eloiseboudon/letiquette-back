@@ -266,4 +266,23 @@ class ProduitsController extends Controller
 
         return $response;
     }
+
+    /**
+     * @Get("/search/{search}")
+     */
+    public function searchAction($search)
+    {
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->search($search);
+
+        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+            SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+
+
 }

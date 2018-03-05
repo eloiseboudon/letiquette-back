@@ -125,16 +125,12 @@ class PanierController extends Controller
     }
 
 
-
-
     /**
      * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
      * @Rest\Delete("/panier/supprimerProduit/{id}")
      */
-    public function supprimerProduitAction(Request $request)
+    public function supprimerProduitPanierAction(Request $request)
     {
-
-
         $em = $this->getDoctrine()->getManager();
         $detailPanier = $em->getRepository('AppBundle:DetailPanier')->find($request->get('id'));
         $em->remove($detailPanier);
