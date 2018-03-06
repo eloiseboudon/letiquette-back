@@ -62,7 +62,11 @@ familles:
     type: rest
     resource: AppBundle\Controller\FamillesController
 
+<<<<<<< HEAD
  #FAMILLESGLOBALES
+=======
+#FAMILLESGLOBALES
+>>>>>>> master
 famillesGlobales:
     type: rest
     resource: AppBundle\Controller\FamilleGlobalController
@@ -89,11 +93,30 @@ tailleType:
     resource: AppBundle\Controller\TailleTypeController
 
 
+<<<<<<< HEAD
+=======
+#DECLINAISON_TAILLE
+#produitsTaille:
+#    type: rest
+#    resource: AppBundle\Controller\DeclinaisonTailleController
+
+
+#DECLINAISON_TAILLE
+#produitsTailleFamille:
+#    type: rest
+#    resource: AppBundle\Controller\DeclinaisonTailleController
+
+
+
+>>>>>>> master
 tout:
     type: rest
     resource: AppBundle\Controller\ProduitsController
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 impactsethiques:
     type: rest
     resource: AppBundle\Controller\PointsEthiqueController

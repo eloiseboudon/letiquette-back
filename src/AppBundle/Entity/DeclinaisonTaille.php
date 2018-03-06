@@ -43,9 +43,15 @@ class DeclinaisonTaille
 
 
     /**
+<<<<<<< HEAD
      * @var integer
      *
      * @ORM\Column(name="quantite", type="integer")
+=======
+     * @var string
+     *
+     * @ORM\Column(name="Quantite", type="integer")
+>>>>>>> master
      */
     private $quantite;
 
@@ -109,7 +115,10 @@ class DeclinaisonTaille
     }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     /**
      * Set quantite
      *

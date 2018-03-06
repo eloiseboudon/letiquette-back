@@ -18,7 +18,10 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use JMS\Serializer\SerializationContext;
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 class FamilleGlobalController extends Controller
 {
@@ -27,8 +30,15 @@ class FamilleGlobalController extends Controller
      */
     public function getFamillesGlobalesAction()
     {
+<<<<<<< HEAD
         $familles = $this->getDoctrine()->getRepository('AppBundle:FamilleGlobal')->findAll();
 
+=======
+
+        $familles = $this->getDoctrine()->getRepository('AppBundle:FamilleGlobal')->findAll();
+
+
+>>>>>>> master
         $data = $this->get('jms_serializer')
             ->serialize($familles, 'json',
                 SerializationContext::create()->setSerializeNull(true));
@@ -40,6 +50,10 @@ class FamilleGlobalController extends Controller
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
 
 }
