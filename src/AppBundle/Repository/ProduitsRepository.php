@@ -191,16 +191,34 @@ class ProduitsRepository extends EntityRepository
     }
 
 
-    public function search($search)
+    public function searchproduit($search)
     {
-        $queryBuilder = $this->_em->createQuery(
-            'SELECT p from AppBundle:Produits p
-JOIN p.fournisseur fo JOIN p.famille fa 
-WHERE p.libelle LIKE :search
-')
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder
+            ->where('p.libelle LIKE :search')
+
             ->setParameter('search', '%' . $search . '%');
 
-        return $queryBuilder->getResult();
+        return $queryBuilder ->getQuery()->getResult();
+
+    }
+
+    public function search($search)
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder
+            ->join('p.couleur', 'c')
+            ->join('p.fournisseur', 'fo')
+            ->join('p.famille', 'f')
+            ->join('f.familleGlobal', 'fg')
+            ->orWhere('c.name LIKE :search')
+            ->orWhere('f.famille LIKE :search')
+            ->orWhere('fo.nomMarque LIKE :search')
+
+
+            ->setParameter('search', '%' . $search . '%');
+
+        return $queryBuilder ->getQuery()->getResult();
 
     }
 

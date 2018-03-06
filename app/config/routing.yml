@@ -33,9 +33,9 @@ panier:
     type: rest
     resource: AppBundle\Controller\PanierController
 
-#wishlist:
-#    type: rest
-#    resource: AppBundle\Controller\WishlistController
+wishlist:
+    type: rest
+    resource: AppBundle\Controller\WishlistController
 
 
 #PRODUITSFEMMES
