@@ -34,6 +34,10 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
+    token_authenticator:
+        class: UserBundle\Security\TokenAuthenticator
+        arguments: ['@lexik_jwt_authentication.encoder.default', '@doctrine.orm.entity_manager']
+        
     auth_token_user_provider:
         class: AppBundle\Security\AuthTokenMembreProvider
         arguments: ["@auth_token_repository", "@user_repository"]
