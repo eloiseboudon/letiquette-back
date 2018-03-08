@@ -13,4 +13,18 @@ use Doctrine\ORM\QueryBuilder;
  */
 class DeclinaisonEthiqueRepository extends EntityRepository
 {
+    public function searchProduit($search)
+    {
+        $queryBuilder = $this->createQueryBuilder('de');
+        $queryBuilder
+            ->join('de.produit', 'p')
+            ->join('de.pointEthique', 'pe')
+            ->orWhere('pe.nomEthique LIKE :search')
+            ->setParameter('search', '%' . $search . '%');
+
+        return $queryBuilder ->getQuery()->getResult();
+
+    }
+
+
 }

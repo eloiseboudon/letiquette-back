@@ -36,6 +36,15 @@ class PointsEthique
      */
     private $nomEthique;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Image", type="text")
+     *
+     *
+     */
+    private $image;
+
 
     /**
      * Get id
@@ -69,5 +78,30 @@ class PointsEthique
     public function getNomEthique()
     {
         return $this->nomEthique;
+    }
+
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return PointsEthique
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

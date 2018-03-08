@@ -272,12 +272,14 @@ class ProduitsController extends Controller
      */
     public function searchAction($search)
     {
-        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->searchProduit($search);
+        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonEthique')->searchProduit($search);
 
         if(empty($produits)) {
+            $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->searchProduit($search);
+        }
+        else if(empty($produits)) {
             $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->search($search);
         }
-
 
         $data = $this->get('jms_serializer')->serialize($produits, 'json',
             SerializationContext::create()->setSerializeNull(true));
