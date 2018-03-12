@@ -332,28 +332,4 @@ class Membres
     {
         return $this->user;
     }
-
-    /**
-     * Set civilite.
-     *
-     * @param string $civilite
-     *
-     * @return Membres
-     */
-    public function setCivilite($civilite)
-    {
-        $this->civilite = $civilite;
-
-        return $this;
-    }
-
-    /**
-     * Get civilite.
-     *
-     * @return string
-     */
-    public function getCivilite()
-    {
-        return $this->civilite;
-    }
 }

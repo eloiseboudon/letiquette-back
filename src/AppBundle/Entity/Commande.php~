@@ -9,6 +9,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\User;
 
 /**
  * Panier
@@ -28,10 +29,10 @@ class Commande
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membres", cascade={"persist"})
-     * @var Membres
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     * @var User
      */
-    private $membre;
+    private $user;
 
 
     /**
@@ -42,5 +43,38 @@ class Commande
 
 
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
+
+    /**
+     * Set panier
+     *
+     * @param \AppBundle\Entity\Panier $panier
+     *
+     * @return Commande
+     */
+    public function setPanier(\AppBundle\Entity\Panier $panier = null)
+    {
+        $this->panier = $panier;
+
+        return $this;
+    }
+
+    /**
+     * Get panier
+     *
+     * @return \AppBundle\Entity\Panier
+     */
+    public function getPanier()
+    {
+        return $this->panier;
+    }
 }

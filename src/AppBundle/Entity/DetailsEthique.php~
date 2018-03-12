@@ -8,7 +8,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
-
+use UserBundle\Entity\User;
 
 
 /**
@@ -31,10 +31,11 @@ class DetailsEthique
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Clients", cascade={"persist"})
-     * @var Clients
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     * @var User
      */
-    private $client;
+    private $user;
+
 
 
     /**
@@ -89,29 +90,7 @@ class DetailsEthique
         return $this->detailPoint;
     }
 
-    /**
-     * Set client
-     *
-     * @param \AppBundle\Entity\Clients $client
-     *
-     * @return DetailsEthique
-     */
-    public function setClient(\AppBundle\Entity\Clients $client = null)
-    {
-        $this->client = $client;
 
-        return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return \AppBundle\Entity\Clients
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
 
     /**
      * Set point

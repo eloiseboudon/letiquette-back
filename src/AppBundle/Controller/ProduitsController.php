@@ -82,8 +82,7 @@ class ProduitsController extends Controller
     /**
      * @Get("/produits/famille/{id}/sexe/{sexe}")
      */
-    public
-    function getProduitsFamillebySexeAction($id, $sexe)
+    public function getProduitsFamillebySexeAction($id, $sexe)
     {
         $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findProduitsByFamillebySexe($id, $sexe);
 
@@ -99,49 +98,12 @@ class ProduitsController extends Controller
     /**
      * @Get("/produits/taille/{arrayTaille}")
      */
-    public
-    function getProduitsFiltreTailleAction($arrayTaille)
-    {
-        $produits = $this->getDoctrine()->getManager()
-            ->getRepository('AppBundle:DeclinaisonTaille')
-            ->findProduitsFiltreTaille($arrayTaille);
-
-        $data = $this->get('jms_serializer')->serialize($produits, 'json',
-            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
-
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
-
-    /**
-     * @Get("/femmes/taille/{arrayTaille}")
-     */
-    public
-    function getProduitsFiltreSexeTailleAction($arrayTaille)
-    {
-        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:DeclinaisonTaille')->findProduitsFiltreTailleSexe($arrayTaille, "F");
-
-        $data = $this->get('jms_serializer')->serialize($produits, 'json',
-            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
-
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
-
-
-    /**
-     * @Get("/femmes")
-     */
-//    public
-//    function getProduitsFemmesAction()
+//    public function getProduitsFiltreTailleAction($arrayTaille)
 //    {
-//        $produits = $this->getDoctrine()->getRepository('AppBundle:Produits')->findProduitBySexe("F");
+//        $produits = $this->getDoctrine()->getManager()
+//            ->getRepository('AppBundle:DeclinaisonTaille')
+//            ->findProduitsFiltreTaille($arrayTaille);
+//
 //        $data = $this->get('jms_serializer')->serialize($produits, 'json',
 //            SerializationContext::create()->setGroups(array('produits'))->setSerializeNull(true));
 //
@@ -151,6 +113,7 @@ class ProduitsController extends Controller
 //
 //        return $response;
 //    }
+
 
     /**
      * @Get("/tout")

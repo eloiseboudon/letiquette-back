@@ -9,17 +9,9 @@ user:
     defaults:
         _format: json
 
-#login_check:
-#    path: /login_check
-
 membres:
     type: rest
     resource: AppBundle\Controller\MembresController
-
-
-auth-token:
-    type:     rest
-    resource: AppBundle\Controller\AuthTokenController
 
 #PAYS
 pays:
@@ -43,12 +35,6 @@ panier:
 wishlist:
     type: rest
     resource: AppBundle\Controller\WishlistController
-
-
-#PRODUITSFEMMES
-femmes:
-    type: rest
-    resource: AppBundle\Controller\ProduitsController
 
 
 search:

@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\User;
 
 /**
  * Wishlist
@@ -34,10 +35,10 @@ class Wishlist
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membres", cascade={"persist"})
-     * @var Membres
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     * @var User
      */
-    private $membre;
+    private $user;
 
 
 
@@ -75,27 +76,29 @@ class Wishlist
         return $this->produit;
     }
 
+
     /**
-     * Set membre
+     * Set user.
      *
-     * @param \AppBundle\Entity\Membres $membre
+     * @param \UserBundle\Entity\User|null $user
      *
-     * @return Wishlist
+     * @return User
      */
-    public function setMembre(\AppBundle\Entity\Membres $membre = null)
+    public function setUser(User $user = null)
     {
-        $this->membre = $membre;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get membre
+     * Get user.
      *
-     * @return \AppBundle\Entity\Membres
+     * @return \UserBundle\Entity\User|null
      */
-    public function getMembre()
+    public function getUser()
     {
-        return $this->membre;
+        return $this->user;
     }
+
 }

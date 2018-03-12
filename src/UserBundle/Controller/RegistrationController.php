@@ -1,8 +1,8 @@
 <?php
-
 namespace UserBundle\Controller;
- 
+
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,9 +13,11 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\Form\FormInterface;
 use JMS\Serializer\SerializationContext;
- 
-class RegistrationController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class RegistrationController extends Controller
 {
+
     /**
      * @Route("/register", name="user_register")
      * @Method("POST")
@@ -28,34 +30,33 @@ class RegistrationController extends \Symfony\Bundle\FrameworkBundle\Controller\
         $userManager = $this->get('fos_user.user_manager');
         /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
-
         $user = $userManager->createUser();
         $user->setEnabled(true);
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
-
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
-
         $form = $formFactory->createForm(array('csrf_protection' => false));
         $form->setData($user);
         $this->processForm($request, $form);
-
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
             $userManager->updateUser($user);
-
             $response = new Response($this->serialize('User created.'), Response::HTTP_CREATED);
         } else {
-            throw new BadRequestHttpException();
-        }
 
+            $errors=$this->getErrorsFromForm($form);
+
+            return $errors;
+
+//            return new JsonResponse($request->attributes->all());
+
+//            throw new BadRequestHttpException();
+        }
         return $this->setBaseHeaders($response);
     }
-
     /**
      * @param  Request $request
      * @param  FormInterface $form
@@ -66,10 +67,8 @@ class RegistrationController extends \Symfony\Bundle\FrameworkBundle\Controller\
         if ($data === null) {
             throw new BadRequestHttpException();
         }
-
         $form->submit($data);
     }
-
     /**
      * Data serializing via JMS serializer.
      *
@@ -81,11 +80,9 @@ class RegistrationController extends \Symfony\Bundle\FrameworkBundle\Controller\
     {
         $context = new SerializationContext();
         $context->setSerializeNull(true);
-
         return $this->get('jms_serializer')
             ->serialize($data, 'json', $context);
     }
-
     /**
      * Set base HTTP headers.
      *
@@ -97,7 +94,25 @@ class RegistrationController extends \Symfony\Bundle\FrameworkBundle\Controller\
     {
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
-
         return $response;
     }
+
+
+
+    private function getErrorsFromForm(FormInterface $form)
+    {
+        $errors = array();
+        foreach ($form->getErrors() as $error) {
+            $errors[] = $error->getMessage();
+        }
+        foreach ($form->all() as $childForm) {
+            if ($childForm instanceof FormInterface) {
+                if ($childErrors = $this->getErrorsFromForm($childForm)) {
+                    $errors[$childForm->getName()] = $childErrors;
+                }
+            }
+        }
+        return $errors;
+    }
+
 }
