@@ -34,12 +34,18 @@ class RegistrationController extends Controller
         $user->setEnabled(true);
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
+
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
-        $form = $formFactory->createForm(array('csrf_protection' => false));
+
+        $form = $formFactory->createForm(array('csrf_protection' => false,
+            'validation_groups' => false,
+            'allow_extra_fields' => true));
+
         $form->setData($user);
         $this->processForm($request, $form);
+
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
@@ -47,11 +53,8 @@ class RegistrationController extends Controller
             $response = new Response($this->serialize('User created.'), Response::HTTP_CREATED);
         } else {
 
-            $errors=$this->getErrorsFromForm($form);
-
+            $errors = $this->getErrorMessages($form);
             return $errors;
-
-//            return new JsonResponse($request->attributes->all());
 
 //            throw new BadRequestHttpException();
         }

@@ -21,54 +21,100 @@ use JMS\Serializer\SerializationContext;
 use UserBundle\Controller\RegistrationController;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use UserBundle\Entity\User;
 
 class MembresController extends Controller
 {
 
     /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Post("/membres/creer")
+     * @Rest\Post("/membres/inscription")
      */
-    public function postMembreAction(Request $request) {
-        $request_ = new Request();
-        $request_->attributes->set('username', $request->get('email'));
-        $request_->attributes->set('email', $request->get('email'));
-        $request_->attributes->set('plainPassword', $request->get('plainPassword'));
-        $user =  $this->creerFosUserAction($request_);
+    public function postMembreInscriptionAction(Request $request)
+    {
+        $fos_user = $this->creerFosUser($request);
 
-//        $membre = new Membres();
-//        $membre->setCivilite($request->get('civilite'));
-//        $membre->setNom($request->get('nom'));
-//        $membre->setPrenom($request->get('prenom'));
-//        $membre->setNumTel($request->get('telephone'));
-//        $membre->setAdMail($request->get('email'));
-//        $membre->setAdresse($request->get('adresse'));
-//        $membre->setVille($request->get('ville'));
-//        $membre->setPays($request->get('pays'));
-//        $membre->setCodePostal($request->get('code_postal'));
-//        $em = $this->getDoctrine()->getManager();
-//        $em->persist($membre);
-//        $em->flush();
+        if ($fos_user->isSuccessful()) {
 
-        return $user;
+
+            $user = $this->getDoctrine()
+                ->getRepository('UserBundle:User')
+                ->findOneBy(['username' => $request->get('email')]);
+
+            $membre = new Membres();
+            $membre->setUser($user);
+            $membre->setCivilite($request->get('civilite'));
+            $membre->setNom($request->get('nom'));
+            $membre->setPrenom($request->get('prenom'));
+            $membre->setNumTel($request->get('telephone'));
+            $membre->setAdMail($request->get('email'));
+            $membre->setAdresse($request->get('adresse'));
+            $membre->setVille($request->get('ville'));
+            $membre->setPays($request->get('pays'));
+            $membre->setCodePostal($request->get('code_postal'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($membre);
+            $em->flush();
+
+            $response = $membre;
+
+        } else {
+            $response = $fos_user;
+        }
+
+        return $response;
     }
 
-    /**
-     * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Post("/membres/creerUser")
-     */
-    public function creerFosUserAction(Request $request) {
-
-        $request_ = new Request();
-        $request_->attributes->set('username', $request->get('email'));
-        $request_->attributes->set('email', $request->get('email'));
-        $request_->attributes->set('plainPassword', $request->get('plainPassword'));
-
-        $response = $this->forward('UserBundle\Controller\RegistrationController::registerAction',array(
-            'request'  => $request_));
+    public function creerFosUser(Request $request)
+    {
+        $response = $this->forward('UserBundle\Controller\RegistrationController::registerAction', array(
+            'request' => $request));
         return $response;
 
     }
+
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Post("/membres/connexion")
+     */
+    public function postMembreConnexionAction(Request $request)
+    {
+        $fos_user = $this->checkFosUser($request);
+
+        if ($fos_user->isSuccessful()) {
+
+
+            $user = $this->getDoctrine()
+                ->getRepository('UserBundle:User')
+                ->findOneBy(['username' => $request->get('username')]);
+
+            if($user){
+                $membre = $this->getDoctrine()->getRepository('AppBundle:Membres')
+                    ->findOneBy(['user' => $user]);
+            }
+
+            $response = $membre;
+
+
+        } else {
+            $response = $fos_user->getStatusCode();
+
+        }
+
+        return $response;
+    }
+
+    public function checkFosUser(Request $request)
+    {
+        $response = $this->forward('UserBundle\Controller\LoginController::loginAction', array(
+            'request' => $request));
+        return $response;
+
+    }
+
+
+
 
 
 }

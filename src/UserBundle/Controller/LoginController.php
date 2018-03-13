@@ -2,6 +2,7 @@
  
 namespace UserBundle\Controller;
  
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,8 +21,8 @@ class LoginController extends Controller
      */
     public function loginAction(Request $request)
     {
-        $userName = $request->getUser();
-        $password = $request->getPassword();
+        $userName = $request->get('username');
+        $password = $request->get('password');
 
         $user = $this->getDoctrine()
             ->getRepository('UserBundle:User')
