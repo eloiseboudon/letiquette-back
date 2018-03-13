@@ -35,32 +35,42 @@ class MembresController extends Controller
         $fos_user = $this->creerFosUser($request);
 
         if ($fos_user->isSuccessful()) {
-
-
             $user = $this->getDoctrine()
                 ->getRepository('UserBundle:User')
                 ->findOneBy(['username' => $request->get('email')]);
+            if($user) {
+                $membre = new Membres();
+                $membre->setUser($user);
+                $membre->setCivilite($request->get('civilite'));
+                $membre->setNom($request->get('nom'));
+                $membre->setPrenom($request->get('prenom'));
+                $membre->setNumTel($request->get('telephone'));
+                $membre->setAdMail($request->get('email'));
+                $membre->setAdresse($request->get('adresse'));
+                $membre->setVille($request->get('ville'));
+                $membre->setPays($request->get('pays'));
+                $membre->setCodePostal($request->get('code_postal'));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($membre);
+                $em->flush();
 
-            $membre = new Membres();
-            $membre->setUser($user);
-            $membre->setCivilite($request->get('civilite'));
-            $membre->setNom($request->get('nom'));
-            $membre->setPrenom($request->get('prenom'));
-            $membre->setNumTel($request->get('telephone'));
-            $membre->setAdMail($request->get('email'));
-            $membre->setAdresse($request->get('adresse'));
-            $membre->setVille($request->get('ville'));
-            $membre->setPays($request->get('pays'));
-            $membre->setCodePostal($request->get('code_postal'));
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($membre);
-            $em->flush();
 
-            $response = $membre;
+                $data = $this->get('jms_serializer')
+                    ->serialize($membre, 'json',
+                        SerializationContext::create()->setSerializeNull(true));
+            }else{
+                return new JsonResponse(['message' =>'Membre non trouvé'], Response::HTTP_NOT_FOUND);
+            }
+
 
         } else {
-            $response = $fos_user;
+            return new JsonResponse(['message' => 'L\'inscription a échouée'], Response::HTTP_NOT_FOUND);
         }
+
+
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }
@@ -83,24 +93,30 @@ class MembresController extends Controller
         $fos_user = $this->checkFosUser($request);
 
         if ($fos_user->isSuccessful()) {
-
-
             $user = $this->getDoctrine()
                 ->getRepository('UserBundle:User')
                 ->findOneBy(['username' => $request->get('username')]);
 
-            if($user){
+            if($user) {
                 $membre = $this->getDoctrine()->getRepository('AppBundle:Membres')
                     ->findOneBy(['user' => $user]);
+
+                if($membre) {
+                    $data = $this->get('jms_serializer')
+                        ->serialize($membre, 'json',
+                            SerializationContext::create()->setSerializeNull(true));
+                }else{
+                    return new JsonResponse(['message' => 'Membre non trouvé'], Response::HTTP_NOT_FOUND);
+
+                }
+            }else{
+                return new JsonResponse(['message' => 'Membre non trouvé'], Response::HTTP_NOT_FOUND);
             }
-
-            $response = $membre;
-
-
         } else {
-            $response = $fos_user->getStatusCode();
-
+            return new JsonResponse(['message' => 'Problème de login et/ou mot de passe', 'error' => $fos_user->getStatusCode()], Response::HTTP_NOT_FOUND);
         }
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }
@@ -112,9 +128,5 @@ class MembresController extends Controller
         return $response;
 
     }
-
-
-
-
 
 }
