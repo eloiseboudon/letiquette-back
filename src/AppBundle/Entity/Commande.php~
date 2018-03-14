@@ -9,13 +9,13 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
-use UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Panier
  *
  * @ORM\Table(name="commande")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CommanderRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommandeRepository")
  */
 class Commande
 {
@@ -29,10 +29,10 @@ class Commande
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
-     * @var User
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membres", cascade={"persist"})
+     * @var Membres
      */
-    private $user;
+    private $membre;
 
 
     /**
@@ -41,23 +41,66 @@ class Commande
      */
     private $panier;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Adresse", cascade={"persist"})
+     * @var Adresse
+     */
+    private $livraison;
 
 
     /**
-     * Get id
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Adresse", cascade={"persist"})
+     * @var Adresse
+     */
+    private $facturation;
+
+
+    /**
+     * @var \DateTime
      *
-     * @return integer
+     * @ORM\Column(name="Date", type="datetime")
+     */
+    private $date;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
      */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * Set membre.
+     *
+     * @param \AppBundle\Entity\Membres|null $membre
+     *
+     * @return Commande
+     */
+    public function setMembre(\AppBundle\Entity\Membres $membre = null)
+    {
+        $this->membre = $membre;
+
+        return $this;
+    }
 
     /**
-     * Set panier
+     * Get membre.
      *
-     * @param \AppBundle\Entity\Panier $panier
+     * @return \AppBundle\Entity\Membres|null
+     */
+    public function getMembre()
+    {
+        return $this->membre;
+    }
+
+    /**
+     * Set panier.
+     *
+     * @param \AppBundle\Entity\Panier|null $panier
      *
      * @return Commande
      */
@@ -69,12 +112,62 @@ class Commande
     }
 
     /**
-     * Get panier
+     * Get panier.
      *
-     * @return \AppBundle\Entity\Panier
+     * @return \AppBundle\Entity\Panier|null
      */
     public function getPanier()
     {
         return $this->panier;
     }
+
+    /**
+     * Set livraison.
+     *
+     * @param \AppBundle\Entity\Adresse|null $livraison
+     *
+     * @return Commande
+     */
+    public function setLivraison(\AppBundle\Entity\Adresse $livraison = null)
+    {
+        $this->livraison = $livraison;
+
+        return $this;
+    }
+
+    /**
+     * Get livraison.
+     *
+     * @return \AppBundle\Entity\Adresse|null
+     */
+    public function getLivraison()
+    {
+        return $this->livraison;
+    }
+
+    /**
+     * Set facturation.
+     *
+     * @param \AppBundle\Entity\Adresse|null $facturation
+     *
+     * @return Commande
+     */
+    public function setFacturation(\AppBundle\Entity\Adresse $facturation = null)
+    {
+        $this->facturation = $facturation;
+
+        return $this;
+    }
+
+    /**
+     * Get facturation.
+     *
+     * @return \AppBundle\Entity\Adresse|null
+     */
+    public function getFacturation()
+    {
+        return $this->facturation;
+    }
+
+
 }

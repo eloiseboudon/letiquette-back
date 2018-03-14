@@ -13,6 +13,14 @@ membres:
     type: rest
     resource: AppBundle\Controller\MembresController
 
+adresse:
+    type: rest
+    resource: AppBundle\Controller\AdresseController
+
+commande:
+    type: rest
+    resource: AppBundle\Controller\CommandeController
+
 #PAYS
 pays:
     type: rest

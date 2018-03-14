@@ -46,10 +46,6 @@ class MembresController extends Controller
                 $membre->setPrenom($request->get('prenom'));
                 $membre->setNumTel($request->get('telephone'));
                 $membre->setAdMail($request->get('email'));
-                $membre->setAdresse($request->get('adresse'));
-                $membre->setVille($request->get('ville'));
-                $membre->setPays($request->get('pays'));
-                $membre->setCodePostal($request->get('code_postal'));
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($membre);
                 $em->flush();

@@ -67,36 +67,6 @@ class Membres
      */
     private $adMail;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adresse", type="string", length=255)
-     */
-    private $adresse;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ville", type="string", length=255)
-     */
-    private $ville;
-
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="codePostal", type="string", length=255)
-     */
-    private $codePostal;
-
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pays", type="string", length=255)
-     */
-    private $pays;
-
 
     /**
      * @var string
@@ -105,7 +75,7 @@ class Membres
      */
     private $numTel;
 
-
+    
 
     /**
      * Get id.
@@ -115,6 +85,30 @@ class Membres
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set civilite.
+     *
+     * @param string $civilite
+     *
+     * @return Membres
+     */
+    public function setCivilite($civilite)
+    {
+        $this->civilite = $civilite;
+
+        return $this;
+    }
+
+    /**
+     * Get civilite.
+     *
+     * @return string
+     */
+    public function getCivilite()
+    {
+        return $this->civilite;
     }
 
     /**
@@ -190,102 +184,6 @@ class Membres
     }
 
     /**
-     * Set adresse.
-     *
-     * @param string $adresse
-     *
-     * @return Membres
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    /**
-     * Get adresse.
-     *
-     * @return string
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * Set ville.
-     *
-     * @param string $ville
-     *
-     * @return Membres
-     */
-    public function setVille($ville)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville.
-     *
-     * @return string
-     */
-    public function getVille()
-    {
-        return $this->ville;
-    }
-
-    /**
-     * Set codePostal.
-     *
-     * @param string $codePostal
-     *
-     * @return Membres
-     */
-    public function setCodePostal($codePostal)
-    {
-        $this->codePostal = $codePostal;
-
-        return $this;
-    }
-
-    /**
-     * Get codePostal.
-     *
-     * @return string
-     */
-    public function getCodePostal()
-    {
-        return $this->codePostal;
-    }
-
-    /**
-     * Set pays.
-     *
-     * @param string $pays
-     *
-     * @return Membres
-     */
-    public function setPays($pays)
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
-    /**
-     * Get pays.
-     *
-     * @return string
-     */
-    public function getPays()
-    {
-        return $this->pays;
-    }
-
-    /**
      * Set numTel.
      *
      * @param string $numTel
@@ -331,29 +229,5 @@ class Membres
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set civilite.
-     *
-     * @param string $civilite
-     *
-     * @return Membres
-     */
-    public function setCivilite($civilite)
-    {
-        $this->civilite = $civilite;
-
-        return $this;
-    }
-
-    /**
-     * Get civilite.
-     *
-     * @return string
-     */
-    public function getCivilite()
-    {
-        return $this->civilite;
     }
 }

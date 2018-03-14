@@ -32,7 +32,7 @@ class Panier
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
