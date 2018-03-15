@@ -21,8 +21,6 @@ DirectoryIndex app.php
 
 <IfModule mod_rewrite.c>
 
-#Elo
-
     RewriteEngine On
 
 

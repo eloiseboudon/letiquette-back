@@ -49,6 +49,14 @@ class CommandeController extends Controller
         return $commande;
     }
 
+    /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Post("/commande/ipn")
+     */
+    public function IpnAction(Request $request){
+        return new JsonResponse($request->getContent());
+    }
+
 
     /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
@@ -105,6 +113,10 @@ class CommandeController extends Controller
 
         return $commande;
     }
+
+
+
+
 
 
 }
