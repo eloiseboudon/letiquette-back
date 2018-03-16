@@ -131,20 +131,3 @@ lexik_jwt_authentication:
     pass_phrase:      %jwt_key_pass_phrase%
     token_ttl:        3600
 
-
-
-lexik_paybox:
-    parameters:
-        production: false        # Switches between Paybox test and production servers (preprod-tpe <> tpe)
-        site:        '9999999'   # Site number provided by the bank
-        rank:        '99'        # Rank number provided by the bank
-        login:       '999999999' # Customer's login provided by Paybox
-        currencies:  # Optionnal parameters, this is the default value
-                    - '036'  # AUD
-                    - '124'  # CAD
-                    - '756'  # CHF
-                    - '826'  # GBP
-                    - '840'  # USD
-                    - '978'  # EUR
-        hmac:
-            key: '01234...BCDEF' # Key used to compute the hmac hash, provided by Paybox
