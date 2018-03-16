@@ -9,6 +9,9 @@ user:
     defaults:
         _format: json
 
+lexik_paybox:
+    resource: '@LexikPayboxBundle/Resources/config/routing.yml'
+
 membres:
     type: rest
     resource: AppBundle\Controller\MembresController
