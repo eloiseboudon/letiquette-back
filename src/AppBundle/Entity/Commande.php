@@ -58,7 +58,7 @@ class Commande
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
@@ -170,4 +170,28 @@ class Commande
     }
 
 
+
+    /**
+     * Set date.
+     *
+     * @param \DateTime $date
+     *
+     * @return Commande
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date.
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 }

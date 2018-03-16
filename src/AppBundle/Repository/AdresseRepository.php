@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: Eloise
  * Date: 13/03/2018
- * Time: 09:29
+ * Time: 21:23
  */
 
 namespace AppBundle\Repository;
 
 
-class MembresRepository extends \Doctrine\ORM\EntityRepository
+class AdresseRepository extends \Doctrine\ORM\EntityRepository
 {
 
 }

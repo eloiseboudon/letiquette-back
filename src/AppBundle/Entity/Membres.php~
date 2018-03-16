@@ -1,0 +1,79 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Eloise
+ * Date: 18/10/2017
+ * Time: 15:41
+ */
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use UserBundle\Entity\User;
+
+
+/**
+ * Membres
+ *
+ * @ORM\Table(name="membres")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MembresRepository")
+ */
+class Membres
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     * @var User
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civilite", type="string", length=255)
+     */
+    private $civilite;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
+     */
+    private $prenom;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adMail", type="string", length=255)
+     */
+    private $adMail;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numTel", type="string", length=255)
+     */
+    private $numTel;
+
+    
+}

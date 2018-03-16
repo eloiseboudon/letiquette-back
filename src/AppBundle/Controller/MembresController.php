@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Eloise
- * Date: 18/10/2017
- * Time: 15:50
+ * Date: 12/03/2018
+ * Time: 11:46
  */
 
 namespace AppBundle\Controller;
@@ -17,82 +17,112 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use JMS\Serializer\SerializationContext;
+use UserBundle\Controller\RegistrationController;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use UserBundle\Entity\User;
 
 class MembresController extends Controller
 {
 
     /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Post("/membres")
+     * @Rest\Post("/membres/inscription")
      */
-    public function postMembreAction(Request $request)
+    public function postMembreInscriptionAction(Request $request)
     {
+        $fos_user = $this->creerFosUser($request);
 
-        $ville = $this->getDoctrine()->getRepository('AppBundle:Villes')->find($request->get('idVille'));
+        if ($fos_user->isSuccessful()) {
+            $user = $this->getDoctrine()
+                ->getRepository('UserBundle:User')
+                ->findOneBy(['username' => $request->get('email')]);
+            if($user) {
+                $membre = new Membres();
+                $membre->setUser($user);
+                $membre->setCivilite($request->get('civilite'));
+                $membre->setNom($request->get('nom'));
+                $membre->setPrenom($request->get('prenom'));
+                $membre->setNumTel($request->get('telephone'));
+                $membre->setAdMail($request->get('email'));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($membre);
+                $em->flush();
 
-        if (empty($ville)) {
-            return new JsonResponse(['message' => 'Ville not found'], Response::HTTP_NOT_FOUND);
+
+                $data = $this->get('jms_serializer')
+                    ->serialize($membre, 'json',
+                        SerializationContext::create()->setSerializeNull(true));
+            }else{
+                return new JsonResponse(['message' =>'Membre non trouvé'], Response::HTTP_NOT_FOUND);
+            }
+
+
+        } else {
+            return new JsonResponse(['message' => 'L\'inscription a échouée'], Response::HTTP_NOT_FOUND);
         }
 
-        $membre = new Membres();
-        $encoder = $this->get('security.password_encoder');
-        $encoded = $encoder->encodePassword($membre, $request->get('password'));
-        $membre->setNom($request->get('nom'));
-        $membre->setPrenom($request->get('prenom'));
-        $membre->setLogin($request->get('login'));
-        $membre->setAdresse($request->get('adresse'));
-        $membre->setAdMail($request->get('email'));
-        $membre->setNumTel($request->get('telephone'));
-        $membre->setVille($ville);
-        $membre->setPassword($encoded);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($membre);
-        $em->flush();
 
-        return $membre;
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
+
+    public function creerFosUser(Request $request)
+    {
+        $response = $this->forward('UserBundle\Controller\RegistrationController::registerAction', array(
+            'request' => $request));
+        return $response;
+
+    }
+
 
     /**
-     * @Rest\View(serializerGroups={"user"})
-     * @Rest\Put("/membres/{id}")
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Post("/membres/connexion")
      */
-    public function updateMembreAction(Request $request)
+    public function postMembreConnexionAction(Request $request)
     {
-        return $this->updateMembre($request);
+        $fos_user = $this->checkFosUser($request);
+
+        if ($fos_user->isSuccessful()) {
+            $user = $this->getDoctrine()
+                ->getRepository('UserBundle:User')
+                ->findOneBy(['username' => $request->get('username')]);
+
+            if($user) {
+                $membre = $this->getDoctrine()->getRepository('AppBundle:Membres')
+                    ->findOneBy(['user' => $user]);
+
+                if($membre) {
+                    $data = $this->get('jms_serializer')
+                        ->serialize($membre, 'json',
+                            SerializationContext::create()->setSerializeNull(true));
+                }else{
+                    return new JsonResponse(['message' => 'Membre non trouvé'], Response::HTTP_NOT_FOUND);
+
+                }
+            }else{
+                return new JsonResponse(['message' => 'Membre non trouvé'], Response::HTTP_NOT_FOUND);
+            }
+        } else {
+            return new JsonResponse(['message' => 'Problème de login et/ou mot de passe', 'error' => $fos_user->getStatusCode()], Response::HTTP_NOT_FOUND);
+        }
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
-
-
-
-
-    private function updateMembre(Request $request)
+    public function checkFosUser(Request $request)
     {
-        $membre = $this->getDoctrine()->getRepository('AppBundle:Membres')->find($request->get('id'));
+        $response = $this->forward('UserBundle\Controller\LoginController::loginAction', array(
+            'request' => $request));
+        return $response;
 
-        if (empty($membre)) {
-            return $this->membreNotFound();
-        }
-
-        if ($request->get('password')) {
-            $encoder = $this->get('security.password_encoder');
-            $encoded = $encoder->encodePassword($membre, $request->get('password'));
-            $membre->setPassword($encoded);
-        }
-
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($membre);
-        $em->flush();
-
-        return $membre;
-
-    }
-
-
-    private function membreNotFound()
-    {
-        return \FOS\RestBundle\View\View::create(['message' => 'Utilisateur non trouvé'], Response::HTTP_NOT_FOUND);
     }
 
 }

@@ -2,17 +2,25 @@ app:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
 
-#login_check:
-#    path: /login_check
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /users
+    defaults:
+        _format: json
+
 
 membres:
     type: rest
     resource: AppBundle\Controller\MembresController
 
+adresse:
+    type: rest
+    resource: AppBundle\Controller\AdresseController
 
-auth-token:
-    type:     rest
-    resource: AppBundle\Controller\AuthTokenController
+commande:
+    type: rest
+    resource: AppBundle\Controller\CommandeController
 
 #PAYS
 pays:
@@ -36,12 +44,6 @@ panier:
 wishlist:
     type: rest
     resource: AppBundle\Controller\WishlistController
-
-
-#PRODUITSFEMMES
-femmes:
-    type: rest
-    resource: AppBundle\Controller\ProduitsController
 
 
 search:

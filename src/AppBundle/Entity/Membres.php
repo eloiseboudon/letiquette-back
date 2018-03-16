@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use UserBundle\Entity\User;
 
 
 /**
@@ -17,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="membres")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MembresRepository")
  */
-class Membres implements UserInterface
+class Membres
 {
     /**
      * @var int
@@ -30,24 +31,18 @@ class Membres implements UserInterface
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     * @var User
+     */
+    private $user;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=255)
+     * @ORM\Column(name="civilite", type="string", length=255)
      */
-    private $login;
+    private $civilite;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $password;
-    protected $plainPassword;
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Villes", cascade={"persist"})
-     * @var Villes
-     */
-    private $ville;
 
     /**
      * @var string
@@ -72,13 +67,6 @@ class Membres implements UserInterface
      */
     private $adMail;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adresse", type="string", length=255)
-     */
-    private $adresse;
-
 
     /**
      * @var string
@@ -87,10 +75,12 @@ class Membres implements UserInterface
      */
     private $numTel;
 
+    
+
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -98,7 +88,31 @@ class Membres implements UserInterface
     }
 
     /**
-     * Set nom
+     * Set civilite.
+     *
+     * @param string $civilite
+     *
+     * @return Membres
+     */
+    public function setCivilite($civilite)
+    {
+        $this->civilite = $civilite;
+
+        return $this;
+    }
+
+    /**
+     * Get civilite.
+     *
+     * @return string
+     */
+    public function getCivilite()
+    {
+        return $this->civilite;
+    }
+
+    /**
+     * Set nom.
      *
      * @param string $nom
      *
@@ -112,7 +126,7 @@ class Membres implements UserInterface
     }
 
     /**
-     * Get nom
+     * Get nom.
      *
      * @return string
      */
@@ -122,7 +136,7 @@ class Membres implements UserInterface
     }
 
     /**
-     * Set prenom
+     * Set prenom.
      *
      * @param string $prenom
      *
@@ -136,7 +150,7 @@ class Membres implements UserInterface
     }
 
     /**
-     * Get prenom
+     * Get prenom.
      *
      * @return string
      */
@@ -146,7 +160,7 @@ class Membres implements UserInterface
     }
 
     /**
-     * Set adMail
+     * Set adMail.
      *
      * @param string $adMail
      *
@@ -160,7 +174,7 @@ class Membres implements UserInterface
     }
 
     /**
-     * Get adMail
+     * Get adMail.
      *
      * @return string
      */
@@ -170,31 +184,7 @@ class Membres implements UserInterface
     }
 
     /**
-     * Set adresse
-     *
-     * @param string $adresse
-     *
-     * @return Membres
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    /**
-     * Get adresse
-     *
-     * @return string
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * Set numTel
+     * Set numTel.
      *
      * @param string $numTel
      *
@@ -208,7 +198,7 @@ class Membres implements UserInterface
     }
 
     /**
-     * Get numTel
+     * Get numTel.
      *
      * @return string
      */
@@ -218,108 +208,26 @@ class Membres implements UserInterface
     }
 
     /**
-     * Set ville
+     * Set user.
      *
-     * @param \AppBundle\Entity\Villes $ville
+     * @param \UserBundle\Entity\User|null $user
      *
      * @return Membres
      */
-    public function setVille(\AppBundle\Entity\Villes $ville = null)
+    public function setUser(\UserBundle\Entity\User $user = null)
     {
-        $this->ville = $ville;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get ville
+     * Get user.
      *
-     * @return \AppBundle\Entity\Villes
+     * @return \UserBundle\Entity\User|null
      */
-    public function getVille()
+    public function getUser()
     {
-        return $this->ville;
-    }
-
-    /**
-     * Set login
-     *
-     * @param string $login
-     *
-     * @return Membres
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return Membres
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-
-    public function getRoles()
-    {
-        return [];
-    }
-
-    public function getSalt()
-    {
-        return null;
-    }
-
-    public function getUsername()
-    {
-        return $this->adMail;
-    }
-
-
-    public function eraseCredentials()
-    {
-        // Suppression des données sensibles
-        $this->plainPassword = null;
+        return $this->user;
     }
 }

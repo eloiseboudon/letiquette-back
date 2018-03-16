@@ -8,7 +8,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
-
+use UserBundle\Entity\User;
 
 
 /**
@@ -31,10 +31,11 @@ class DetailsEthique
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membres", cascade={"persist"})
-     * @var Membres
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     * @var User
      */
-    private $membre;
+    private $user;
+
 
 
     /**
@@ -89,29 +90,7 @@ class DetailsEthique
         return $this->detailPoint;
     }
 
-    /**
-     * Set membre
-     *
-     * @param \AppBundle\Entity\Membres $membre
-     *
-     * @return DetailsEthique
-     */
-    public function setMembre(\AppBundle\Entity\Membres $membre = null)
-    {
-        $this->membre = $membre;
 
-        return $this;
-    }
-
-    /**
-     * Get membre
-     *
-     * @return \AppBundle\Entity\Membres
-     */
-    public function getMembre()
-    {
-        return $this->membre;
-    }
 
     /**
      * Set point
@@ -135,5 +114,29 @@ class DetailsEthique
     public function getPoint()
     {
         return $this->point;
+    }
+
+    /**
+     * Set user.
+     *
+     * @param \UserBundle\Entity\User|null $user
+     *
+     * @return DetailsEthique
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \UserBundle\Entity\User|null
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
