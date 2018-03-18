@@ -118,19 +118,19 @@ class ProduitsController extends Controller
     /**
      * @Get("/tout")
      */
-    public
-    function getEverythingAction()
-    {
-        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findEverything();
-
-        $data = $this->get('jms_serializer')->serialize($produits, 'json',
-            SerializationContext::create()->setSerializeNull(true));
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
+//    public
+//    function getEverythingAction()
+//    {
+//        $produits = $this->getDoctrine()->getManager()->getRepository('AppBundle:Produits')->findEverything();
+//
+//        $data = $this->get('jms_serializer')->serialize($produits, 'json',
+//            SerializationContext::create()->setSerializeNull(true));
+//
+//        $response = new Response($data);
+//        $response->headers->set('Content-Type', 'application/json');
+//
+//        return $response;
+//    }
 
     /**
      * @Get("/tout/femmes")

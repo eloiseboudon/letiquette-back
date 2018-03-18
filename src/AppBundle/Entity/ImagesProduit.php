@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * ImagesProduit
@@ -24,6 +25,8 @@ class ImagesProduit
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\Groups({"produits"})
+     *
      */
     private $id;
 
@@ -40,6 +43,8 @@ class ImagesProduit
      * @var string
      *
      * @ORM\Column(name="Image", type="text")
+     * @Serializer\Groups({"produits"})
+     *
      */
     private $image;
 

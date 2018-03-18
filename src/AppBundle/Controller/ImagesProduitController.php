@@ -16,7 +16,7 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use JMS\Serializer\SerializationContext;
 
 
 class ImagesProduitController extends Controller
@@ -32,21 +32,20 @@ class ImagesProduitController extends Controller
         if (empty($imageList)) {
             return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
         }
-        $formatted = [];
 
-        foreach ($imageList as $image) {
-            $formatted[] = array(
-                'id' => $image->getId(),
-                'produit' => $image->getProduit()->getId(),
-                'image' => $image->getImage()
-            );
-        }
-        return new JsonResponse($formatted);
+        $data = $this->get('jms_serializer')->serialize($imageList, 'json',
+            SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+
     }
 
     /**
      *
-     * @Get("/images/{id}")
+     * @Get("/images/produit/{id}")
      */
     public function getImagesByProduitAction($id)
     {
@@ -56,16 +55,34 @@ class ImagesProduitController extends Controller
         if (empty($imageList)) {
             return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
         }
-        $formatted = [];
+        $data = $this->get('jms_serializer')->serialize($imageList, 'json',
+            SerializationContext::create()->setSerializeNull(true));
 
-        foreach ($imageList as $image) {
-            $formatted[] = array(
-                'id' => $image->getId(),
-                'produit' => $image->getProduit()->getId(),
-                'image' => $image->getImage()
-            );
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+
+
+    /**
+     *
+     * @Get("/images/{id}")
+     */
+    public function getImagesByIdAction($id)
+    {
+        $imageList = $this->getDoctrine()->getRepository('AppBundle:ImagesProduit')->find($id);
+        if (empty($imageList)) {
+            return new JsonResponse(['message' => 'Aucun résultat trouvé'], Response::HTTP_NOT_FOUND);
         }
-        return new JsonResponse($formatted);
+        $data = $this->get('jms_serializer')->serialize($imageList, 'json',
+            SerializationContext::create()->setSerializeNull(true));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 }

@@ -9,7 +9,6 @@ user:
     defaults:
         _format: json
 
-
 membres:
     type: rest
     resource: AppBundle\Controller\MembresController

@@ -67,9 +67,8 @@ class Produits
     private $prix;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="Image", type="text")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ImagesProduit", cascade={"persist"})
+     * @var ImagesProduit
      *
      * @Serializer\Groups({"produits"})
      */
@@ -152,29 +151,7 @@ class Produits
         return $this->prix;
     }
 
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Produits
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
 
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
 
     /**
      * Set description
@@ -270,5 +247,29 @@ class Produits
     public function getCouleur()
     {
         return $this->couleur;
+    }
+
+    /**
+     * Set image.
+     *
+     * @param \AppBundle\Entity\ImagesProduit|null $image
+     *
+     * @return Produits
+     */
+    public function setImage(\AppBundle\Entity\ImagesProduit $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image.
+     *
+     * @return \AppBundle\Entity\ImagesProduit|null
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
