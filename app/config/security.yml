@@ -24,8 +24,7 @@ security:
             anonymous: true
             stateless: true
  
-            logout:       true
-            anonymous:    true
+            logout: true
 
             guard:
                 authenticators:
